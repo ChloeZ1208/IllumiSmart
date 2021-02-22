@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">IllumiSmart</string>
     <string name="illumismart">IllumiSmart</string>
+    <string name="self_assessment">Self-Assessment</string>
+    <string name="home_selfassess">Evaluate the lighting condition of your workplace by answering a few questions.</string>
+    <string name="measure_light_level">Measure Light Level</string>
+    <string name="home_lightlevel">A quick tool to check whether your working area is too bright or too dark.</string>
+    <string name="home_flicker">A quick tool to check whether there is flicker hazard.</string>
+    <string name="detect_light_flicker">Detect Light Flicker</string>
+    <string name="detect_glare">Detect Glare</string>
+    <string name="a_quick_tool_to_check_whether_there_is_glare_hazard">A quick tool to check whether there is glare hazard.</string>
 </resources>

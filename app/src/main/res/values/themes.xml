@@ -18,6 +18,7 @@
         <item name="colorPrimary">@color/app_green</item>
         <item name="colorPrimaryVariant">@color/app_green</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/app_background</item>
     </style>
 
 </resources>
