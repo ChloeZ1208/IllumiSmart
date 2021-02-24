@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LightLevelActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_level"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            style="@style/Widget.MaterialComponents.Toolbar.Surface"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:background="@color/light_level"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/guidance_menu"
+            app:navigationIcon="@drawable/back">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:text="Measure Light Level"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="normal" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/light_level_circle" />
+
+    <TextView
+        android:id="@+id/ins_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="178dp"
+        android:fontFamily="sans-serif"
+        android:text="Instantaneous Level"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="@+id/circle"
+        app:layout_constraintStart_toStartOf="@+id/circle"
+        app:layout_constraintTop_toTopOf="@+id/appBarLayout" />
+
+    <TextView
+        android:id="@+id/light_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="202dp"
+        android:fontFamily="sans-serif"
+        android:text="215"
+        android:textSize="62sp"
+        app:layout_constraintEnd_toEndOf="@+id/circle"
+        app:layout_constraintStart_toStartOf="@+id/circle"
+        app:layout_constraintTop_toTopOf="@+id/appBarLayout" />
+
+    <TextView
+        android:id="@+id/lux"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="185dp"
+        android:fontFamily="sans-serif"
+        android:text="Lux"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="@+id/circle"
+        app:layout_constraintStart_toStartOf="@+id/circle"
+        app:layout_constraintTop_toTopOf="@+id/circle" />
+
+    <ImageButton
+        android:id="@+id/light_level_start"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Start"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:srcCompat="@drawable/light_level_play" />
+
+    <ImageButton
+        android:id="@+id/light_level_pause"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Pause"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/light_level_reset"
+        app:layout_constraintStart_toEndOf="@+id/light_level_start"
+        app:srcCompat="@drawable/light_level_pause" />
+
+    <ImageButton
+        android:id="@+id/light_level_reset"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Reset"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/light_level_save"
+        app:layout_constraintStart_toEndOf="@+id/light_level_pause"
+        app:srcCompat="@drawable/light_level_reset" />
+
+    <ImageButton
+        android:id="@+id/light_level_save"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Save"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/light_level_save" />
+
+    <TextView
+        android:id="@+id/average"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif"
+        android:text="Average"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circle"
+        app:layout_constraintEnd_toEndOf="@+id/circle"
+        app:layout_constraintStart_toStartOf="@+id/circle"
+        app:layout_constraintTop_toBottomOf="@+id/lux"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/average_light_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="sans-serif"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circle"
+        app:layout_constraintEnd_toEndOf="@+id/circle"
+        app:layout_constraintStart_toStartOf="@+id/circle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
