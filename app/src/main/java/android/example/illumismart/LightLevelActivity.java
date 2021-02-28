@@ -1,9 +1,12 @@
 package android.example.illumismart;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.example.illumismart.entity.Illuminance;
+import android.example.illumismart.viewmodel.IlluminanceViewModel;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -20,9 +23,12 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class LightLevelActivity extends AppCompatActivity {
 
@@ -42,6 +48,9 @@ public class LightLevelActivity extends AppCompatActivity {
     private float minLux;
     private float maxLux;
     private float average_lux; // average lux
+    private String timeStamp;
+
+    private IlluminanceViewModel illuminanceViewModel;
 
 
     @Override
@@ -50,6 +59,11 @@ public class LightLevelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_light_level);
 
         initializeViews();
+
+        timeStamp = "yyyyMMddHHmm";
+        IlluminanceViewModel.Factory factory = new IlluminanceViewModel.Factory(
+                this.getApplication(), timeStamp);
+        illuminanceViewModel = new ViewModelProvider(this, factory).get(IlluminanceViewModel.class);
 
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -82,6 +96,8 @@ public class LightLevelActivity extends AppCompatActivity {
         cnt = mPrefs.getInt("cnt", 0);
         clicksNum.setText(String.valueOf(5 - cnt));
         averageLux.setText(average);
+        maxLux = mPrefs.getFloat("maxLux", Float.MIN_VALUE);
+        minLux = mPrefs.getFloat("minLux", Float.MAX_VALUE);
 
 
         lightListener = new SensorEventListener() {
@@ -115,10 +131,9 @@ public class LightLevelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (cnt == 5) {
-                    //float average = 0;
                     float sum = 0;
-                    minLux = Float.MAX_VALUE;
-                    maxLux = Float.MIN_VALUE;
+                    //minLux = Float.MAX_VALUE;
+                    //maxLux = Float.MIN_VALUE;
                     for (float l: lightlux) {
                         sum += l;
                         minLux = Math.min(minLux, l);
@@ -128,6 +143,9 @@ public class LightLevelActivity extends AppCompatActivity {
                     //Log.d("average", String.valueOf(average_lux));
                     averageLux.setText(String.valueOf(average_lux));
                     averageLux.append(" Lux");
+
+                    // save the time
+                    timeStamp = new SimpleDateFormat("yyyyMMddHHmm", Locale.CHINA).format(new Date());
 
                     /*
                     * TODO: View details-Provide lighting guidance (with age and work info)
@@ -155,10 +173,17 @@ public class LightLevelActivity extends AppCompatActivity {
                 /*
                  *  TODO: save minLux, maxLux, average_lux to database
                  */
+                if (cnt == 5) {
+                    Illuminance illuminance = new Illuminance
+                            (timeStamp, String.valueOf(minLux), String.valueOf(maxLux), averageLux.getText().toString());
+                    illuminanceViewModel.insert(illuminance);
+                } else {
+                    Toast.makeText(LightLevelActivity.this, "Click play to get more stats", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
-
 
     @Override
     protected void onPause() {
@@ -170,8 +195,8 @@ public class LightLevelActivity extends AppCompatActivity {
         String average = averageLux.getText().toString();
         editor.putString("averageLux", average);
         editor.putInt("cnt", cnt);
-        //editor.putString("maxLux", String.valueOf(maxLux));
-        //editor.putString("minLux", String.valueOf(minLux));
+        editor.putFloat("maxLux", maxLux);
+        editor.putFloat("minLux", minLux);
 
         /*
          *  TODO: save view details info to preferences
