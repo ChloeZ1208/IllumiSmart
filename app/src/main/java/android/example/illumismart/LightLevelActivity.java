@@ -2,6 +2,8 @@ package android.example.illumismart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -32,9 +34,15 @@ public class LightLevelActivity extends AppCompatActivity {
     private ImageButton lightLevelPlay;
     private ImageButton lightLevelPause;
     private ImageButton lightLevelReset;
+    private ImageButton lightLevelSave;
     private TextView averageLux;
+    private TextView clicksNum;
     private List<Float> lightlux;
     private int cnt;
+    private float minLux;
+    private float maxLux;
+    private float average_lux; // average lux
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +51,7 @@ public class LightLevelActivity extends AppCompatActivity {
 
         initializeViews();
 
-        // set navigation back
+        // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,10 +59,30 @@ public class LightLevelActivity extends AppCompatActivity {
             }
         });
 
+        // Set user guidance
+        topAppBar.setOnMenuItemClickListener(menuItem -> {
+            if(menuItem.getItemId() == R.id.nav_guide) {
+                startActivity(new Intent(LightLevelActivity.this, LightLevelGuideActivity.class));
+                return true;
+            }
+            return false;
+        });
+
         sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         lightlux = new ArrayList();
         cnt = 0;
+
+        // get average lux (when user navigate back to this page)
+        /*
+        *  TODO: get view details info
+         */
+        SharedPreferences mPrefs = getSharedPreferences("average", MODE_PRIVATE);
+        String average = mPrefs.getString("averageLux", "");
+        cnt = mPrefs.getInt("cnt", 0);
+        clicksNum.setText(String.valueOf(5 - cnt));
+        averageLux.setText(average);
+
 
         lightListener = new SensorEventListener() {
             @Override
@@ -68,6 +96,7 @@ public class LightLevelActivity extends AppCompatActivity {
                         if (cnt < 5) {
                             lightlux.add(event.values[0]);
                             cnt++;
+                            clicksNum.setText(String.valueOf(5 - cnt));
                         } else {
                             Toast.makeText(LightLevelActivity.this, "Stats enough", Toast.LENGTH_SHORT).show();
                         }
@@ -86,17 +115,27 @@ public class LightLevelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (cnt == 5) {
-                    float average = 0;
+                    //float average = 0;
                     float sum = 0;
+                    minLux = Float.MAX_VALUE;
+                    maxLux = Float.MIN_VALUE;
                     for (float l: lightlux) {
                         sum += l;
+                        minLux = Math.min(minLux, l);
+                        maxLux = Math.max(maxLux, l);
                     }
-                    average = sum / 5;
-                    Log.d("average", String.valueOf(average));
-                    averageLux.setText(String.valueOf(average));
+                    average_lux = sum / 5;
+                    //Log.d("average", String.valueOf(average_lux));
+                    averageLux.setText(String.valueOf(average_lux));
                     averageLux.append(" Lux");
+
+                    /*
+                    * TODO: View details-Provide lighting guidance (with age and work info)
+                    *
+                     */
+
                 } else if (cnt < 5){
-                    Toast.makeText(LightLevelActivity.this, "Click play to collect more stats", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LightLevelActivity.this, "Click play to get more stats", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -105,7 +144,17 @@ public class LightLevelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cnt = 0;
+                clicksNum.setText(String.valueOf(5 - cnt));
                 averageLux.setText(" ");
+            }
+        });
+
+        lightLevelSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                 *  TODO: save minLux, maxLux, average_lux to database
+                 */
             }
         });
     }
@@ -115,6 +164,19 @@ public class LightLevelActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(lightListener, lightSensor);
+        // save averagelux, viewdetails state
+        SharedPreferences preferences = getSharedPreferences("average", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        String average = averageLux.getText().toString();
+        editor.putString("averageLux", average);
+        editor.putInt("cnt", cnt);
+        //editor.putString("maxLux", String.valueOf(maxLux));
+        //editor.putString("minLux", String.valueOf(minLux));
+
+        /*
+         *  TODO: save view details info to preferences
+         */
+        editor.apply();
     }
 
     @Override
@@ -131,7 +193,9 @@ public class LightLevelActivity extends AppCompatActivity {
         lightLevelPlay = findViewById(R.id.light_level_start);
         lightLevelPause = findViewById(R.id.light_level_pause);
         lightLevelReset = findViewById(R.id.light_level_reset);
+        lightLevelSave = findViewById(R.id.light_level_save);
         averageLux = findViewById(R.id.average_light_level);
+        clicksNum = findViewById(R.id.clicks_num);
     }
 
 }

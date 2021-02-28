@@ -21,11 +21,11 @@
         <item name="android:windowBackground">@color/app_background</item>
     </style>
     <style name="Theme.IllumiSmart.LightLevel" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/light_level</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/light_level</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <item name="android:windowBackground">@color/light_level</item>
+        <item name="android:windowBackground">?attr/colorPrimaryVariant</item>
         <item name="android:textColor">@color/white</item>
     </style>
 

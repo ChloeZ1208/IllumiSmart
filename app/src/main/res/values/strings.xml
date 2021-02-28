@@ -9,4 +9,12 @@
     <string name="detect_light_flicker">Detect Light Flicker</string>
     <string name="detect_glare">Detect Glare</string>
     <string name="a_quick_tool_to_check_whether_there_is_glare_hazard">A quick tool to check whether there is glare hazard.</string>
+    <string name="lightlevel_guidance">Light level is an important factor in the workplace. To measure the illuminance using this function:\n\n
+        1. Push \t\t\t to start recording \n
+        2. Face the light sensor up \n
+        3. Moving the phone horizontally and slowly around the working area \n
+        4. Push \t\t\t to pause recording \n\n
+        In addition:\n
+        \t\t : Reset the light meter \n
+        \t\t : Save the measurement data \n </string>
 </resources>
