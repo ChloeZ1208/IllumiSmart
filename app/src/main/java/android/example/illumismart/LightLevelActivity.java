@@ -7,12 +7,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.example.illumismart.entity.Illuminance;
 import android.example.illumismart.viewmodel.IlluminanceViewModel;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +34,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class LightLevelActivity extends AppCompatActivity {
-
+    private static final String LOG_TAG = LightLevelActivity.class.getSimpleName();
     private MaterialToolbar topAppBar;
     private TextView mlightLevel;
     private SensorManager sensorManager;
@@ -41,13 +44,14 @@ public class LightLevelActivity extends AppCompatActivity {
     private ImageButton lightLevelPause;
     private ImageButton lightLevelReset;
     private ImageButton lightLevelSave;
-    private TextView averageLux;
-    private TextView clicksNum;
-    private List<Float> lightlux;
-    private int cnt;
+    private TextView luxMeasurementAverage;
+    private TextView luxMeasurementRemainTime;
+    private TextView luxMeasurementHeader;
+    private ArrayList<Float> luxMeasurementTmpList;
+    private Boolean luxMeasurementActivated;
+    private CountDownTimer luxMeasurementTimer;
     private float minLux;
     private float maxLux;
-    private float average_lux; // average lux
     private String timeStamp;
 
     private IlluminanceViewModel illuminanceViewModel;
@@ -63,7 +67,8 @@ public class LightLevelActivity extends AppCompatActivity {
         timeStamp = "yyyyMMddHHmm";
         IlluminanceViewModel.Factory factory = new IlluminanceViewModel.Factory(
                 this.getApplication(), timeStamp);
-        illuminanceViewModel = new ViewModelProvider(this, factory).get(IlluminanceViewModel.class);
+        illuminanceViewModel = new ViewModelProvider(this, factory)
+                .get(IlluminanceViewModel.class);
 
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -76,26 +81,27 @@ public class LightLevelActivity extends AppCompatActivity {
         // Set user guidance
         topAppBar.setOnMenuItemClickListener(menuItem -> {
             if(menuItem.getItemId() == R.id.nav_guide) {
-                startActivity(new Intent(LightLevelActivity.this, LightLevelGuideActivity.class));
+                startActivity(new Intent(LightLevelActivity.this,
+                        LightLevelGuideActivity.class));
                 return true;
             }
             return false;
         });
 
         sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
-        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-        lightlux = new ArrayList();
-        cnt = 0;
+        if (sensorManager != null) {
+            lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        }
+        luxMeasurementTmpList = new ArrayList<Float>();
+        luxMeasurementActivated = false;
 
         // get average lux (when user navigate back to this page)
         /*
-        *  TODO: get view details info
+         *  TODO: get view details info
          */
         SharedPreferences mPrefs = getSharedPreferences("average", MODE_PRIVATE);
         String average = mPrefs.getString("averageLux", "");
-        cnt = mPrefs.getInt("cnt", 0);
-        clicksNum.setText(String.valueOf(5 - cnt));
-        averageLux.setText(average);
+        luxMeasurementAverage.setText(average);
         maxLux = mPrefs.getFloat("maxLux", Float.MIN_VALUE);
         minLux = mPrefs.getFloat("minLux", Float.MAX_VALUE);
 
@@ -104,66 +110,75 @@ public class LightLevelActivity extends AppCompatActivity {
             @Override
             public void onSensorChanged(SensorEvent event) {
                 mlightLevel.setText(String.valueOf(event.values[0]));
-
-                // click the button five times and record the light levels.
-                lightLevelPlay.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (cnt < 5) {
-                            lightlux.add(event.values[0]);
-                            cnt++;
-                            clicksNum.setText(String.valueOf(5 - cnt));
-                        } else {
-                            Toast.makeText(LightLevelActivity.this, "Stats enough", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
+                if (luxMeasurementActivated) {
+                    luxMeasurementTmpList.add(event.values[0]);
+                }
             }
 
             @Override
             public void onAccuracyChanged(Sensor sensor, int accuracy) {
-                //Toast.makeText(LightLevelActivity.this, "accuracy changed!", Toast.LENGTH_SHORT).show();
+                // TODO
             }
         };
+
+        luxMeasurementTimer = new CountDownTimer(10000, 1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // TODO: alter play button background to notify click banned
+                lightLevelPlay.setClickable(false);
+                lightLevelReset.setClickable(false);
+                lightLevelSave.setClickable(false);
+                luxMeasurementRemainTime.setVisibility(View.VISIBLE);
+                luxMeasurementRemainTime.setText(
+                        String.valueOf(millisUntilFinished / 1000));
+            }
+
+            @Override
+            public void onFinish() {
+                luxMeasurementActivated = false;
+                luxMeasurementHeader.setVisibility(View.INVISIBLE);
+                luxMeasurementRemainTime.setVisibility(View.INVISIBLE);
+                luxMeasurementAverage.setText(getLuxMeasurementAverage());
+                luxMeasurementAverage.append(" Lux");
+                // save the time
+                timeStamp = new SimpleDateFormat("yyyyMMddHHmm", Locale.CHINA).
+                        format(new Date());
+                // TODO: alter play button background to notify click unlock
+                lightLevelPlay.setClickable(true);
+                lightLevelReset.setClickable(true);
+                lightLevelSave.setClickable(true);
+            }
+        };
+
+        lightLevelPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Initialize tmp list for lux
+                luxMeasurementTmpList.clear();
+                // Flag on: insert lux to the tmp list
+                luxMeasurementActivated = true;
+                // Clear previous average lux display
+                luxMeasurementAverage.setText(" ");
+                // Countdown text display
+                luxMeasurementHeader.setVisibility(View.VISIBLE);
+                // Start timer
+                luxMeasurementTimer.start();
+            }
+        });
 
         lightLevelPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cnt == 5) {
-                    float sum = 0;
-                    //minLux = Float.MAX_VALUE;
-                    //maxLux = Float.MIN_VALUE;
-                    for (float l: lightlux) {
-                        sum += l;
-                        minLux = Math.min(minLux, l);
-                        maxLux = Math.max(maxLux, l);
-                    }
-                    average_lux = sum / 5;
-                    //Log.d("average", String.valueOf(average_lux));
-                    averageLux.setText(String.valueOf(average_lux));
-                    averageLux.append(" Lux");
-
-                    // save the time
-                    timeStamp = new SimpleDateFormat("yyyyMMddHHmm", Locale.CHINA).format(new Date());
-
-                    /*
-                    * TODO: View details-Provide lighting guidance (with age and work info)
-                    *
-                     */
-
-                } else if (cnt < 5){
-                    Toast.makeText(LightLevelActivity.this, "Click play to get more stats", Toast.LENGTH_SHORT).show();
-                }
+                luxMeasurementTimer.cancel();
+                luxMeasurementTimer.onFinish();
             }
         });
 
         lightLevelReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cnt = 0;
-                clicksNum.setText(String.valueOf(5 - cnt));
-                averageLux.setText(" ");
+                luxMeasurementAverage.setText(" ");
             }
         });
 
@@ -173,28 +188,49 @@ public class LightLevelActivity extends AppCompatActivity {
                 /*
                  *  TODO: save minLux, maxLux, average_lux to database
                  */
-                if (cnt == 5) {
+                if (luxMeasurementTmpList.size() != 0) {
                     Illuminance illuminance = new Illuminance
-                            (timeStamp, String.valueOf(minLux), String.valueOf(maxLux), averageLux.getText().toString());
+                            (timeStamp, String.valueOf(minLux), String.valueOf(maxLux),
+                                    luxMeasurementAverage.getText().toString());
                     illuminanceViewModel.insert(illuminance);
                 } else {
-                    Toast.makeText(LightLevelActivity.this, "Click play to get more stats", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LightLevelActivity.this,
+                            "No data to save. Click play!", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
     }
 
+    private String getLuxMeasurementAverage() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        float luxMeasurementSum = 0;
+        if (luxMeasurementTmpList.size() == 0) {
+            minLux = 0;
+            maxLux = 0;
+            return df.format(luxMeasurementSum);
+        }
+        minLux = luxMeasurementTmpList.get(0);
+        maxLux = luxMeasurementTmpList.get(0);
+        for (float lux : luxMeasurementTmpList) {
+            luxMeasurementSum += lux;
+            minLux = Math.min(minLux, lux);
+            maxLux = Math.max(maxLux, lux);
+        }
+        Log.d("luxMeasurementSum: ", df.format(luxMeasurementSum));
+            return df.format(luxMeasurementSum/luxMeasurementTmpList.size());
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
-        sensorManager.unregisterListener(lightListener, lightSensor);
-        // save averagelux, viewdetails state
+        if (sensorManager != null && lightSensor != null) {
+            sensorManager.unregisterListener(lightListener, lightSensor);
+        }
         SharedPreferences preferences = getSharedPreferences("average", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        String average = averageLux.getText().toString();
+        String average = luxMeasurementAverage.getText().toString();
         editor.putString("averageLux", average);
-        editor.putInt("cnt", cnt);
         editor.putFloat("maxLux", maxLux);
         editor.putFloat("minLux", minLux);
 
@@ -208,7 +244,12 @@ public class LightLevelActivity extends AppCompatActivity {
     protected void onResume() {
         // Register a listener for the sensor.
         super.onResume();
-        sensorManager.registerListener(lightListener, lightSensor, SensorManager.SENSOR_DELAY_FASTEST);
+        if (sensorManager != null && lightSensor != null) {
+            sensorManager.registerListener(lightListener, lightSensor,
+                    SensorManager.SENSOR_DELAY_FASTEST);
+        } else {
+            Log.w(LOG_TAG, "Unable to register light sensor.");
+        }
     }
 
 
@@ -219,8 +260,9 @@ public class LightLevelActivity extends AppCompatActivity {
         lightLevelPause = findViewById(R.id.light_level_pause);
         lightLevelReset = findViewById(R.id.light_level_reset);
         lightLevelSave = findViewById(R.id.light_level_save);
-        averageLux = findViewById(R.id.average_light_level);
-        clicksNum = findViewById(R.id.clicks_num);
+        luxMeasurementAverage = findViewById(R.id.average_light_level);
+        luxMeasurementHeader = findViewById(R.id.clicks_txt);
+        luxMeasurementRemainTime = findViewById(R.id.clicks_num);
     }
 
 }
