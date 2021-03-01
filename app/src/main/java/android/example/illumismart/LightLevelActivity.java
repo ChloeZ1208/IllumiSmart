@@ -7,19 +7,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.example.illumismart.entity.Illuminance;
 import android.example.illumismart.viewmodel.IlluminanceViewModel;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +24,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class LightLevelActivity extends AppCompatActivity {
@@ -218,7 +212,7 @@ public class LightLevelActivity extends AppCompatActivity {
             maxLux = Math.max(maxLux, lux);
         }
         Log.d("luxMeasurementSum: ", df.format(luxMeasurementSum));
-            return df.format(luxMeasurementSum/luxMeasurementTmpList.size());
+        return df.format(luxMeasurementSum/luxMeasurementTmpList.size());
     }
 
     @Override
