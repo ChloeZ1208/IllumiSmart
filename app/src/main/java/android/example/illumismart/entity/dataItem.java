@@ -1,31 +1,22 @@
 package android.example.illumismart.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.annotation.NonNull;
 
-@Entity(tableName = "light_level")
-public class Illuminance {
-
+@Entity(tableName = "data_item")
+public class dataItem {
     @PrimaryKey
     @NonNull
     private String timestamp;
 
     @ColumnInfo
-    public String minLux;
+    public String item_name;
 
-    @ColumnInfo
-    public String maxLux;
-
-    @ColumnInfo
-    public String average;
-
-    public Illuminance (String timestamp, String minLux, String maxLux, String average) {
+    public dataItem(String timestamp, String item_name) {
         this.timestamp = timestamp;
-        this.minLux = minLux;
-        this.maxLux = maxLux;
-        this.average = average;
+        this.item_name = item_name;
     }
 
     public String getTimestamp() {
@@ -35,4 +26,5 @@ public class Illuminance {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
+
 }
