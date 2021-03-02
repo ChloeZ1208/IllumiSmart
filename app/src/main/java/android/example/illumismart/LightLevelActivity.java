@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.example.illumismart.entity.Illuminance;
+import android.example.illumismart.entity.dataItem;
 import android.example.illumismart.viewmodel.IlluminanceViewModel;
+import android.example.illumismart.viewmodel.dataItemViewModel;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -29,6 +31,7 @@ import java.util.Locale;
 
 public class LightLevelActivity extends AppCompatActivity {
     private static final String LOG_TAG = LightLevelActivity.class.getSimpleName();
+    private static final String ITEM_NAME = "Illuminance";
     private MaterialToolbar topAppBar;
     private TextView mlightLevel;
     private SensorManager sensorManager;
@@ -49,6 +52,7 @@ public class LightLevelActivity extends AppCompatActivity {
     private String timeStamp;
 
     private IlluminanceViewModel illuminanceViewModel;
+    private dataItemViewModel mdataItemViewModel;
 
 
     @Override
@@ -59,10 +63,14 @@ public class LightLevelActivity extends AppCompatActivity {
         initializeViews();
 
         timeStamp = "yyyyMMddHHmm";
+
+        // for illuminance save
         IlluminanceViewModel.Factory factory = new IlluminanceViewModel.Factory(
                 this.getApplication(), timeStamp);
         illuminanceViewModel = new ViewModelProvider(this, factory)
                 .get(IlluminanceViewModel.class);
+        // for data item(illuminance) save
+        mdataItemViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(dataItemViewModel.class);
 
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -185,13 +193,17 @@ public class LightLevelActivity extends AppCompatActivity {
                  *  TODO: save minLux, maxLux, average_lux to database
                  */
                 if (luxMeasurementTmpList.size() != 0) {
+                    // save illuminance data
                     Illuminance illuminance = new Illuminance
                             (timeStamp, String.valueOf(minLux), String.valueOf(maxLux),
                                     luxMeasurementAverage.getText().toString());
                     illuminanceViewModel.insert(illuminance);
+                    //save data item (illuminance)
+                    dataItem item = new dataItem(timeStamp, ITEM_NAME);
+                    mdataItemViewModel.insert(item);
                     luxMeasurementTmpList.clear();
                     Toast.makeText(LightLevelActivity.this,
-                            "Data saved!", Toast.LENGTH_SHORT).show();
+                            "Illuminance record saved successfully!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(LightLevelActivity.this,
                             "No data to save. Click play!", Toast.LENGTH_SHORT).show();

@@ -40,9 +40,15 @@ public class IlluminanceViewModel extends AndroidViewModel {
     }
 
     public void insert(Illuminance illuminance) {
-        mRepository.insert(illuminance);
+        mRepository.insertLux(illuminance);
     }
 
+    /**
+     * A creator is used to inject the timestamp into the ViewModel
+     *
+     * This creator is to showcase how to inject dependencies into ViewModels. It's not
+     * actually necessary in this case, as the product ID can be passed in a public method.
+     */
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
 
         @NonNull
