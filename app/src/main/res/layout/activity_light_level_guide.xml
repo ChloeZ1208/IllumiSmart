@@ -49,48 +49,49 @@
         android:id="@+id/imageView"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="120dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.34"
         app:srcCompat="@drawable/light_level_play" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="260dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.67"
         app:srcCompat="@drawable/light_level_pause" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.91"
         app:srcCompat="@drawable/light_level_reset" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        android:layout_marginTop="11dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.70"
         app:srcCompat="@drawable/light_level_save" />
 
     <Button
@@ -99,14 +100,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="64dp"
         android:backgroundTint="@color/white"
         android:radius="20dp"
         android:text="I got it!"
         android:textColor="@color/light_level"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.90" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

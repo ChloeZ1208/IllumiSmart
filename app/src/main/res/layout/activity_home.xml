@@ -64,13 +64,14 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar">
+        app:layout_constraintTop_toTopOf="@+id/appBar"
+        app:layout_constraintVertical_bias="0.24">
 
         <TextView
             android:layout_width="wrap_content"
@@ -119,13 +120,14 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_self_assessment">
+        app:layout_constraintTop_toTopOf="@+id/appBar"
+        app:layout_constraintVertical_bias="0.46">
 
         <TextView
             android:layout_width="wrap_content"
@@ -174,13 +176,14 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_light_level">
+        app:layout_constraintTop_toTopOf="@+id/appBar"
+        app:layout_constraintVertical_bias="0.68">
 
         <TextView
             android:layout_width="wrap_content"
@@ -233,9 +236,11 @@
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_light_flicker">
+        app:layout_constraintTop_toTopOf="@+id/appBar"
+        app:layout_constraintVertical_bias="0.90">
 
         <TextView
             android:layout_width="wrap_content"
