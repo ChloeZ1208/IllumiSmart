@@ -150,22 +150,24 @@ public class LightLevelActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Initialize tmp list for lux
                 luxMeasurementTmpList.clear();
-                // Flag on: insert lux to the tmp list
-                luxMeasurementActivated = true;
                 // Clear previous average lux display
                 luxMeasurementAverage.setText(" ");
                 // Countdown text display
                 luxMeasurementHeader.setVisibility(View.VISIBLE);
                 // Start timer
                 luxMeasurementTimer.start();
+                // Flag on: insert lux to the tmp list
+                luxMeasurementActivated = true;
             }
         });
 
         lightLevelPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                luxMeasurementTimer.cancel();
-                luxMeasurementTimer.onFinish();
+                if (luxMeasurementActivated) {
+                    luxMeasurementTimer.cancel();
+                    luxMeasurementTimer.onFinish();
+                }
             }
         });
 
@@ -187,6 +189,9 @@ public class LightLevelActivity extends AppCompatActivity {
                             (timeStamp, String.valueOf(minLux), String.valueOf(maxLux),
                                     luxMeasurementAverage.getText().toString());
                     illuminanceViewModel.insert(illuminance);
+                    luxMeasurementTmpList.clear();
+                    Toast.makeText(LightLevelActivity.this,
+                            "Data saved!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(LightLevelActivity.this,
                             "No data to save. Click play!", Toast.LENGTH_SHORT).show();
