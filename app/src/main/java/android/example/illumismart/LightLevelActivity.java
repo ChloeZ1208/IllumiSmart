@@ -62,18 +62,19 @@ public class LightLevelActivity extends AppCompatActivity {
 
         initializeViews();
 
-        timeStamp = "yyyyMMddHHmm";
+//        timeStamp = "yyyyMMddHHmm";
 
         // for illuminance save
-        IlluminanceViewModel.Factory factory = new IlluminanceViewModel.Factory(
-                this.getApplication(), timeStamp);
-        illuminanceViewModel = new ViewModelProvider(this, factory)
-                .get(IlluminanceViewModel.class);
+//        IlluminanceViewModel.Factory factory = new IlluminanceViewModel.Factory(
+//                this.getApplication(), timeStamp);
+        illuminanceViewModel = new ViewModelProvider(this, ViewModelProvider.
+                AndroidViewModelFactory.
+                getInstance(this.getApplication())).get(IlluminanceViewModel.class);
         // for data item(illuminance) save
         mdataItemViewModel = new ViewModelProvider(this,
                 ViewModelProvider.
-                        AndroidViewModelFactory.
-                        getInstance(this.getApplication())).get(dataItemViewModel.class);
+                AndroidViewModelFactory.
+                getInstance(this.getApplication())).get(dataItemViewModel.class);
 
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
