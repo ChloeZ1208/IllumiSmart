@@ -20,7 +20,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav = findViewById(R.id.bottom_navigation_home);
         enterLightLevel = findViewById(R.id.enter_light_level);
 
         bottomNav.getMenu().findItem(R.id.home_page).setChecked(true);
@@ -29,6 +29,24 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, LightLevelActivity.class));
+            }
+        });
+
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.data_page:
+                        startActivity(new Intent(HomeActivity.this, DataActivity.class));
+                        break;
+                    case R.id.info_page:
+                        // TODO: info
+                        break;
+                    case R.id.setting_page:
+                        // TODO: profile
+                        break;
+                }
+                return false;
             }
         });
 

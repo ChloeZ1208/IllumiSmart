@@ -22,7 +22,7 @@ public class dataItemViewModel extends AndroidViewModel {
         mAllItem = mRepository.getAllItem();
     }
 
-    LiveData<List<dataItem>> getAllItems() {
+    public LiveData<List<dataItem>> getAllItems() {
         return mAllItem;
     }
 
