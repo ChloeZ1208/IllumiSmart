@@ -14,29 +14,22 @@ import java.util.List;
 
 public class IlluminanceViewModel extends AndroidViewModel {
 
-    private DataRepository mRepository;
-
+    private final DataRepository mRepository;
     private final String timestamp;
-
-    private final LiveData<List<Illuminance>> mIlluminance;
-
-    private final LiveData<List<Illuminance>> mAllIlluminance;
 
     public IlluminanceViewModel(@NonNull Application application,
                                 final String timeStamp) {
         super(application);
         timestamp = timeStamp;
         mRepository = new DataRepository(application);
-        mIlluminance = mRepository.getIlluminance(timestamp);
-        mAllIlluminance = mRepository.getAllIlluminance();
     }
 
     public LiveData<List<Illuminance>> getIlluminance() {
-        return mIlluminance;
+        return mRepository.getIlluminance(timestamp);
     }
 
     public LiveData<List<Illuminance>> getAllIlluminance() {
-        return mAllIlluminance;
+        return mRepository.getAllIlluminance();
     }
 
     public void insert(Illuminance illuminance) {

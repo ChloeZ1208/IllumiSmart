@@ -70,7 +70,10 @@ public class LightLevelActivity extends AppCompatActivity {
         illuminanceViewModel = new ViewModelProvider(this, factory)
                 .get(IlluminanceViewModel.class);
         // for data item(illuminance) save
-        mdataItemViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(dataItemViewModel.class);
+        mdataItemViewModel = new ViewModelProvider(this,
+                ViewModelProvider.
+                        AndroidViewModelFactory.
+                        getInstance(this.getApplication())).get(dataItemViewModel.class);
 
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {

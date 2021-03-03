@@ -12,30 +12,24 @@ import java.util.List;
 
 public class DataRepository {
 
-    private AppDatabase db;
+    private final AppDatabase db;
     private static DataRepository sInstance;
 
-    private IlluminanceDao mIlluminanceDao;
-    private dataItemDao mdataItemDao;
-
-    private LiveData<List<Illuminance>> mIlluminance;
-    private LiveData<List<dataItem>> mdataItem;
+    private final IlluminanceDao mIlluminanceDao;
+    private final dataItemDao mdataItemDao;
 
     public DataRepository(Application application) {
         db = AppDatabase.getDatabase(application);
         mIlluminanceDao = db.illuminanceDao();
-        mIlluminance = mIlluminanceDao.getAllIlluminance();
-
         mdataItemDao = db.itemDao();
-        mdataItem = mdataItemDao.getAllItem();
     }
 
 
     public LiveData<List<Illuminance>> getAllIlluminance() {
-        return mIlluminance;
+        return mIlluminanceDao.getAllIlluminance();
     }
 
-    public LiveData<List<dataItem>> getAllItem() { return mdataItem; }
+    public LiveData<List<dataItem>> getAllItem() { return mdataItemDao.getAllItem(); }
 
     public LiveData<List<Illuminance>> getIlluminance(final String timeStamp) {
         return db.illuminanceDao().getIlluminance(timeStamp);
