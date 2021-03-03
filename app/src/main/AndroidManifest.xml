@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IllumiSmart">
         <activity android:name=".FlickerActivity" />
-        <activity android:name=".LightLevelGuideActivity"
+        <activity android:name=".DataActivity"
+            android:theme="@style/Theme.IllumiSmart.NoActionBar"/>
+        <activity
+            android:name=".LightLevelGuideActivity"
             android:theme="@style/Theme.IllumiSmart.LightLevel" />
         <activity
             android:name=".LightLevelActivity"

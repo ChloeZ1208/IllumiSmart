@@ -23,6 +23,8 @@ public class dataItem {
         return timestamp;
     }
 
+    public String getDataItem() { return item_name; }
+
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }

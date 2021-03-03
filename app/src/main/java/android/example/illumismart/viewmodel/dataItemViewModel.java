@@ -19,7 +19,7 @@ public class dataItemViewModel extends AndroidViewModel {
         mRepository = new DataRepository(application);
     }
 
-    LiveData<List<dataItem>> getAllItems() {
+    public LiveData<List<dataItem>> getAllItems() {
         return mRepository.getAllItem();
     }
 

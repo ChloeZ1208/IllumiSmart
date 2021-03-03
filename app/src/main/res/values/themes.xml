@@ -16,7 +16,7 @@
     <style name="Theme.IllumiSmart.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="colorPrimary">@color/app_green</item>
-        <item name="colorPrimaryVariant">@color/app_green</item>
+        <item name="colorPrimaryVariant">@color/data</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:windowBackground">@color/app_background</item>
     </style>

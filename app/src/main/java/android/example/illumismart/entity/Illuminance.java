@@ -32,6 +32,12 @@ public class Illuminance {
         return timestamp;
     }
 
+    public String getMinLux() { return minLux; }
+
+    public String getMaxLux() { return maxLux; }
+
+    public String getAverage() { return average; }
+
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
