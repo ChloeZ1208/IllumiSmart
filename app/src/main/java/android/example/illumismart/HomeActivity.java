@@ -12,41 +12,31 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
 public class HomeActivity extends AppCompatActivity {
-    private BottomNavigationView bottomNav;
-    private MaterialCardView enterLightLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        bottomNav = findViewById(R.id.bottom_navigation_home);
-        enterLightLevel = findViewById(R.id.enter_light_level);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        MaterialCardView enterLightLevel = findViewById(R.id.enter_light_level);
+        MaterialCardView enterLightFlicker = findViewById(R.id.enter_light_flicker);
 
         bottomNav.getMenu().findItem(R.id.home_page).setChecked(true);
 
         enterLightLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, LightLevelActivity.class));
+                startActivity(new Intent(HomeActivity.this,
+                        LightLevelActivity.class));
             }
         });
 
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        enterLightFlicker.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()) {
-                    case R.id.data_page:
-                        startActivity(new Intent(HomeActivity.this, DataActivity.class));
-                        break;
-                    case R.id.info_page:
-                        // TODO: info
-                        break;
-                    case R.id.setting_page:
-                        // TODO: profile
-                        break;
-                }
-                return false;
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,
+                        FlickerActivity.class));
             }
         });
 
