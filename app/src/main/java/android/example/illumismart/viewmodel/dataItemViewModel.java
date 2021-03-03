@@ -12,18 +12,15 @@ import java.util.List;
 
 public class dataItemViewModel extends AndroidViewModel {
 
-    private DataRepository mRepository;
-
-    private final LiveData<List<dataItem>> mAllItem;
+    private final DataRepository mRepository;
 
     public dataItemViewModel(@NonNull Application application) {
         super(application);
         mRepository = new DataRepository(application);
-        mAllItem = mRepository.getAllItem();
     }
 
     public LiveData<List<dataItem>> getAllItems() {
-        return mAllItem;
+        return mRepository.getAllItem();
     }
 
     public void insert(dataItem item) {

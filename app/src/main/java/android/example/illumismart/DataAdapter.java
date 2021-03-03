@@ -41,7 +41,7 @@ public class DataAdapter extends ListAdapter<dataItem, DataAdapter.DataViewHolde
         if (current.getDataItem().equals("Illuminance")) {
             holder.mdataItem.setTextColor(Color.parseColor("#92A6CB"));
         } else if (current.getDataItem().equals("Flicker")) {
-            holder.mdataItem.setTextColor(Color.parseColor("B49EBC"));
+            holder.mdataItem.setTextColor(Color.parseColor("#B49EBC"));
         }
     }
 

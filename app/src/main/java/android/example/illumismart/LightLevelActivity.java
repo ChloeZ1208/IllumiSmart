@@ -62,15 +62,15 @@ public class LightLevelActivity extends AppCompatActivity {
 
         initializeViews();
 
-        timeStamp = "yyyyMMddHHmm";
-
         // for illuminance save
-        IlluminanceViewModel.Factory factory = new IlluminanceViewModel.Factory(
-                this.getApplication(), timeStamp);
-        illuminanceViewModel = new ViewModelProvider(this, factory)
-                .get(IlluminanceViewModel.class);
+        illuminanceViewModel = new ViewModelProvider(this, ViewModelProvider.
+                AndroidViewModelFactory.
+                getInstance(this.getApplication())).get(IlluminanceViewModel.class);
         // for data item(illuminance) save
-        mdataItemViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(dataItemViewModel.class);
+        mdataItemViewModel = new ViewModelProvider(this,
+                ViewModelProvider.
+                AndroidViewModelFactory.
+                getInstance(this.getApplication())).get(dataItemViewModel.class);
 
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -203,7 +203,8 @@ public class LightLevelActivity extends AppCompatActivity {
                     mdataItemViewModel.insert(item);
                     luxMeasurementTmpList.clear();
                     Toast.makeText(LightLevelActivity.this,
-                            "Illuminance record saved successfully!", Toast.LENGTH_SHORT).show();
+                            "Illuminance record saved successfully!",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(LightLevelActivity.this,
                             "No data to save. Click play!", Toast.LENGTH_SHORT).show();

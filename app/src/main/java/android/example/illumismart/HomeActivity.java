@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation_home);
         MaterialCardView enterLightLevel = findViewById(R.id.enter_light_level);
         MaterialCardView enterLightFlicker = findViewById(R.id.enter_light_flicker);
 
@@ -37,6 +37,24 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this,
                         FlickerActivity.class));
+            }
+        });
+
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.data_page:
+                        startActivity(new Intent(HomeActivity.this, DataActivity.class));
+                        break;
+                    case R.id.info_page:
+                        // TODO: info
+                        break;
+                    case R.id.setting_page:
+                        // TODO: profile
+                        break;
+                }
+                return false;
             }
         });
 
