@@ -6,95 +6,163 @@
     android:layout_height="match_parent"
     tools:context=".FlickerActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarFlicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/flicker"
+        android:elevation="0dp"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/flicker_app_bar"
+            style="@style/Widget.MaterialComponents.Toolbar.Surface"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:background="@color/flicker"
+            android:elevation="0dp"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/guidance_menu"
+            app:navigationIcon="@drawable/back">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:text="Detect Light Flicker"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="normal" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <Button
         android:id="@+id/flicker_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="42dp"
+        android:backgroundTint="@color/white"
+        android:radius="20dp"
         android:text="Start Detection"
-        app:layout_constraintBottom_toTopOf="@+id/flicker_text_time_remain"
+        android:textColor="@color/flicker"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
+        app:layout_constraintVertical_bias="0.30" />
 
     <TextView
         android:id="@+id/flicker_text_time_remain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="177dp"
+        android:fontFamily="sans-serif"
         android:text="Seconds remaining: "
+        android:textSize="18sp"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flicker_start" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
+        app:layout_constraintVertical_bias="0.2200000" />
 
     <TextView
         android:id="@+id/flicker_text_info"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="177dp"
-        android:text="Info"
+        android:layout_height="24dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Analyzing ..."
+        android:textSize="18sp"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flicker_text_time_remain" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
+        app:layout_constraintVertical_bias="0.41" />
 
     <TextView
         android:id="@+id/flicker_text_realtime_lux"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="10dp"
-        android:text="Real time lux: "
-        app:layout_constraintBottom_toTopOf="@+id/flicker_start"
+        android:fontFamily="sans-serif-medium"
+        android:text="110.0 Lux"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
+        app:layout_constraintVertical_bias="0.14" />
 
     <TextView
         android:id="@+id/flicker_text_guides_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="176dp"
+        android:fontFamily="sans-serif"
         android:text="Guides:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flicker_text_info" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
+        app:layout_constraintVertical_bias="0.85" />
 
     <TextView
         android:id="@+id/flicker_text_guides"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="176dp"
+        android:fontFamily="sans-serif"
         android:text="None(0) Potential(1-3) Detected(>3)"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flicker_text_guides_header" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
+        app:layout_constraintVertical_bias="0.9" />
 
     <Button
         android:id="@+id/flicker_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="159dp"
+        android:backgroundTint="@color/white"
+        android:radius="20dp"
         android:text="Save"
+        android:textColor="@color/flicker"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flicker_text_guides" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <TextView
+        android:id="@+id/flicker_text_freq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Fluctuation Rate: "
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/light_level_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Instantaneous Light Level"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/flicker_text_realtime_lux"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
+        app:layout_constraintVertical_bias="0.97" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

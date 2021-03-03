@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,6 +38,8 @@ public class FlickerActivity extends AppCompatActivity {
     private TextView flickerTextTimeRemaining;
     private TextView flickerTextInfo;
     private TextView flickerTextRealtimeLux;
+    private MaterialToolbar topAppBar;
+    private TextView flickerTextFreq;
 
     private SensorManager mSensorManager;
     private Sensor mLightSensor;
@@ -66,6 +70,14 @@ public class FlickerActivity extends AppCompatActivity {
         initializeCountDownTimer();
         flickerDetectionActivated = false;
         flickerDetectionTmpList = new ArrayList<Float>();
+
+        // Set navigation back
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // FlickerItem save
         flickerItemViewModel = new ViewModelProvider(this, ViewModelProvider.
@@ -104,6 +116,9 @@ public class FlickerActivity extends AppCompatActivity {
         flickerTextTimeRemaining = findViewById(R.id.flicker_text_time_remain);
         flickerTextInfo = findViewById(R.id.flicker_text_info);
         flickerTextRealtimeLux = findViewById(R.id.flicker_text_realtime_lux);
+        flickerTextFreq = findViewById(R.id.flicker_text_freq);
+
+        topAppBar = findViewById(R.id.flicker_app_bar);
 
         flickerButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,8 +159,7 @@ public class FlickerActivity extends AppCompatActivity {
         mSensorEventListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                flickerTextRealtimeLux.setText("Real time lux: ");
-                flickerTextRealtimeLux.append(String.valueOf(event.values[0]));
+                flickerTextRealtimeLux.setText(event.values[0] + " Lux");
                 if (flickerDetectionActivated) {
                     flickerDetectionTmpList.add(event.values[0]);
                 }
@@ -210,6 +224,8 @@ public class FlickerActivity extends AppCompatActivity {
             if (flickerEventCount != 0) {
                 flickerFreq = (float)flickerEventCount /
                         (float)((int)COUNT_DOWN_TIME / (int)COUNT_DOWN_INTERVAL);
+                flickerTextFreq.setText(df.format(flickerFreq)+" Hz");
+                flickerTextFreq.setVisibility(View.VISIBLE);
             }
 
         }
