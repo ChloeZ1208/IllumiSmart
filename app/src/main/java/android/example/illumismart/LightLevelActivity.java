@@ -46,13 +46,18 @@ public class LightLevelActivity extends AppCompatActivity {
     private TextView luxMeasurementHeader;
     private ArrayList<Float> luxMeasurementTmpList;
     private Boolean luxMeasurementActivated;
+
     private CountDownTimer luxMeasurementTimer;
+    private static final long COUNT_DOWN_TIME = 10000;
+    private static final long COUNT_DOWN_INTERVAL = 1000;
+
     private float minLux;
     private float maxLux;
-    private String timeStamp;
 
     private IlluminanceViewModel illuminanceViewModel;
-    private dataItemViewModel mdataItemViewModel;
+    private dataItemViewModel dataItemViewModel;
+    private Illuminance illuminanceEntityInstance;
+    private dataItem dataItemEntityInstance;
 
 
     @Override
@@ -63,11 +68,12 @@ public class LightLevelActivity extends AppCompatActivity {
         initializeViews();
 
         // for illuminance save
-        illuminanceViewModel = new ViewModelProvider(this, ViewModelProvider.
+        illuminanceViewModel = new ViewModelProvider(this,
+                ViewModelProvider.
                 AndroidViewModelFactory.
                 getInstance(this.getApplication())).get(IlluminanceViewModel.class);
         // for data item(illuminance) save
-        mdataItemViewModel = new ViewModelProvider(this,
+        dataItemViewModel = new ViewModelProvider(this,
                 ViewModelProvider.
                 AndroidViewModelFactory.
                 getInstance(this.getApplication())).get(dataItemViewModel.class);
@@ -123,7 +129,7 @@ public class LightLevelActivity extends AppCompatActivity {
             }
         };
 
-        luxMeasurementTimer = new CountDownTimer(10000, 1000) {
+        luxMeasurementTimer = new CountDownTimer(COUNT_DOWN_TIME, COUNT_DOWN_INTERVAL) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -133,19 +139,16 @@ public class LightLevelActivity extends AppCompatActivity {
                 lightLevelSave.setClickable(false);
                 luxMeasurementRemainTime.setVisibility(View.VISIBLE);
                 luxMeasurementRemainTime.setText(
-                        String.valueOf(millisUntilFinished / 1000));
+                        String.valueOf(millisUntilFinished / COUNT_DOWN_INTERVAL));
             }
 
             @Override
             public void onFinish() {
                 luxMeasurementActivated = false;
+                lightLevelAnalysis();
                 luxMeasurementHeader.setVisibility(View.INVISIBLE);
                 luxMeasurementRemainTime.setVisibility(View.INVISIBLE);
-                luxMeasurementAverage.setText(getLuxMeasurementAverage());
-                luxMeasurementAverage.append(" Lux");
-                // save the time
-                timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
-                        format(new Date());
+                luxMeasurementAverage.setText(illuminanceEntityInstance.getAverage());
                 // TODO: alter play button background to notify click unlock
                 lightLevelPlay.setClickable(true);
                 lightLevelReset.setClickable(true);
@@ -193,14 +196,8 @@ public class LightLevelActivity extends AppCompatActivity {
                  *  TODO: save minLux, maxLux, average_lux to database
                  */
                 if (luxMeasurementTmpList.size() != 0) {
-                    // save illuminance data
-                    Illuminance illuminance = new Illuminance
-                            (timeStamp, String.valueOf(minLux), String.valueOf(maxLux),
-                                    luxMeasurementAverage.getText().toString());
-                    illuminanceViewModel.insert(illuminance);
-                    //save data item (illuminance)
-                    dataItem item = new dataItem(timeStamp, ITEM_NAME);
-                    mdataItemViewModel.insert(item);
+                    illuminanceViewModel.insert(illuminanceEntityInstance);
+                    dataItemViewModel.insert(dataItemEntityInstance);
                     luxMeasurementTmpList.clear();
                     Toast.makeText(LightLevelActivity.this,
                             "Illuminance record saved successfully!",
@@ -214,23 +211,30 @@ public class LightLevelActivity extends AppCompatActivity {
         });
     }
 
-    private String getLuxMeasurementAverage() {
+    private void lightLevelAnalysis() {
         DecimalFormat df = new DecimalFormat("0.00");
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
+                format(new Date());
         float luxMeasurementSum = 0;
+        float luxMeasurementAvg = 0;
         if (luxMeasurementTmpList.size() == 0) {
             minLux = 0;
             maxLux = 0;
-            return df.format(luxMeasurementSum);
-        }
-        minLux = luxMeasurementTmpList.get(0);
-        maxLux = luxMeasurementTmpList.get(0);
-        for (float lux : luxMeasurementTmpList) {
-            luxMeasurementSum += lux;
-            minLux = Math.min(minLux, lux);
-            maxLux = Math.max(maxLux, lux);
+        } else {
+            minLux = luxMeasurementTmpList.get(0);
+            maxLux = luxMeasurementTmpList.get(0);
+            for (float lux : luxMeasurementTmpList) {
+                luxMeasurementSum += lux;
+                minLux = Math.min(minLux, lux);
+                maxLux = Math.max(maxLux, lux);
+            }
+            luxMeasurementAvg = luxMeasurementSum / luxMeasurementTmpList.size();
         }
         Log.d("luxMeasurementSum: ", df.format(luxMeasurementSum));
-        return df.format(luxMeasurementSum/luxMeasurementTmpList.size());
+        illuminanceEntityInstance = new Illuminance
+                (timeStamp, df.format(minLux) + " Lux", df.format(maxLux) + " Lux",
+                        df.format(luxMeasurementAvg) + " Lux");
+        dataItemEntityInstance = new dataItem(timeStamp, ITEM_NAME);
     }
 
     @Override

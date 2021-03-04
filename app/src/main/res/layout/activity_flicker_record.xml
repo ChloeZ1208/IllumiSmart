@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IlluminanceRecordActivity">
+    tools:context=".FlickerRecordActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLuxRecord"
+        android:id="@+id/appBarFlickerRecord"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/light_level"
+        android:background="@color/flicker"
         android:elevation="0dp"
         android:fitsSystemWindows="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,12 +18,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/lux_app_bar"
+            android:id="@+id/flicker_app_bar"
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/light_level"
+            android:background="@color/flicker"
             android:elevation="0dp"
             android:fitsSystemWindows="true"
             android:gravity="bottom"
@@ -36,7 +36,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
-                android:text="Measure of Light"
+                android:text="Measure of Flicker"
                 android:textColor="@color/white"
                 android:textSize="23sp"
                 android:textStyle="normal" />
@@ -53,13 +53,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLuxRecord"
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlickerRecord"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/stroke"
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/time_txt"
+            android:id="@+id/flicker_time_txt"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
@@ -71,7 +71,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/timestamp_txt"
+            android:id="@+id/flicker_timestamp_txt"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
@@ -85,13 +85,13 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/light_level"
+        android:id="@+id/flicker_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:gravity="top"
-        android:text="Light Level Data"
+        android:text="Flicker Data"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,25 +109,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLuxRecord"
+        app:layout_constraintTop_toBottomOf="@+id/appBarFlickerRecord"
         app:layout_constraintVertical_bias="0.21"
         app:strokeColor="@color/stroke"
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/txt_average"
+            android:id="@+id/flicker_count_txt"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="Average"
+            android:text="Flicker Counts"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/lux_average"
+            android:id="@+id/flicker_count"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
@@ -154,7 +154,7 @@
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/txt_min"
+            android:id="@+id/flicker_txt_min"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
@@ -166,7 +166,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/lux_min"
+            android:id="@+id/flicker_lux_min"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
@@ -193,7 +193,7 @@
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/txt_max"
+            android:id="@+id/flicker_txt_max"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
@@ -205,7 +205,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/lux_max"
+            android:id="@+id/flicker_lux_max"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
@@ -213,6 +213,45 @@
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
             android:text="245 Lux"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_item5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_item4"
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="@color/stroke"
+        app:strokeWidth="0.5dp">
+
+        <TextView
+            android:id="@+id/flicker_txt_freq"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="Fluctuation Rate"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/flicker_freq"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="10 Hz"
             android:textColor="@color/black"
             android:textSize="18sp" />
 

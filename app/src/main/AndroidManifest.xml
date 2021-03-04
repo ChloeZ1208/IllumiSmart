@@ -13,6 +13,8 @@
         android:theme="@style/Theme.IllumiSmart">
         <activity android:name=".IlluminanceRecordActivity"
             android:theme="@style/Theme.IllumiSmart.NoActionBar" />
+        <activity android:name=".FlickerRecordActivity"
+            android:theme="@style/Theme.IllumiSmart.NoActionBar" />
         <activity
             android:name=".FlickerActivity"
             android:theme="@style/Theme.IllumiSmart.Flicker" />

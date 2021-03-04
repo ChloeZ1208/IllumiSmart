@@ -58,7 +58,6 @@ public class FlickerActivity extends AppCompatActivity {
     private dataItemViewModel dataItemViewModel;
     private FlickerItem flickerEntityInstance;
     private dataItem dataItemEntityInstance;
-    private String timeStamp;
 
 
     @Override
@@ -116,7 +115,7 @@ public class FlickerActivity extends AppCompatActivity {
         flickerTextTimeRemaining = findViewById(R.id.flicker_text_time_remain);
         flickerTextInfo = findViewById(R.id.flicker_text_info);
         flickerTextRealtimeLux = findViewById(R.id.flicker_text_realtime_lux);
-        flickerTextFreq = findViewById(R.id.flicker_text_freq);
+        flickerTextFreq = findViewById(R.id.flicker_fluctuation);
 
         topAppBar = findViewById(R.id.flicker_app_bar);
 
@@ -125,6 +124,7 @@ public class FlickerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 flickerTextTimeRemaining.setVisibility(View.VISIBLE);
                 flickerTextInfo.setVisibility(View.INVISIBLE);
+                flickerTextFreq.setVisibility(View.INVISIBLE);
                 flickerDetectionTmpList.clear();
                 flickerButtonStart.setClickable(false);
                 flickerButtonSave.setClickable(false);
@@ -186,12 +186,13 @@ public class FlickerActivity extends AppCompatActivity {
                 // Finish collecting samples
                 flickerDetectionActivated = false;
                 flickerTextTimeRemaining.setVisibility(View.INVISIBLE);
-                flickerTextInfo.setText("Analyzing ...");
-                flickerTextInfo.setVisibility(View.VISIBLE);
-                timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
-                        format(new Date());
-                // Analyzing samples
                 flickerDetectionAnalysis();
+                flickerTextInfo.setText("Flicker events: ");
+                flickerTextInfo.append(flickerEntityInstance.getFlickerCounts());
+                flickerTextFreq.setText("Fluctuation Rate: ");
+                flickerTextFreq.append(flickerEntityInstance.getFluctuationFreq());
+                flickerTextInfo.setVisibility(View.VISIBLE);
+                flickerTextFreq.setVisibility(View.VISIBLE);
                 flickerButtonStart.setClickable(true);
                 flickerButtonSave.setClickable(true);
             }
@@ -200,13 +201,14 @@ public class FlickerActivity extends AppCompatActivity {
 
     private void flickerDetectionAnalysis() {
         DecimalFormat df = new DecimalFormat("0.00");
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
+                format(new Date());
         int flickerEventCount = 0;
         float flickerFreq = 0;
+        float minLux = 0;
+        float maxLux = 0;
         if (flickerDetectionTmpList.size() < FLICKER_WINDOW_SIZE) {
             Log.d(LOG_TAG, "flickerDetectionTmpList size < 3: light source stable?");
-            flickerTextInfo.setText("Flicker events: ");
-            flickerTextInfo.append(String.valueOf(flickerEventCount));
-            return;
         } else {
             for (int i = 0; i <= flickerDetectionTmpList.size() - FLICKER_WINDOW_SIZE; ++i) {
                 Float[] luxWindow = {
@@ -219,23 +221,18 @@ public class FlickerActivity extends AppCompatActivity {
                     flickerEventCount += 1;
                 }
             }
-            flickerTextInfo.setText("Flicker events: ");
-            flickerTextInfo.append(String.valueOf(flickerEventCount));
             if (flickerEventCount != 0) {
                 flickerFreq = (float)flickerEventCount /
                         (float)((int)COUNT_DOWN_TIME / (int)COUNT_DOWN_INTERVAL);
-                flickerTextFreq.setText(df.format(flickerFreq)+" Hz");
-                flickerTextFreq.setVisibility(View.VISIBLE);
             }
-
         }
-        float minLux = Collections.min(flickerDetectionTmpList);
-        float maxLux = Collections.max(flickerDetectionTmpList);
+        minLux = Collections.min(flickerDetectionTmpList);
+        maxLux = Collections.max(flickerDetectionTmpList);
         dataItemEntityInstance = new dataItem(timeStamp, ITEM_NAME);
         flickerEntityInstance = new FlickerItem(timeStamp,
                                                 df.format(flickerFreq)+" Hz",
                                                 String.valueOf(flickerEventCount),
-                                                df.format(maxLux),
-                                                df.format(minLux));
+                                                df.format(maxLux)+" Hz",
+                                                df.format(minLux)+" Hz");
     }
 }
