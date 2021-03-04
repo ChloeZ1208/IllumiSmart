@@ -75,20 +75,23 @@ public class IlluminanceRecordActivity extends AppCompatActivity {
     private void deleteRecord() {
         illuminanceViewModel.delete(timeStamp);
         dataItemViewModel.delete(timeStamp);
+        onBackPressed();
     }
 
     private void setRecord() {
         illuminanceViewModel.getIlluminance(timeStamp).observe(this, new Observer<Illuminance>() {
             @Override
             public void onChanged(Illuminance illuminance) {
-                String averageLux = illuminance.getAverage();
-                String minLux = illuminance.getMinLux();
-                String maxLux = illuminance.getMaxLux();
+                if (illuminance != null) {
+                    String averageLux = illuminance.getAverage();
+                    String minLux = illuminance.getMinLux();
+                    String maxLux = illuminance.getMaxLux();
 
-                luxAverage.setText(averageLux);
-                luxMin.setText(minLux);
-                luxMax.setText(maxLux);
-                luxTimestamp.setText(utils.getParsedTimestamp(timeStamp));
+                    luxAverage.setText(averageLux);
+                    luxMin.setText(minLux);
+                    luxMax.setText(maxLux);
+                    luxTimestamp.setText(utils.getParsedTimestamp(timeStamp));
+                }
             }
         });
     }

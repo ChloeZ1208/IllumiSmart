@@ -103,11 +103,7 @@ public class LightLevelActivity extends AppCompatActivity {
         luxMeasurementTmpList = new ArrayList<Float>();
         luxMeasurementActivated = false;
 
-        // get average lux (when user navigate back to this page)
-        /*
-         *  TODO: get view details info
-         */
-        SharedPreferences mPrefs = getSharedPreferences("average", MODE_PRIVATE);
+        SharedPreferences mPrefs = getSharedPreferences("Illuminance", MODE_PRIVATE);
         String average = mPrefs.getString("averageLux", "");
         luxMeasurementAverage.setText(average);
         maxLux = mPrefs.getFloat("maxLux", Float.MIN_VALUE);
@@ -243,7 +239,7 @@ public class LightLevelActivity extends AppCompatActivity {
         if (sensorManager != null && lightSensor != null) {
             sensorManager.unregisterListener(lightListener, lightSensor);
         }
-        SharedPreferences preferences = getSharedPreferences("average", MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("Illuminance", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         String average = luxMeasurementAverage.getText().toString();
         editor.putString("averageLux", average);

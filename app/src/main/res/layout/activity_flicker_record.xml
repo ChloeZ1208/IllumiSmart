@@ -36,7 +36,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
-                android:text="Measure of Flicker"
+                android:text="Flicker Record"
                 android:textColor="@color/white"
                 android:textSize="23sp"
                 android:textStyle="normal" />

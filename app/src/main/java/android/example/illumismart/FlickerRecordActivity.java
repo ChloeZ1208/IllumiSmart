@@ -1,18 +1,15 @@
 package android.example.illumismart;
 
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.example.illumismart.entity.FlickerItem;
-import android.example.illumismart.entity.Illuminance;
 import android.example.illumismart.viewmodel.FlickerItemViewModel;
-import android.example.illumismart.viewmodel.IlluminanceViewModel;
 import android.example.illumismart.viewmodel.dataItemViewModel;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -78,11 +75,13 @@ public class FlickerRecordActivity extends AppCompatActivity {
                 .observe(this, new Observer<FlickerItem>() {
             @Override
             public void onChanged(FlickerItem item) {
-                flickerCounts.setText(item.getFlickerCounts());
-                flickerFreq.setText(item.getFluctuationFreq());
-                luxMin.setText(item.getMinLux());
-                luxMax.setText(item.getMaxLux());
-                flickerTimestamp.setText(utils.getParsedTimestamp(timeStamp));
+                if (item != null) {
+                    flickerCounts.setText(item.getFlickerCounts());
+                    flickerFreq.setText(item.getFluctuationFreq());
+                    luxMin.setText(item.getMinLux());
+                    luxMax.setText(item.getMaxLux());
+                    flickerTimestamp.setText(utils.getParsedTimestamp(timeStamp));
+                }
             }
         });
     }
@@ -90,5 +89,6 @@ public class FlickerRecordActivity extends AppCompatActivity {
     private void deleteRecord() {
         flickerItemViewModel.delete(timeStamp);
         dataItemViewModel.delete(timeStamp);
+        onBackPressed();
     }
 }
