@@ -188,7 +188,7 @@ public class FlickerActivity extends AppCompatActivity {
                 flickerTextTimeRemaining.setVisibility(View.INVISIBLE);
                 flickerTextInfo.setText("Analyzing ...");
                 flickerTextInfo.setVisibility(View.VISIBLE);
-                timeStamp = new SimpleDateFormat("yyyyMMddHHmm", Locale.CHINA).
+                timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
                         format(new Date());
                 // Analyzing samples
                 flickerDetectionAnalysis();

@@ -35,7 +35,7 @@ public class DataRepository {
 
     public LiveData<List<dataItem>> getAllItem() { return mdataItemDao.getAllItem(); }
 
-    public LiveData<List<Illuminance>> getIlluminance(final String timeStamp) {
+    public LiveData<Illuminance> getIlluminance(final String timeStamp) {
         return db.illuminanceDao().getIlluminance(timeStamp);
     }
 
@@ -43,7 +43,7 @@ public class DataRepository {
         return mFlickerDao.getAllFlickerItem();
     }
 
-    public LiveData<List<FlickerItem>> getFlickerItem(final String timeStamp) {
+    public LiveData<FlickerItem> getFlickerItem(final String timeStamp) {
         return mFlickerDao.getFlickerItem(timeStamp);
     }
 
@@ -65,4 +65,21 @@ public class DataRepository {
         });
     }
 
+    public void deleteLuxItem(final String timeStamp) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            mIlluminanceDao.delete(timeStamp);
+        });
+    }
+
+    public void deleteFlickerItem(final String timeStamp) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            mFlickerDao.delete(timeStamp);
+        });
+    }
+
+    public void deletedataItem(final String timeStamp) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            mdataItemDao.delete(timeStamp);
+        });
+    }
 }

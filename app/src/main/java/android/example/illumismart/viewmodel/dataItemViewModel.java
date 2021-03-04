@@ -26,4 +26,6 @@ public class dataItemViewModel extends AndroidViewModel {
     public void insert(dataItem item) {
         mRepository.insertItem(item);
     }
+
+    public void delete(String timestamp) { mRepository.deletedataItem(timestamp);}
 }

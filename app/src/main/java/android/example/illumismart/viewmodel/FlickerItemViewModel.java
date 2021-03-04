@@ -18,7 +18,7 @@ public class FlickerItemViewModel extends AndroidViewModel {
         mRepository = new DataRepository(application);
     }
 
-    public LiveData<List<FlickerItem>> getFlickerItem(String timestamp) {
+    public LiveData<FlickerItem> getFlickerItem(String timestamp) {
         return mRepository.getFlickerItem(timestamp);
     }
 
@@ -29,4 +29,6 @@ public class FlickerItemViewModel extends AndroidViewModel {
     public void insert(FlickerItem item) {
         mRepository.insertFlickerItem(item);
     }
+
+    public void delete(String timestamp) { mRepository.deleteFlickerItem(timestamp); }
 }

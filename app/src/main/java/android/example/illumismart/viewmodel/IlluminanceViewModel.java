@@ -19,7 +19,7 @@ public class IlluminanceViewModel extends AndroidViewModel {
         mRepository = new DataRepository(application);
     }
 
-    public LiveData<List<Illuminance>> getIlluminance(String timestamp) {
+    public LiveData<Illuminance> getIlluminance(String timestamp) {
         return mRepository.getIlluminance(timestamp);
     }
 
@@ -30,4 +30,6 @@ public class IlluminanceViewModel extends AndroidViewModel {
     public void insert(Illuminance illuminance) {
         mRepository.insertLux(illuminance);
     }
+
+    public void delete(String timestamp) { mRepository.deleteLuxItem(timestamp);}
 }

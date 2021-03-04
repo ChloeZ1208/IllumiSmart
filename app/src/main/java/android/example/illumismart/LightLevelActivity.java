@@ -144,7 +144,7 @@ public class LightLevelActivity extends AppCompatActivity {
                 luxMeasurementAverage.setText(getLuxMeasurementAverage());
                 luxMeasurementAverage.append(" Lux");
                 // save the time
-                timeStamp = new SimpleDateFormat("yyyyMMddHHmm", Locale.CHINA).
+                timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
                         format(new Date());
                 // TODO: alter play button background to notify click unlock
                 lightLevelPlay.setClickable(true);

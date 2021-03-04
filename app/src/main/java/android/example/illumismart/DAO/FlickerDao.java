@@ -16,7 +16,7 @@ public interface FlickerDao {
     LiveData<List<FlickerItem>> getAllFlickerItem();
 
     @Query("SELECT * FROM flicker_item where timestamp = :timeStamp")
-    LiveData<List<FlickerItem>> getFlickerItem(String timeStamp);
+    LiveData<FlickerItem> getFlickerItem(String timeStamp);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(FlickerItem item);

@@ -20,7 +20,7 @@ public interface IlluminanceDao {
     LiveData<List<Illuminance>> getAllIlluminance();
 
     @Query("SELECT * FROM light_level where timestamp = :timeStamp")
-    LiveData<List<Illuminance>> getIlluminance(String timeStamp);
+    LiveData<Illuminance> getIlluminance(String timeStamp);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Illuminance illuminance);
