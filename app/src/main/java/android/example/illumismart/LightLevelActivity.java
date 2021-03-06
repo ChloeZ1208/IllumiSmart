@@ -129,10 +129,13 @@ public class LightLevelActivity extends AppCompatActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
-                // TODO: alter play button background to notify click banned
                 lightLevelPlay.setClickable(false);
                 lightLevelReset.setClickable(false);
                 lightLevelSave.setClickable(false);
+                lightLevelPlay.setImageResource(R.drawable.lux_play_pressed);
+                lightLevelReset.setImageResource(R.drawable.lux_reset_pressed);
+                lightLevelSave.setImageResource(R.drawable.lux_save_pressed);
+
                 luxMeasurementRemainTime.setVisibility(View.VISIBLE);
                 luxMeasurementRemainTime.setText(
                         String.valueOf(millisUntilFinished / COUNT_DOWN_INTERVAL));
@@ -145,10 +148,14 @@ public class LightLevelActivity extends AppCompatActivity {
                 luxMeasurementHeader.setVisibility(View.INVISIBLE);
                 luxMeasurementRemainTime.setVisibility(View.INVISIBLE);
                 luxMeasurementAverage.setText(illuminanceEntityInstance.getAverage());
-                // TODO: alter play button background to notify click unlock
+
                 lightLevelPlay.setClickable(true);
                 lightLevelReset.setClickable(true);
                 lightLevelSave.setClickable(true);
+
+                lightLevelPlay.setImageResource(R.drawable.light_level_play);
+                lightLevelReset.setImageResource(R.drawable.light_level_reset);
+                lightLevelSave.setImageResource(R.drawable.light_level_save);
             }
         };
 

@@ -101,14 +101,14 @@
         android:layout_height="85dp"
         android:contentDescription="Start"
         android:scaleType="centerInside"
+        android:src="@drawable/light_level_play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98"
-        app:shapeAppearanceOverlay="@style/roundedImageView"
-        app:srcCompat="@drawable/light_level_play" />
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
 
     <ImageButton
         android:id="@+id/light_level_pause"
@@ -123,7 +123,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98"
-        app:srcCompat="@drawable/light_level_pause" />
+        android:src="@drawable/lux_pause_btn" />
 
     <ImageButton
         android:id="@+id/light_level_reset"
@@ -138,7 +138,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98"
-        app:srcCompat="@drawable/light_level_reset" />
+        android:src="@drawable/lux_reset_btn" />
 
     <ImageButton
         android:id="@+id/light_level_save"
@@ -153,7 +153,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98"
-        app:srcCompat="@drawable/light_level_save" />
+        android:src="@drawable/lux_save_btn" />
 
     <TextView
         android:id="@+id/average_txt"
@@ -173,7 +173,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:text="None"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="@+id/circle"
         app:layout_constraintEnd_toEndOf="@+id/circle"
