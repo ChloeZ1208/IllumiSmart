@@ -17,4 +17,14 @@
         In addition:\n
         \t\t : Reset the light meter \n
         \t\t : Save the measurement data</string>
+    <string name="flicker_guidance">Unsteady light may do harm to human and become safety hazards. To detect the possible flicker using this function: \n\n
+        1. Face the light sensor direct to the light source \n
+        2. Push \t\t\t to start detecting \n
+        3. The Fluctuation Rate of the light source and whether it is a possible visible flicker will be displayed after 10 seconds \n\n
+        In addition:\n
+        \t\t : Reset the detector \n
+        \t\t : Save the measurement data</string>
+    <string name="flicker_guidance_0">No flicker event detected.</string>
+    <string name="flicker_guidance_1to3">It seems this light source is a potential flicker.</string>
+    <string name="flicker_guidance_3">It seems this light source is a possible visible flicker.</string>
 </resources>

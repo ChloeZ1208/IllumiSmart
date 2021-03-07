@@ -1,5 +1,6 @@
 package android.example.illumismart;
 
+import android.content.Intent;
 import android.example.illumismart.viewmodel.FlickerItemViewModel;
 import android.example.illumismart.viewmodel.dataItemViewModel;
 import android.example.illumismart.entity.FlickerItem;
@@ -13,6 +14,7 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,13 +35,18 @@ public class FlickerActivity extends AppCompatActivity {
     private static final String LOG_TAG = FlickerActivity.class.getSimpleName();
     private static final String ITEM_NAME = "Flicker";
 
-    private Button flickerButtonStart;
-    private Button flickerButtonSave;
+    private ImageButton flickerButtonStart;
+    private ImageButton flickerButtonSave;
+    private ImageButton flickerButtonReset;
     private TextView flickerTextTimeRemaining;
     private TextView flickerTextInfo;
     private TextView flickerTextRealtimeLux;
     private MaterialToolbar topAppBar;
     private TextView flickerTextFreq;
+    private TextView lightLevelTxt;
+    private TextView unitLuxHz;
+    private TextView relativeChangeTxt;
+    private TextView relativeChangeValue;
 
     private SensorManager mSensorManager;
     private Sensor mLightSensor;
@@ -53,6 +60,10 @@ public class FlickerActivity extends AppCompatActivity {
     private ArrayList<Float> flickerDetectionTmpList;
     private static final int FLICKER_WINDOW_SIZE = 3;
     private static final int FLICKER_THRESHOLD = 5;
+
+    private int flickerEventCount;
+    private float flickerFreq;
+    private String relativeChange;
 
     private FlickerItemViewModel flickerItemViewModel;
     private dataItemViewModel dataItemViewModel;
@@ -76,6 +87,16 @@ public class FlickerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 onBackPressed();
             }
+        });
+
+        // Set user guidance
+        topAppBar.setOnMenuItemClickListener(menuItem -> {
+            if(menuItem.getItemId() == R.id.nav_guide) {
+                startActivity(new Intent(FlickerActivity.this,
+                        FlickerGuideActivity.class));
+                return true;
+            }
+            return false;
         });
 
         // FlickerItem save
@@ -109,12 +130,18 @@ public class FlickerActivity extends AppCompatActivity {
     }
 
     private void initializeViews() {
+        flickerTextRealtimeLux = findViewById(R.id.flicker_text_realtime_lux);
+        flickerTextFreq = findViewById(R.id.flicker_fluctuation);
+        lightLevelTxt = findViewById(R.id.light_level_txt);
+        unitLuxHz = findViewById(R.id.unit_lux_hz);
+        relativeChangeTxt = findViewById(R.id.relative_change_txt);
+        relativeChangeValue = findViewById(R.id.relative_change);
+
         flickerButtonStart = findViewById(R.id.flicker_start);
+        flickerButtonReset = findViewById(R.id.flicker_reset);
         flickerButtonSave = findViewById(R.id.flicker_save);
         flickerTextTimeRemaining = findViewById(R.id.flicker_text_time_remain);
         flickerTextInfo = findViewById(R.id.flicker_text_info);
-        flickerTextRealtimeLux = findViewById(R.id.flicker_text_realtime_lux);
-        flickerTextFreq = findViewById(R.id.flicker_fluctuation);
 
         topAppBar = findViewById(R.id.flicker_app_bar);
 
@@ -122,13 +149,34 @@ public class FlickerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flickerTextTimeRemaining.setVisibility(View.VISIBLE);
-                flickerTextInfo.setVisibility(View.INVISIBLE);
-                flickerTextFreq.setVisibility(View.INVISIBLE);
+                //flickerTextInfo.setVisibility(View.INVISIBLE);
+                //flickerTextFreq.setVisibility(View.INVISIBLE);
                 flickerDetectionTmpList.clear();
+                flickerButtonStart.setImageResource(R.drawable.lux_play_pressed);
+                flickerButtonReset.setImageResource(R.drawable.lux_reset_pressed);
+                flickerButtonSave.setImageResource(R.drawable.lux_save_pressed);
                 flickerButtonStart.setClickable(false);
+                flickerButtonReset.setClickable(false);
                 flickerButtonSave.setClickable(false);
                 flickerDetectionTimer.start();
                 flickerDetectionActivated = true;
+            }
+        });
+
+        flickerButtonReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flickerButtonStart.setClickable(true);
+                flickerButtonStart.setImageResource(R.drawable.flicker_play);
+
+                flickerDetectionTmpList.clear();
+                lightLevelTxt.setText("Instantaneous Level");
+                unitLuxHz.setText("Lux");
+                flickerTextRealtimeLux.setVisibility(View.VISIBLE);
+                flickerTextFreq.setVisibility(View.INVISIBLE);
+                relativeChangeTxt.setVisibility(View.INVISIBLE);
+                relativeChangeValue.setVisibility(View.INVISIBLE);
+                flickerTextInfo.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -158,7 +206,7 @@ public class FlickerActivity extends AppCompatActivity {
         mSensorEventListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                flickerTextRealtimeLux.setText(event.values[0] + " Lux");
+                flickerTextRealtimeLux.setText(String.valueOf(event.values[0]));
                 if (flickerDetectionActivated) {
                     flickerDetectionTmpList.add(event.values[0]);
                 }
@@ -175,7 +223,7 @@ public class FlickerActivity extends AppCompatActivity {
         flickerDetectionTimer = new CountDownTimer(COUNT_DOWN_TIME, COUNT_DOWN_INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
-                flickerTextTimeRemaining.setText("Seconds remaining: ");
+                flickerTextTimeRemaining.setText("Time remaining: ");
                 flickerTextTimeRemaining.
                         append(String.valueOf(millisUntilFinished / COUNT_DOWN_INTERVAL));
             }
@@ -186,24 +234,40 @@ public class FlickerActivity extends AppCompatActivity {
                 flickerDetectionActivated = false;
                 flickerTextTimeRemaining.setVisibility(View.INVISIBLE);
                 flickerDetectionAnalysis();
-                flickerTextInfo.setText("Flicker events: ");
-                flickerTextInfo.append(flickerEntityInstance.getFlickerCounts());
-                flickerTextFreq.setText("Fluctuation Rate: ");
-                flickerTextFreq.append(flickerEntityInstance.getFluctuationFreq());
+                // set guidance result based on flicker count
+                if (flickerEventCount == 0) {
+                    flickerTextInfo.setText(R.string.flicker_guidance_0);
+                } else if (flickerEventCount >= 1 && flickerEventCount <= 3) {
+                    flickerTextInfo.setText(R.string.flicker_guidance_1to3);
+                } else if (flickerEventCount > 3) {
+                    flickerTextInfo.setText(R.string.flicker_guidance_3);
+                }
+
+                lightLevelTxt.setText("Fluctuation Rate");
+                flickerTextFreq.setText(String.valueOf(flickerFreq));
+                unitLuxHz.setText("Hz");
+                Log.d("relative change", String.valueOf(relativeChange));
+                relativeChangeValue.setText(relativeChange + "%");
+
+                flickerTextRealtimeLux.setVisibility(View.INVISIBLE);
+                relativeChangeTxt.setVisibility(View.VISIBLE);
+                relativeChangeValue.setVisibility(View.VISIBLE);
                 flickerTextInfo.setVisibility(View.VISIBLE);
                 flickerTextFreq.setVisibility(View.VISIBLE);
-                flickerButtonStart.setClickable(true);
+                flickerButtonReset.setClickable(true);
                 flickerButtonSave.setClickable(true);
+                flickerButtonReset.setImageResource(R.drawable.flicker_reset);
+                flickerButtonSave.setImageResource(R.drawable.flicker_save);
             }
         };
     }
 
     private void flickerDetectionAnalysis() {
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("0.0");
         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
                 format(new Date());
-        int flickerEventCount = 0;
-        float flickerFreq = 0;
+        flickerEventCount = 0;
+        flickerFreq = 0;
         float minLux = 0;
         float maxLux = 0;
         if (flickerDetectionTmpList.size() < FLICKER_WINDOW_SIZE) {
@@ -227,6 +291,7 @@ public class FlickerActivity extends AppCompatActivity {
         }
         minLux = Collections.min(flickerDetectionTmpList);
         maxLux = Collections.max(flickerDetectionTmpList);
+        relativeChange = df.format((minLux / maxLux) * 100);
         dataItemEntityInstance = new dataItem(timeStamp, ITEM_NAME);
         flickerEntityInstance = new FlickerItem(timeStamp,
                                                 df.format(flickerFreq)+" Hz",
