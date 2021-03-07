@@ -13,6 +13,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
+    <style name="Theme.IllumiSmart.Launcher" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowBackground">@drawable/launcher_background</item>
+    </style>
     <style name="Theme.IllumiSmart.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="colorPrimary">@color/app_green</item>
@@ -36,5 +41,4 @@
         <item name="android:windowBackground">?attr/colorPrimaryVariant</item>
         <item name="android:textColor">@color/white</item>
     </style>
-
 </resources>

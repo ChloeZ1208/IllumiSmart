@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The android:opacity=”opaque” line — this is critical in preventing a flash of black as your theme transitions. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+    <!-- The background color -->
+    <item android:drawable="@android:color/white"/>
+    <item
+        android:color="#EA8B85"
+        android:offset="0"
+        />
+
+    <item
+        android:color="#EBAA83"
+        android:offset="1"
+        />
+
+    <!-- Your product logo -->
+    <item>
+
+        <bitmap
+            android:src="@drawable/launcher_title"
+            android:gravity="center"/>
+
+    </item>
+
+</layer-list>

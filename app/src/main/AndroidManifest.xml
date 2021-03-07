@@ -30,7 +30,8 @@
         <activity
             android:name=".HomeActivity"
             android:theme="@style/Theme.IllumiSmart.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.IllumiSmart.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

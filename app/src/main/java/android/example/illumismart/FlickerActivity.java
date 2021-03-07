@@ -87,7 +87,6 @@ public class FlickerActivity extends AppCompatActivity {
                 ViewModelProvider.
                         AndroidViewModelFactory.
                         getInstance(this.getApplication())).get(dataItemViewModel.class);
-
     }
 
     @Override
