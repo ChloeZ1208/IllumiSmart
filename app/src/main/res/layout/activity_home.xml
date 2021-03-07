@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@android:color/transparent"
+        android:elevation="0dp"
         android:fitsSystemWindows="true"
+        app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,7 +22,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
+            android:elevation="0dp"
             app:expandedTitleMarginBottom="28dp"
             app:expandedTitleMarginStart="72dp">
 
