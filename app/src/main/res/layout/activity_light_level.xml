@@ -52,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.2300000"
+        app:layout_constraintVertical_bias="0.229"
         app:srcCompat="@drawable/light_level_circle" />
 
     <TextView
@@ -181,11 +181,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/range_txt"
+        android:id="@+id/min_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Range"
+        android:text="Min: 0.00 Lux"
         android:textSize="17sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/circle"
         app:layout_constraintEnd_toEndOf="@+id/circle"
         app:layout_constraintStart_toStartOf="@+id/circle"
@@ -193,10 +194,24 @@
         app:layout_constraintVertical_bias="0.03" />
 
     <TextView
+        android:id="@+id/max_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Max: 0.00 Lux"
+        android:textSize="17sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/circle"
+        app:layout_constraintEnd_toEndOf="@+id/circle"
+        app:layout_constraintHorizontal_bias="@+id/circle"
+        app:layout_constraintStart_toStartOf="@+id/circle"
+        app:layout_constraintTop_toTopOf="@+id/circle"
+        app:layout_constraintVertical_bias="0.12" />
+
+    <TextView
         android:id="@+id/clicks_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seconds remaining"
+        android:text="Elapsed Time"
         android:textSize="17sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -206,10 +221,10 @@
         app:layout_constraintVertical_bias="0.14" />
 
     <TextView
-        android:id="@+id/clicks_num"
+        android:id="@+id/clicks_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5"
+        android:text="60s"
         android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/clicks_txt"
