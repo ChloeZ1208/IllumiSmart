@@ -7,16 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class LightLevelGuideActivity extends AppCompatActivity {
-    private Button backLightLevel;
+public class FlickerGuideActivity extends AppCompatActivity {
+    private Button backFlicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_light_level_guide);
+        setContentView(R.layout.activity_flicker_guide);
 
-        backLightLevel = findViewById(R.id.nav_lightlevel);
-        backLightLevel.setOnClickListener(new View.OnClickListener() {
+        backFlicker = findViewById(R.id.nav_flicker);
+        backFlicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();

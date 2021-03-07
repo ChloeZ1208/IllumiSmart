@@ -44,7 +44,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
-        android:id="@+id/circle"
+        android:id="@+id/light_level_circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,11 +62,11 @@
         android:fontFamily="sans-serif"
         android:text="Instantaneous Level"
         android:textSize="23sp"
-        app:layout_constraintBottom_toBottomOf="@+id/circle"
-        app:layout_constraintEnd_toEndOf="@+id/circle"
-        app:layout_constraintStart_toStartOf="@+id/circle"
-        app:layout_constraintTop_toTopOf="@+id/circle"
-        app:layout_constraintVertical_bias="0.29000002" />
+        app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
+        app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
+        app:layout_constraintStart_toStartOf="@+id/light_level_circle"
+        app:layout_constraintTop_toTopOf="@+id/light_level_circle"
+        app:layout_constraintVertical_bias="0.2900000" />
 
     <TextView
         android:id="@+id/light_level"
@@ -75,10 +75,10 @@
         android:fontFamily="sans-serif"
         android:text="215"
         android:textSize="62sp"
-        app:layout_constraintBottom_toBottomOf="@+id/circle"
-        app:layout_constraintEnd_toEndOf="@+id/circle"
-        app:layout_constraintStart_toStartOf="@+id/circle"
-        app:layout_constraintTop_toTopOf="@+id/circle"
+        app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
+        app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
+        app:layout_constraintStart_toStartOf="@+id/light_level_circle"
+        app:layout_constraintTop_toTopOf="@+id/light_level_circle"
         app:layout_constraintVertical_bias="0.48" />
 
     <TextView
@@ -88,10 +88,10 @@
         android:fontFamily="sans-serif"
         android:text="Lux"
         android:textSize="23sp"
-        app:layout_constraintBottom_toBottomOf="@+id/circle"
-        app:layout_constraintEnd_toEndOf="@+id/circle"
-        app:layout_constraintStart_toStartOf="@+id/circle"
-        app:layout_constraintTop_toTopOf="@+id/circle"
+        app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
+        app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
+        app:layout_constraintStart_toStartOf="@+id/light_level_circle"
+        app:layout_constraintTop_toTopOf="@+id/light_level_circle"
         app:layout_constraintVertical_bias="0.65" />
 
     <ImageButton
@@ -162,9 +162,9 @@
         android:fontFamily="sans-serif"
         android:text="Average"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/circle"
-        app:layout_constraintEnd_toEndOf="@+id/circle"
-        app:layout_constraintStart_toStartOf="@+id/circle"
+        app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
+        app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
+        app:layout_constraintStart_toStartOf="@+id/light_level_circle"
         app:layout_constraintTop_toBottomOf="@+id/lux_txt"
         app:layout_constraintVertical_bias="0.47000003" />
 
@@ -174,9 +174,9 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
         android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="@+id/circle"
-        app:layout_constraintEnd_toEndOf="@+id/circle"
-        app:layout_constraintStart_toStartOf="@+id/circle"
+        app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
+        app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
+        app:layout_constraintStart_toStartOf="@+id/light_level_circle"
         app:layout_constraintTop_toBottomOf="@+id/average_txt"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -187,10 +187,10 @@
         android:text="Min: 0.00 Lux"
         android:textSize="17sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/circle"
-        app:layout_constraintEnd_toEndOf="@+id/circle"
-        app:layout_constraintStart_toStartOf="@+id/circle"
-        app:layout_constraintTop_toTopOf="@+id/circle"
+        app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
+        app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
+        app:layout_constraintStart_toStartOf="@+id/light_level_circle"
+        app:layout_constraintTop_toTopOf="@+id/light_level_circle"
         app:layout_constraintVertical_bias="0.03" />
 
     <TextView
@@ -200,11 +200,10 @@
         android:text="Max: 0.00 Lux"
         android:textSize="17sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/circle"
-        app:layout_constraintEnd_toEndOf="@+id/circle"
-        app:layout_constraintHorizontal_bias="@+id/circle"
-        app:layout_constraintStart_toStartOf="@+id/circle"
-        app:layout_constraintTop_toTopOf="@+id/circle"
+        app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
+        app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
+        app:layout_constraintStart_toStartOf="@+id/light_level_circle"
+        app:layout_constraintTop_toTopOf="@+id/light_level_circle"
         app:layout_constraintVertical_bias="0.12" />
 
     <TextView
@@ -217,7 +216,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circle"
+        app:layout_constraintTop_toBottomOf="@+id/light_level_circle"
         app:layout_constraintVertical_bias="0.14" />
 
     <TextView
