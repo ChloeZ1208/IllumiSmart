@@ -56,6 +56,34 @@
         app:srcCompat="@drawable/light_level_circle" />
 
     <TextView
+        android:id="@+id/flicker_min_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Min: 0.00 Lux"
+        android:textSize="17sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/flicker_circle"
+        app:layout_constraintEnd_toEndOf="@+id/flicker_circle"
+        app:layout_constraintStart_toStartOf="@+id/flicker_circle"
+        app:layout_constraintTop_toTopOf="@+id/flicker_circle"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <TextView
+        android:id="@+id/flicker_max_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Max: 0.00 Lux"
+        android:textSize="17sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/flicker_circle"
+        app:layout_constraintEnd_toEndOf="@+id/flicker_circle"
+        app:layout_constraintStart_toStartOf="@+id/flicker_circle"
+        app:layout_constraintTop_toTopOf="@+id/flicker_circle"
+        app:layout_constraintVertical_bias="0.12" />
+
+    <TextView
         android:id="@+id/relative_change_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -136,6 +164,32 @@
         app:layout_constraintStart_toStartOf="@+id/flicker_circle"
         app:layout_constraintTop_toTopOf="@+id/flicker_circle"
         app:layout_constraintVertical_bias="0.65" />
+
+    <TextView
+        android:id="@+id/flicker_average_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Average"
+        android:textSize="17sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/flicker_circle"
+        app:layout_constraintEnd_toEndOf="@+id/flicker_circle"
+        app:layout_constraintStart_toStartOf="@+id/flicker_circle"
+        app:layout_constraintTop_toBottomOf="@+id/unit_lux_hz"
+        app:layout_constraintVertical_bias="0.47000003" />
+
+    <TextView
+        android:id="@+id/flicker_average_light_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/flicker_circle"
+        app:layout_constraintEnd_toEndOf="@+id/flicker_circle"
+        app:layout_constraintStart_toStartOf="@+id/flicker_circle"
+        app:layout_constraintTop_toBottomOf="@+id/flicker_average_txt"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/flicker_start"

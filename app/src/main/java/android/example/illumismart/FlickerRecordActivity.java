@@ -22,10 +22,9 @@ public class FlickerRecordActivity extends AppCompatActivity {
 
     private String timeStamp;
 
-    private TextView flickerCounts;
-    private TextView flickerFreq;
-    private TextView luxMin;
-    private TextView luxMax;
+    private TextView flickerFluctuationRate;
+    private TextView flickerRelativeChange;
+    private TextView flickerAvgLux;
     private TextView flickerTimestamp;
 
     @Override
@@ -34,13 +33,12 @@ public class FlickerRecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_flicker_record);
         utils = new Utils();
 
-        flickerCounts = findViewById(R.id.flicker_count);
-        flickerFreq = findViewById(R.id.flicker_freq);
-        luxMin = findViewById(R.id.flicker_lux_min);
-        luxMax = findViewById(R.id.flicker_lux_max);
-        flickerTimestamp = findViewById(R.id.flicker_timestamp_txt);
+        flickerFluctuationRate = findViewById(R.id.flicker_record_fluctuation);
+        flickerRelativeChange = findViewById(R.id.flicker_record_relative_change);
+        flickerAvgLux = findViewById(R.id.flicker_record_avg);
+        flickerTimestamp = findViewById(R.id.flicker_record_time);
 
-        MaterialToolbar topAppBar = findViewById(R.id.flicker_app_bar);
+        MaterialToolbar topAppBar = findViewById(R.id.flicker_record_app_bar);
 
         flickerItemViewModel = new ViewModelProvider(this, ViewModelProvider.
                 AndroidViewModelFactory.
@@ -76,10 +74,9 @@ public class FlickerRecordActivity extends AppCompatActivity {
             @Override
             public void onChanged(FlickerItem item) {
                 if (item != null) {
-                    flickerCounts.setText(item.getFlickerCounts());
-                    flickerFreq.setText(item.getFluctuationFreq());
-                    luxMin.setText(item.getMinLux());
-                    luxMax.setText(item.getMaxLux());
+                    flickerFluctuationRate.setText(item.getFluctuationRate());
+                    flickerRelativeChange.setText(item.getRelativeChange());
+                    flickerAvgLux.setText(item.getAvgLux());
                     flickerTimestamp.setText(utils.getParsedTimestamp(timeStamp));
                 }
             }

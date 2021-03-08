@@ -25,6 +25,6 @@
         \t\t : Reset the detector \n
         \t\t : Save the measurement data</string>
     <string name="flicker_guidance_0">No flicker event detected.</string>
-    <string name="flicker_guidance_1to3">It seems this light source is a potential flicker.</string>
-    <string name="flicker_guidance_3">It seems this light source is a possible visible flicker.</string>
+    <string name="flicker_guidance_1to3">It seems this light source is a possible flicker.</string>
+    <string name="flicker_guidance_3">It seems this light source is a certain visible flicker.</string>
 </resources>

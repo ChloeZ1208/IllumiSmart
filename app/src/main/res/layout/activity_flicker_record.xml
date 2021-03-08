@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/flicker_app_bar"
+            android:id="@+id/flicker_record_app_bar"
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/flicker_time_txt"
+            android:id="@+id/flicker_record_time_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
@@ -71,7 +71,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/flicker_timestamp_txt"
+            android:id="@+id/flicker_record_time"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
@@ -85,7 +85,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/flicker_data"
+        android:id="@+id/flicker_record_data_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -115,26 +115,26 @@
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/flicker_count_txt"
+            android:id="@+id/flicker_record_fluctuation_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="Flicker Counts"
+            android:text="Average Fluctuation Rate"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/flicker_count"
+            android:id="@+id/flicker_record_fluctuation"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="215 Lux"
+            android:text="6 Hz"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -154,26 +154,26 @@
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/flicker_txt_min"
+            android:id="@+id/flicker_record_relative_change_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="Minimum"
+            android:text="Relative Change in Light Level"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/flicker_lux_min"
+            android:id="@+id/flicker_record_relative_change"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="188 Lux"
+            android:text="12%"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -193,65 +193,26 @@
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/flicker_txt_max"
+            android:id="@+id/flicker_record_avg_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="Maximum"
+            android:text="Average Illuminance"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/flicker_lux_max"
+            android:id="@+id/flicker_record_avg"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="245 Lux"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item5"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_item4"
-        app:layout_constraintVertical_bias="0.0"
-        app:strokeColor="@color/stroke"
-        app:strokeWidth="0.5dp">
-
-        <TextView
-            android:id="@+id/flicker_txt_freq"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="20dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="Fluctuation Rate"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/flicker_freq"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="10 Hz"
+            android:text="1285 Lux"
             android:textColor="@color/black"
             android:textSize="18sp" />
 

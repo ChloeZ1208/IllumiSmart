@@ -12,10 +12,13 @@ public class FlickerItem {
     private String timestamp;
 
     @ColumnInfo
-    public String fluctuation_freq;
+    public String fluctuationRate;
 
     @ColumnInfo
-    public String flicker_counts;
+    public String flickerCounts;
+
+    @ColumnInfo
+    public String relativeChange;
 
     @ColumnInfo
     public String maxLux;
@@ -23,16 +26,23 @@ public class FlickerItem {
     @ColumnInfo
     public String minLux;
 
+    @ColumnInfo
+    public String avgLux;
+
     public FlickerItem (String timestamp,
-                        String fluctuation_freq,
-                        String flicker_counts,
+                        String fluctuationRate,
+                        String flickerCounts,
+                        String relativeChange,
                         String maxLux,
-                        String minLux) {
+                        String minLux,
+                        String avgLux) {
         this.timestamp = timestamp;
-        this.fluctuation_freq = fluctuation_freq;
-        this.flicker_counts = flicker_counts;
+        this.fluctuationRate = fluctuationRate;
+        this.flickerCounts = flickerCounts;
+        this.relativeChange =  relativeChange;
         this.maxLux = maxLux;
         this.minLux = minLux;
+        this.avgLux = avgLux;
     }
 
     public String getTimestamp() {
@@ -43,10 +53,16 @@ public class FlickerItem {
 
     public String getMaxLux() { return maxLux; }
 
-    public String getFluctuationFreq() { return fluctuation_freq; }
+    public String getAvgLux() {return avgLux;}
+
+    public String getFluctuationRate() { return fluctuationRate; }
+
+    public String getRelativeChange() {
+        return relativeChange;
+    }
 
     public String getFlickerCounts() {
-        return flicker_counts;
+        return flickerCounts;
     }
 
     public void setTimestamp(String timestamp) {

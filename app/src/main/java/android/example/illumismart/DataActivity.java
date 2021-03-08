@@ -34,18 +34,22 @@ public class DataActivity extends AppCompatActivity {
         recyclerData.setAdapter(adapter);
         recyclerData.setLayoutManager(new LinearLayoutManager(this));
 
-        mdataItemViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(dataItemViewModel.class);
+        mdataItemViewModel = new ViewModelProvider(this,
+                ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).
+                get(dataItemViewModel.class);
         // Add an observer on the LiveData returned by getAllItems.
         mdataItemViewModel.getAllItems().observe(this, mAllItem -> {
             adapter.submitList(mAllItem);
         });
 
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNav.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.home_page:
-                        startActivity(new Intent(DataActivity.this, HomeActivity.class));
+                        startActivity(new Intent(DataActivity.this,
+                                HomeActivity.class));
                         break;
                     case R.id.info_page:
                         // TODO: info

@@ -1,6 +1,7 @@
 package android.example.illumismart;
 
 import android.content.Intent;
+import android.example.illumismart.entity.Illuminance;
 import android.example.illumismart.viewmodel.FlickerItemViewModel;
 import android.example.illumismart.viewmodel.dataItemViewModel;
 import android.example.illumismart.entity.FlickerItem;
@@ -47,6 +48,10 @@ public class FlickerActivity extends AppCompatActivity {
     private TextView unitLuxHz;
     private TextView relativeChangeTxt;
     private TextView relativeChangeValue;
+    private TextView flickerLuxMin;
+    private TextView flickerLuxMax;
+    private TextView flickerLuxAvg;
+    private TextView flickerLuxAvgHeader;
 
     private SensorManager mSensorManager;
     private Sensor mLightSensor;
@@ -62,8 +67,12 @@ public class FlickerActivity extends AppCompatActivity {
     private static final int FLICKER_THRESHOLD = 5;
 
     private int flickerEventCount;
-    private float flickerFreq;
-    private String relativeChange;
+    private float fluctuationRate;
+    private float relativeChange;
+    private float minLux;
+    private float maxLux;
+    private float avgLux;
+    private DecimalFormat df;
 
     private FlickerItemViewModel flickerItemViewModel;
     private dataItemViewModel dataItemViewModel;
@@ -80,6 +89,7 @@ public class FlickerActivity extends AppCompatActivity {
         initializeCountDownTimer();
         flickerDetectionActivated = false;
         flickerDetectionTmpList = new ArrayList<Float>();
+        df = new DecimalFormat("0.00");
 
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -143,15 +153,25 @@ public class FlickerActivity extends AppCompatActivity {
         flickerTextTimeRemaining = findViewById(R.id.flicker_text_time_remain);
         flickerTextInfo = findViewById(R.id.flicker_text_info);
 
+        flickerLuxMin = findViewById(R.id.flicker_min_txt);
+        flickerLuxMax = findViewById(R.id.flicker_max_txt);
+        flickerLuxAvg = findViewById(R.id.flicker_average_light_level);
+        flickerLuxAvgHeader = findViewById(R.id.flicker_average_txt);
+
         topAppBar = findViewById(R.id.flicker_app_bar);
 
         flickerButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flickerTextTimeRemaining.setVisibility(View.VISIBLE);
-                //flickerTextInfo.setVisibility(View.INVISIBLE);
-                //flickerTextFreq.setVisibility(View.INVISIBLE);
                 flickerDetectionTmpList.clear();
+                flickerLuxAvg.setText("0.00 Lux");
+                flickerLuxMin.setText("Min: 0.00 Lux");
+                flickerLuxMax.setText("Max: 0.00 Lux");
+                flickerLuxAvgHeader.setVisibility(View.VISIBLE);
+                flickerLuxAvg.setVisibility(View.VISIBLE);
+                flickerLuxMin.setVisibility(View.VISIBLE);
+                flickerLuxMax.setVisibility(View.VISIBLE);
+                flickerTextTimeRemaining.setVisibility(View.VISIBLE);
                 flickerButtonStart.setImageResource(R.drawable.lux_play_pressed);
                 flickerButtonReset.setImageResource(R.drawable.lux_reset_pressed);
                 flickerButtonSave.setImageResource(R.drawable.lux_save_pressed);
@@ -177,6 +197,10 @@ public class FlickerActivity extends AppCompatActivity {
                 relativeChangeTxt.setVisibility(View.INVISIBLE);
                 relativeChangeValue.setVisibility(View.INVISIBLE);
                 flickerTextInfo.setVisibility(View.INVISIBLE);
+                flickerLuxAvgHeader.setVisibility(View.INVISIBLE);
+                flickerLuxAvg.setVisibility(View.INVISIBLE);
+                flickerLuxMin.setVisibility(View.INVISIBLE);
+                flickerLuxMax.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -209,6 +233,15 @@ public class FlickerActivity extends AppCompatActivity {
                 flickerTextRealtimeLux.setText(String.valueOf(event.values[0]));
                 if (flickerDetectionActivated) {
                     flickerDetectionTmpList.add(event.values[0]);
+                    flickerLevelAnalysis();
+                    flickerLuxAvg.setText(df.format(avgLux));
+                    flickerLuxMin.setText("Min: ");
+                    flickerLuxMax.setText("Max: ");
+                    flickerLuxMin.append(df.format(minLux));
+                    flickerLuxMax.append(df.format(maxLux));
+                    flickerLuxAvg.append(" Lux");
+                    flickerLuxMin.append(" Lux");
+                    flickerLuxMax.append(" Lux");
                 }
             }
 
@@ -234,6 +267,7 @@ public class FlickerActivity extends AppCompatActivity {
                 flickerDetectionActivated = false;
                 flickerTextTimeRemaining.setVisibility(View.INVISIBLE);
                 flickerDetectionAnalysis();
+                flickerEntityPrep();
                 // set guidance result based on flicker count
                 if (flickerEventCount == 0) {
                     flickerTextInfo.setText(R.string.flicker_guidance_0);
@@ -244,12 +278,14 @@ public class FlickerActivity extends AppCompatActivity {
                 }
 
                 lightLevelTxt.setText("Fluctuation Rate");
-                flickerTextFreq.setText(String.valueOf(flickerFreq));
+                flickerTextFreq.setText(String.valueOf(fluctuationRate));
                 unitLuxHz.setText("Hz");
-                Log.d("relative change", String.valueOf(relativeChange));
-                relativeChangeValue.setText(relativeChange + "%");
+                relativeChangeValue.setText(df.format(relativeChange));
+                relativeChangeValue.append("%");
 
                 flickerTextRealtimeLux.setVisibility(View.INVISIBLE);
+                flickerLuxMin.setVisibility(View.INVISIBLE);
+                flickerLuxMax.setVisibility(View.INVISIBLE);
                 relativeChangeTxt.setVisibility(View.VISIBLE);
                 relativeChangeValue.setVisibility(View.VISIBLE);
                 flickerTextInfo.setVisibility(View.VISIBLE);
@@ -262,16 +298,29 @@ public class FlickerActivity extends AppCompatActivity {
         };
     }
 
+    private void flickerLevelAnalysis() {
+        float luxMeasurementSum = 0;
+        if (flickerDetectionTmpList.size() == 0) {
+            minLux = 0;
+            maxLux = 0;
+            avgLux = 0;
+        } else {
+            minLux = flickerDetectionTmpList.get(0);
+            maxLux = flickerDetectionTmpList.get(0);
+            for (float lux : flickerDetectionTmpList) {
+                luxMeasurementSum += lux;
+                minLux = Math.min(minLux, lux);
+                maxLux = Math.max(maxLux, lux);
+            }
+            avgLux = luxMeasurementSum / flickerDetectionTmpList.size();
+        }
+    }
+
     private void flickerDetectionAnalysis() {
-        DecimalFormat df = new DecimalFormat("0.0");
-        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
-                format(new Date());
         flickerEventCount = 0;
-        flickerFreq = 0;
-        float minLux = 0;
-        float maxLux = 0;
         if (flickerDetectionTmpList.size() < FLICKER_WINDOW_SIZE) {
             Log.d(LOG_TAG, "flickerDetectionTmpList size < 3: light source stable?");
+            fluctuationRate = 0;
         } else {
             for (int i = 0; i <= flickerDetectionTmpList.size() - FLICKER_WINDOW_SIZE; ++i) {
                 Float[] luxWindow = {
@@ -285,18 +334,25 @@ public class FlickerActivity extends AppCompatActivity {
                 }
             }
             if (flickerEventCount != 0) {
-                flickerFreq = (float)flickerEventCount /
+                fluctuationRate = (float)flickerEventCount /
                         (float)((int)COUNT_DOWN_TIME / (int)COUNT_DOWN_INTERVAL);
             }
         }
-        minLux = Collections.min(flickerDetectionTmpList);
-        maxLux = Collections.max(flickerDetectionTmpList);
-        relativeChange = df.format((minLux / maxLux) * 100);
-        dataItemEntityInstance = new dataItem(timeStamp, ITEM_NAME);
+        relativeChange = (maxLux == 0) ? 0 : (maxLux-minLux)/(maxLux)*100;
+        Log.d(LOG_TAG, df.format((float)flickerEventCount));
+        Log.d(LOG_TAG, df.format((float)flickerDetectionTmpList.size()));
+    }
+
+    private void flickerEntityPrep() {
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
+                format(new Date());
         flickerEntityInstance = new FlickerItem(timeStamp,
-                                                df.format(flickerFreq)+" Hz",
-                                                String.valueOf(flickerEventCount),
-                                                df.format(maxLux)+" Hz",
-                                                df.format(minLux)+" Hz");
+                df.format(fluctuationRate)+" Hz",
+                String.valueOf(flickerEventCount),
+                df.format(relativeChange) + "%",
+                df.format(maxLux)+" Hz",
+                df.format(minLux)+" Hz",
+                df.format(avgLux) + " Lux");
+        dataItemEntityInstance = new dataItem(timeStamp, ITEM_NAME);
     }
 }

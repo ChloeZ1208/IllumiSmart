@@ -180,9 +180,9 @@ public class LightLevelActivity extends AppCompatActivity {
                 // Initialize tmp list for lux
                 luxMeasurementTmpList.clear();
                 // Clear previous realtime lux display
-                luxMeasurementAverage.setText(" ");
-                luxMeasurementMin.setText(" ");
-                luxMeasurementMax.setText(" ");
+                luxMeasurementAverage.setText("0.00 Lux");
+                luxMeasurementMin.setText("Min: 0.00 Lux");
+                luxMeasurementMax.setText("Max: 0.00 Lux");
                 luxMeasurementAverageHeader.setVisibility(View.VISIBLE);
                 luxMeasurementAverage.setVisibility(View.VISIBLE);
                 luxMeasurementMin.setVisibility(View.VISIBLE);

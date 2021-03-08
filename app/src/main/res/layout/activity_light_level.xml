@@ -117,13 +117,13 @@
         android:layout_height="85dp"
         android:contentDescription="Pause"
         android:scaleType="centerInside"
+        android:src="@drawable/lux_pause_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98"
-        android:src="@drawable/lux_pause_btn" />
+        app:layout_constraintVertical_bias="0.98" />
 
     <ImageButton
         android:id="@+id/light_level_reset"
@@ -132,13 +132,13 @@
         android:layout_height="85dp"
         android:contentDescription="Reset"
         android:scaleType="centerInside"
+        android:src="@drawable/lux_reset_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98"
-        android:src="@drawable/lux_reset_btn" />
+        app:layout_constraintVertical_bias="0.98" />
 
     <ImageButton
         android:id="@+id/light_level_save"
@@ -147,13 +147,13 @@
         android:layout_height="85dp"
         android:contentDescription="Save"
         android:scaleType="centerInside"
+        android:src="@drawable/lux_save_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98"
-        android:src="@drawable/lux_save_btn" />
+        app:layout_constraintVertical_bias="0.98" />
 
     <TextView
         android:id="@+id/average_txt"
@@ -162,6 +162,7 @@
         android:fontFamily="sans-serif"
         android:text="Average"
         android:textSize="17sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
         app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
         app:layout_constraintStart_toStartOf="@+id/light_level_circle"
@@ -186,7 +187,7 @@
         android:layout_height="wrap_content"
         android:text="Min: 0.00 Lux"
         android:textSize="17sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
         app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
         app:layout_constraintStart_toStartOf="@+id/light_level_circle"
@@ -199,7 +200,7 @@
         android:layout_height="wrap_content"
         android:text="Max: 0.00 Lux"
         android:textSize="17sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
         app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
         app:layout_constraintStart_toStartOf="@+id/light_level_circle"
