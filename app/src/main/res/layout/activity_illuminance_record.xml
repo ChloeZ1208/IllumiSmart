@@ -218,4 +218,43 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_item5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_item3"
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="@color/stroke"
+        app:strokeWidth="0.5dp">
+
+        <TextView
+            android:id="@+id/light_record_measured_time_header"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="Total Measuring Time"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/light_record_measured_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="60s"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

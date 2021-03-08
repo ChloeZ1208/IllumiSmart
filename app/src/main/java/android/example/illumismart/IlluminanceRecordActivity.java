@@ -24,6 +24,7 @@ public class IlluminanceRecordActivity extends AppCompatActivity {
     private TextView luxAverage;
     private TextView luxMin;
     private TextView luxMax;
+    private TextView luxMeasuredTime;
     private TextView luxTimestamp;
 
     @Override
@@ -35,6 +36,7 @@ public class IlluminanceRecordActivity extends AppCompatActivity {
         luxAverage = findViewById(R.id.lux_average);
         luxMin = findViewById(R.id.lux_min);
         luxMax = findViewById(R.id.lux_max);
+        luxMeasuredTime = findViewById(R.id.light_record_measured_time);
         luxTimestamp = findViewById(R.id.timestamp_txt);
 
         MaterialToolbar topAppBar = findViewById(R.id.lux_app_bar);
@@ -83,13 +85,10 @@ public class IlluminanceRecordActivity extends AppCompatActivity {
             @Override
             public void onChanged(Illuminance illuminance) {
                 if (illuminance != null) {
-                    String averageLux = illuminance.getAverage();
-                    String minLux = illuminance.getMinLux();
-                    String maxLux = illuminance.getMaxLux();
-
-                    luxAverage.setText(averageLux);
-                    luxMin.setText(minLux);
-                    luxMax.setText(maxLux);
+                    luxAverage.setText(illuminance.getAverage());
+                    luxMin.setText(illuminance.getMinLux());
+                    luxMax.setText(illuminance.getMaxLux());
+                    luxMeasuredTime.setText(illuminance.getMeasuredTime());
                     luxTimestamp.setText(utils.getParsedTimestamp(timeStamp));
                 }
             }

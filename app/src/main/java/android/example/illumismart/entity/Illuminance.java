@@ -21,11 +21,20 @@ public class Illuminance {
     @ColumnInfo
     public String average;
 
-    public Illuminance (String timestamp, String minLux, String maxLux, String average) {
+    @ColumnInfo
+    public String measuredTime;
+
+
+    public Illuminance (String timestamp,
+                        String minLux,
+                        String maxLux,
+                        String average,
+                        String measuredTime) {
         this.timestamp = timestamp;
         this.minLux = minLux;
         this.maxLux = maxLux;
         this.average = average;
+        this.measuredTime = measuredTime;
     }
 
     public String getTimestamp() {
@@ -37,6 +46,10 @@ public class Illuminance {
     public String getMaxLux() { return maxLux; }
 
     public String getAverage() { return average; }
+
+    public String getMeasuredTime() {
+        return measuredTime;
+    }
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;

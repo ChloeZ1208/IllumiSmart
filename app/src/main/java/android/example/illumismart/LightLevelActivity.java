@@ -152,8 +152,8 @@ public class LightLevelActivity extends AppCompatActivity {
                 lightLevelSave.setImageResource(R.drawable.lux_save_pressed);
                 luxMeasurementRemainTime.setText(
                         String.valueOf((COUNT_DOWN_TIME - millisUntilFinished) /
-                                COUNT_DOWN_INTERVAL));
-                luxMeasurementRemainTime.append("s");
+                                COUNT_DOWN_INTERVAL + 1));
+                luxMeasurementRemainTime.append(" Seconds");
             }
 
             @Override
@@ -262,9 +262,11 @@ public class LightLevelActivity extends AppCompatActivity {
     private void lightLevelEntityPrep() {
         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
                 format(new Date());
-        illuminanceEntityInstance = new Illuminance
-                (timeStamp, df.format(minLux) + " Lux", df.format(maxLux) + " Lux",
-                        df.format(avgLux) + " Lux");
+        illuminanceEntityInstance = new Illuminance(timeStamp,
+                df.format(minLux) + " Lux",
+                df.format(maxLux) + " Lux",
+                df.format(avgLux) + " Lux",
+                luxMeasurementRemainTime.getText().toString());
         dataItemEntityInstance = new dataItem(timeStamp, ITEM_NAME);
     }
 
