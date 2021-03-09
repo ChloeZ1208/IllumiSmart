@@ -46,7 +46,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item1"
+        android:id="@+id/flicker_record_card1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="0dp"
@@ -94,15 +94,15 @@
         android:text="Flicker Data"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/flicker_record_card2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_item1"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintTop_toBottomOf="@+id/flicker_record_card1"
+        app:layout_constraintVertical_bias="0.98" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item2"
+        android:id="@+id/flicker_record_card2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="0dp"
@@ -141,14 +141,14 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item3"
+        android:id="@+id/flicker_record_card3"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_item2"
+        app:layout_constraintTop_toBottomOf="@+id/flicker_record_card2"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/stroke"
         app:strokeWidth="0.5dp">
@@ -180,14 +180,14 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item4"
+        android:id="@+id/flicker_record_card4"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_item3"
+        app:layout_constraintTop_toBottomOf="@+id/flicker_record_card3"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/stroke"
         app:strokeWidth="0.5dp">

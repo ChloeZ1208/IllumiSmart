@@ -27,4 +27,11 @@
     <string name="flicker_guidance_0">No flicker event detected.</string>
     <string name="flicker_guidance_1to3">It seems this light source is a possible flicker.</string>
     <string name="flicker_guidance_3">It seems this light source is a certain visible flicker.</string>
+    <string name="light_level_guidance_below">The average lighting level is below the guideline suggestions.</string>
+    <string name="light_level_guidance_above">The average lighting level is above the guideline suggestions</string>
+    <string name="light_level_guidance_among">The average lighting level follows the guidance.</string>
+    <string name="light_level_view_details"><u>View Details</u></string>
+    <string name="profile_below40_finework">According to your age (below 40) and type of task being done (fine work), the recommended illuminance is:</string>
+    <string name="light_level_below_suggest">If the measured average light level is under the guidance, view <u>Correction of Insufficient Light</u></string>
+    <string name="light_level_above_suggest">If the measured average light level is above the guidance, it is suggested to conduct a glare test next.</string>
 </resources>

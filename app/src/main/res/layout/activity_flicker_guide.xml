@@ -7,11 +7,10 @@
     tools:context=".FlickerGuideActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout_flicker"
+        android:id="@+id/appBarLayoutFlickerGuide"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/flicker"
-        android:elevation="0dp"
         android:fitsSystemWindows="true"
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout_flicker" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayoutFlickerGuide" />
 
     <Button
         android:id="@+id/nav_flicker"
@@ -61,7 +60,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout_flicker"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayoutFlickerGuide"
         app:layout_constraintVertical_bias="0.90" />
 
     <ImageView

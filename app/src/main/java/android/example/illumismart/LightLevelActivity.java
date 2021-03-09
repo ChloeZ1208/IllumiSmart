@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.example.illumismart.entity.Illuminance;
 import android.example.illumismart.entity.dataItem;
 import android.example.illumismart.viewmodel.IlluminanceViewModel;
@@ -24,10 +23,7 @@ import android.widget.Toast;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 public class LightLevelActivity extends AppCompatActivity {
     private static final String LOG_TAG = LightLevelActivity.class.getSimpleName();
@@ -47,6 +43,8 @@ public class LightLevelActivity extends AppCompatActivity {
     private TextView luxMeasurementRemainTimeHeader;
     private TextView luxMeasurementMin;
     private TextView luxMeasurementMax;
+    private TextView lightLevelSuggestion;
+    private TextView lightLevelViewDetails;
     private ArrayList<Float> luxMeasurementTmpList;
     private Boolean luxMeasurementActivated;
 
@@ -109,13 +107,6 @@ public class LightLevelActivity extends AppCompatActivity {
         luxMeasurementTmpList = new ArrayList<Float>();
         luxMeasurementActivated = false;
 
-        SharedPreferences mPrefs = getSharedPreferences("Illuminance", MODE_PRIVATE);
-        String average = mPrefs.getString("averageLux", "");
-        luxMeasurementAverage.setText(average);
-        maxLux = mPrefs.getFloat("maxLux", Float.MIN_VALUE);
-        minLux = mPrefs.getFloat("minLux", Float.MAX_VALUE);
-
-
         lightListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
@@ -153,30 +144,32 @@ public class LightLevelActivity extends AppCompatActivity {
                 luxMeasurementRemainTime.setText(
                         String.valueOf((COUNT_DOWN_TIME - millisUntilFinished) /
                                 COUNT_DOWN_INTERVAL + 1));
-                luxMeasurementRemainTime.append(" Seconds");
+                luxMeasurementRemainTime.append(" s");
             }
 
             @Override
             public void onFinish() {
                 luxMeasurementActivated = false;
                 lightLevelEntityPrep();
-                luxMeasurementRemainTimeHeader.setVisibility(View.VISIBLE);
-                luxMeasurementRemainTime.setVisibility(View.VISIBLE);
                 luxMeasurementAverage.setText(illuminanceEntityInstance.getAverage());
 
-                lightLevelPlay.setClickable(true);
                 lightLevelReset.setClickable(true);
                 lightLevelSave.setClickable(true);
+                lightLevelPause.setClickable(false);
 
-                lightLevelPlay.setImageResource(R.drawable.light_level_play);
                 lightLevelReset.setImageResource(R.drawable.light_level_reset);
                 lightLevelSave.setImageResource(R.drawable.light_level_save);
+                //lightLevelPause.setImageResource(R.drawable.lux_pause_pressed);
+                provideSuggestions();
             }
         };
 
         lightLevelPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Enable pause button
+                lightLevelPause.setClickable(true);
+                lightLevelPause.setImageResource(R.drawable.light_level_pause);
                 // Initialize tmp list for lux
                 luxMeasurementTmpList.clear();
                 // Clear previous realtime lux display
@@ -187,11 +180,11 @@ public class LightLevelActivity extends AppCompatActivity {
                 luxMeasurementAverage.setVisibility(View.VISIBLE);
                 luxMeasurementMin.setVisibility(View.VISIBLE);
                 luxMeasurementMax.setVisibility(View.VISIBLE);
-                // Elapsed text hide
-                luxMeasurementRemainTimeHeader.setVisibility(View.INVISIBLE);
-                luxMeasurementRemainTime.setVisibility(View.INVISIBLE);
                 // Start timer
                 luxMeasurementTimer.start();
+                // Show elapsed text
+                luxMeasurementRemainTimeHeader.setVisibility(View.VISIBLE);
+                luxMeasurementRemainTime.setVisibility(View.VISIBLE);
                 // Flag on: insert lux to the tmp list
                 luxMeasurementActivated = true;
             }
@@ -216,6 +209,13 @@ public class LightLevelActivity extends AppCompatActivity {
                 luxMeasurementRemainTime.setVisibility(View.INVISIBLE);
                 luxMeasurementMin.setVisibility(View.INVISIBLE);
                 luxMeasurementMax.setVisibility(View.INVISIBLE);
+                lightLevelSuggestion.setVisibility(View.INVISIBLE);
+                lightLevelViewDetails.setVisibility(View.INVISIBLE);
+
+                luxMeasurementTmpList.clear();
+
+                lightLevelPlay.setClickable(true);
+                lightLevelPlay.setImageResource(R.drawable.light_level_play);
             }
         });
 
@@ -223,7 +223,7 @@ public class LightLevelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 /*
-                 *  TODO: save minLux, maxLux, average_lux to database
+                 *  save minLux, maxLux, average_lux to database
                  */
                 if (luxMeasurementTmpList.size() != 0) {
                     illuminanceViewModel.insert(illuminanceEntityInstance);
@@ -239,6 +239,23 @@ public class LightLevelActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void provideSuggestions() {
+        if (avgLux < 500) {
+            lightLevelSuggestion.setText(R.string.light_level_guidance_below);
+        } else if (avgLux > 700)
+            lightLevelSuggestion.setText(R.string.light_level_guidance_above);
+        else {
+            lightLevelSuggestion.setText(R.string.light_level_guidance_among);
+        }
+        //viewDetails(lightLevelViewDetails);
+        lightLevelSuggestion.setVisibility(View.VISIBLE);
+        lightLevelViewDetails.setVisibility(View.VISIBLE);
+    }
+
+    public void viewDetails(View view) {
+        startActivity(new Intent(LightLevelActivity.this, LightLevelSuggestActivity.class));
     }
 
     private void lightLevelAnalysis() {
@@ -260,8 +277,8 @@ public class LightLevelActivity extends AppCompatActivity {
     }
 
     private void lightLevelEntityPrep() {
-        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
-                format(new Date());
+        Utils utils = new Utils();
+        String timeStamp = utils.getSpecifiedTimestamp();
         illuminanceEntityInstance = new Illuminance(timeStamp,
                 df.format(minLux) + " Lux",
                 df.format(maxLux) + " Lux",
@@ -276,17 +293,6 @@ public class LightLevelActivity extends AppCompatActivity {
         if (sensorManager != null && lightSensor != null) {
             sensorManager.unregisterListener(lightListener, lightSensor);
         }
-        SharedPreferences preferences = getSharedPreferences("Illuminance", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        String average = luxMeasurementAverage.getText().toString();
-        editor.putString("averageLux", average);
-        editor.putFloat("maxLux", maxLux);
-        editor.putFloat("minLux", minLux);
-
-        /*
-         *  TODO: save view details info to preferences
-         */
-        editor.apply();
     }
 
     @Override
@@ -303,18 +309,20 @@ public class LightLevelActivity extends AppCompatActivity {
 
 
     private void initializeViews() {
-        topAppBar = findViewById(R.id.top_app_bar);
-        mlightLevel = findViewById(R.id.light_level);
+        topAppBar = findViewById(R.id.lux_top_app_bar);
+        mlightLevel = findViewById(R.id.lux_record_light_level);
         lightLevelPlay = findViewById(R.id.light_level_start);
         lightLevelPause = findViewById(R.id.light_level_pause);
         lightLevelReset = findViewById(R.id.light_level_reset);
         lightLevelSave = findViewById(R.id.light_level_save);
-        luxMeasurementAverageHeader = findViewById(R.id.average_txt);
+        luxMeasurementAverageHeader = findViewById(R.id.lux_average_header);
         luxMeasurementAverage = findViewById(R.id.average_light_level);
-        luxMeasurementRemainTimeHeader = findViewById(R.id.clicks_txt);
-        luxMeasurementRemainTime = findViewById(R.id.clicks_time);
-        luxMeasurementMin = findViewById(R.id.min_txt);
-        luxMeasurementMax = findViewById(R.id.max_txt);
+        luxMeasurementRemainTimeHeader = findViewById(R.id.lux_elapsed_time_header);
+        luxMeasurementRemainTime = findViewById(R.id.lux_elapsed_time);
+        luxMeasurementMin = findViewById(R.id.light_level_min);
+        luxMeasurementMax = findViewById(R.id.light_level_max);
+        lightLevelSuggestion = findViewById(R.id.light_level_suggestions);
+        lightLevelViewDetails = findViewById(R.id.light_level_viewdetails);
     }
 
 }

@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/flicker"
-        android:elevation="0dp"
         android:fitsSystemWindows="true"
+        app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -67,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="@+id/flicker_circle"
         app:layout_constraintStart_toStartOf="@+id/flicker_circle"
         app:layout_constraintTop_toTopOf="@+id/flicker_circle"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <TextView
         android:id="@+id/flicker_max_txt"
@@ -113,7 +113,7 @@
 
 
     <TextView
-        android:id="@+id/light_level_txt"
+        android:id="@+id/flicker_light_level_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"

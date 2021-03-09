@@ -7,18 +7,18 @@
     tools:context=".LightLevelActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBarLux"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/light_level"
-        android:elevation="0dp"
         android:fitsSystemWindows="true"
+        app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/top_app_bar"
+            android:id="@+id/lux_top_app_bar"
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -51,12 +51,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appBarLayout"
+        app:layout_constraintTop_toTopOf="@+id/appBarLux"
         app:layout_constraintVertical_bias="0.229"
         app:srcCompat="@drawable/light_level_circle" />
 
     <TextView
-        android:id="@+id/ins_level"
+        android:id="@+id/light_level_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
@@ -69,7 +69,7 @@
         app:layout_constraintVertical_bias="0.2900000" />
 
     <TextView
-        android:id="@+id/light_level"
+        android:id="@+id/lux_record_light_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
@@ -156,7 +156,7 @@
         app:layout_constraintVertical_bias="0.98" />
 
     <TextView
-        android:id="@+id/average_txt"
+        android:id="@+id/lux_average_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
@@ -178,11 +178,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/light_level_circle"
         app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
         app:layout_constraintStart_toStartOf="@+id/light_level_circle"
-        app:layout_constraintTop_toBottomOf="@+id/average_txt"
+        app:layout_constraintTop_toBottomOf="@+id/lux_average_header"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/min_txt"
+        android:id="@+id/light_level_min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Min: 0.00 Lux"
@@ -192,10 +192,10 @@
         app:layout_constraintEnd_toEndOf="@+id/light_level_circle"
         app:layout_constraintStart_toStartOf="@+id/light_level_circle"
         app:layout_constraintTop_toTopOf="@+id/light_level_circle"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <TextView
-        android:id="@+id/max_txt"
+        android:id="@+id/light_level_max"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Max: 0.00 Lux"
@@ -208,7 +208,7 @@
         app:layout_constraintVertical_bias="0.12" />
 
     <TextView
-        android:id="@+id/clicks_txt"
+        android:id="@+id/lux_elapsed_time_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Elapsed Time"
@@ -221,14 +221,43 @@
         app:layout_constraintVertical_bias="0.14" />
 
     <TextView
-        android:id="@+id/clicks_time"
+        android:id="@+id/lux_elapsed_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="60s"
         android:textSize="18sp"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/clicks_txt"
-        app:layout_constraintStart_toStartOf="@+id/clicks_txt"
-        app:layout_constraintTop_toBottomOf="@+id/clicks_txt" />
+        app:layout_constraintEnd_toEndOf="@+id/lux_elapsed_time_header"
+        app:layout_constraintStart_toStartOf="@+id/lux_elapsed_time_header"
+        app:layout_constraintTop_toBottomOf="@+id/lux_elapsed_time_header" />
+
+    <TextView
+        android:id="@+id/light_level_suggestions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textAlignment="center"
+        android:textSize="17sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lux_elapsed_time"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+    <TextView
+        android:id="@+id/light_level_viewdetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="viewDetails"
+        android:text="@string/light_level_view_details"
+        android:textSize="17sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/light_level_suggestions"
+        app:layout_constraintStart_toStartOf="@+id/light_level_suggestions"
+        app:layout_constraintTop_toBottomOf="@+id/light_level_suggestions"
+        app:layout_constraintVertical_bias="0.02" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

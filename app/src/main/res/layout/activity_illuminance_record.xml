@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/lux_app_bar"
+            android:id="@+id/lux_record_app_bar"
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item1"
+        android:id="@+id/lux_record_card1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="0dp"
@@ -59,7 +59,7 @@
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/time_txt"
+            android:id="@+id/lux_record_time_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
@@ -71,7 +71,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/timestamp_txt"
+            android:id="@+id/lux_record_timestamp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
@@ -85,7 +85,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/light_level"
+        android:id="@+id/lux_record_light_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -94,15 +94,15 @@
         android:text="Light Level Data"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lux_record_card2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_item1"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintTop_toBottomOf="@+id/lux_record_card1"
+        app:layout_constraintVertical_bias="0.95" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item2"
+        android:id="@+id/lux_record_card2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="0dp"
@@ -115,7 +115,7 @@
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/txt_average"
+            android:id="@+id/lux_record_average_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
@@ -127,7 +127,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/lux_average"
+            android:id="@+id/lux_record_average"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
@@ -141,20 +141,20 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item3"
+        android:id="@+id/lux_record_card3"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_item2"
+        app:layout_constraintTop_toBottomOf="@+id/lux_record_card2"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/stroke"
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/txt_min"
+            android:id="@+id/lux_record_min_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
@@ -166,7 +166,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/lux_min"
+            android:id="@+id/lux_record_min"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
@@ -180,20 +180,20 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item4"
+        android:id="@+id/lux_record_card4"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_item3"
+        app:layout_constraintTop_toBottomOf="@+id/lux_record_card3"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/stroke"
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/txt_max"
+            android:id="@+id/lux_record_max_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
@@ -205,7 +205,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/lux_max"
+            android:id="@+id/lux_header_max"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
@@ -219,20 +219,20 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_item5"
+        android:id="@+id/lux_record_card5"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_item3"
+        app:layout_constraintTop_toBottomOf="@+id/lux_record_card4"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/stroke"
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/light_record_measured_time_header"
+            android:id="@+id/lux_record_measured_time_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
@@ -244,7 +244,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/light_record_measured_time"
+            android:id="@+id/lux_record_measured_time"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"

@@ -19,8 +19,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation_home);
-        MaterialCardView enterLightLevel = findViewById(R.id.enter_light_level);
-        MaterialCardView enterLightFlicker = findViewById(R.id.enter_light_flicker);
+        MaterialCardView enterLightLevel = findViewById(R.id.home_light_level);
+        MaterialCardView enterLightFlicker = findViewById(R.id.home_light_flicker);
 
         bottomNav.getMenu().findItem(R.id.home_page).setChecked(true);
 

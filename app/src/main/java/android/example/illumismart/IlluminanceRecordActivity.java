@@ -33,13 +33,13 @@ public class IlluminanceRecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_illuminance_record);
         utils = new Utils();
 
-        luxAverage = findViewById(R.id.lux_average);
-        luxMin = findViewById(R.id.lux_min);
-        luxMax = findViewById(R.id.lux_max);
-        luxMeasuredTime = findViewById(R.id.light_record_measured_time);
-        luxTimestamp = findViewById(R.id.timestamp_txt);
+        luxAverage = findViewById(R.id.lux_record_average);
+        luxMin = findViewById(R.id.lux_record_min);
+        luxMax = findViewById(R.id.lux_header_max);
+        luxMeasuredTime = findViewById(R.id.lux_record_measured_time);
+        luxTimestamp = findViewById(R.id.lux_record_timestamp);
 
-        MaterialToolbar topAppBar = findViewById(R.id.lux_app_bar);
+        MaterialToolbar topAppBar = findViewById(R.id.lux_record_app_bar);
 
         illuminanceViewModel = new ViewModelProvider(this, ViewModelProvider.
                 AndroidViewModelFactory.

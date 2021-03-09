@@ -8,7 +8,7 @@
     tools:context=".HomeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
+        android:id="@+id/appBarHome"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@android:color/transparent"
@@ -27,7 +27,7 @@
             app:expandedTitleMarginStart="72dp">
 
             <ImageView
-                android:id="@+id/home_appbar"
+                android:id="@+id/home_app_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="home appbar background"
@@ -62,7 +62,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/enter_self_assessment"
+        android:id="@+id/home_self_assessment"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
@@ -72,7 +72,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appBar"
+        app:layout_constraintTop_toTopOf="@+id/appBarHome"
         app:layout_constraintVertical_bias="0.24">
 
         <TextView
@@ -118,7 +118,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/enter_light_level"
+        android:id="@+id/home_light_level"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
@@ -128,7 +128,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appBar"
+        app:layout_constraintTop_toTopOf="@+id/appBarHome"
         app:layout_constraintVertical_bias="0.46">
 
         <TextView
@@ -174,7 +174,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/enter_light_flicker"
+        android:id="@+id/home_light_flicker"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
@@ -184,7 +184,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appBar"
+        app:layout_constraintTop_toTopOf="@+id/appBarHome"
         app:layout_constraintVertical_bias="0.68">
 
         <TextView
@@ -230,7 +230,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/enter_glare"
+        android:id="@+id/home_glare"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
@@ -241,7 +241,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appBar"
+        app:layout_constraintTop_toTopOf="@+id/appBarHome"
         app:layout_constraintVertical_bias="0.90">
 
         <TextView

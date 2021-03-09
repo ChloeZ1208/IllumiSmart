@@ -1,7 +1,6 @@
 package android.example.illumismart;
 
 import android.content.Intent;
-import android.example.illumismart.entity.Illuminance;
 import android.example.illumismart.viewmodel.FlickerItemViewModel;
 import android.example.illumismart.viewmodel.dataItemViewModel;
 import android.example.illumismart.entity.FlickerItem;
@@ -14,7 +13,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +29,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class FlickerActivity extends AppCompatActivity {
     private static final String LOG_TAG = FlickerActivity.class.getSimpleName();
@@ -126,6 +125,9 @@ public class FlickerActivity extends AppCompatActivity {
         if (mSensorManager != null && mLightSensor != null) {
             mSensorManager.unregisterListener(mSensorEventListener, mLightSensor);
         }
+        /*
+         *  TODO: save view details info to preferences
+         */
     }
 
     @Override
@@ -142,7 +144,7 @@ public class FlickerActivity extends AppCompatActivity {
     private void initializeViews() {
         flickerTextRealtimeLux = findViewById(R.id.flicker_text_realtime_lux);
         flickerTextFreq = findViewById(R.id.flicker_fluctuation);
-        lightLevelTxt = findViewById(R.id.light_level_txt);
+        lightLevelTxt = findViewById(R.id.flicker_light_level_header);
         unitLuxHz = findViewById(R.id.unit_lux_hz);
         relativeChangeTxt = findViewById(R.id.relative_change_txt);
         relativeChangeValue = findViewById(R.id.relative_change);
@@ -159,6 +161,7 @@ public class FlickerActivity extends AppCompatActivity {
         flickerLuxAvgHeader = findViewById(R.id.flicker_average_txt);
 
         topAppBar = findViewById(R.id.flicker_app_bar);
+
 
         flickerButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -259,6 +262,7 @@ public class FlickerActivity extends AppCompatActivity {
                 flickerTextTimeRemaining.setText("Time remaining: ");
                 flickerTextTimeRemaining.
                         append(String.valueOf(millisUntilFinished / COUNT_DOWN_INTERVAL));
+                flickerTextTimeRemaining.append("s");
             }
 
             @Override
@@ -339,13 +343,14 @@ public class FlickerActivity extends AppCompatActivity {
             }
         }
         relativeChange = (maxLux == 0) ? 0 : (maxLux-minLux)/(maxLux)*100;
-        Log.d(LOG_TAG, df.format((float)flickerEventCount));
-        Log.d(LOG_TAG, df.format((float)flickerDetectionTmpList.size()));
+        //Log.d(LOG_TAG, df.format((float)flickerEventCount));
+        //Log.d(LOG_TAG, df.format((float)flickerDetectionTmpList.size()));
     }
 
     private void flickerEntityPrep() {
-        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).
-                format(new Date());
+        Utils utils = new Utils();
+        String timeStamp = utils.getSpecifiedTimestamp();
+        //String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CANADA).format(new Date());
         flickerEntityInstance = new FlickerItem(timeStamp,
                 df.format(fluctuationRate)+" Hz",
                 String.valueOf(flickerEventCount),

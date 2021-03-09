@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IllumiSmart">
-        <activity android:name=".FlickerGuideActivity"
-            android:theme="@style/Theme.IllumiSmart.Flicker"/>
+        <activity android:name=".LightLevelSuggestActivity"
+            android:theme="@style/Theme.IllumiSmart.NoActionBar"/>
+        <activity
+            android:name=".FlickerGuideActivity"
+            android:theme="@style/Theme.IllumiSmart.Flicker" />
         <activity
             android:name=".IlluminanceRecordActivity"
             android:theme="@style/Theme.IllumiSmart.NoActionBar" />

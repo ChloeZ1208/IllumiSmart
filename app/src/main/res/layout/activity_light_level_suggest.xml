@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/light_level_suggest_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LightLevelSuggestActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLuxSuggestion"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/light_level"
+        android:fitsSystemWindows="true"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/lux_sugg_top_app_bar"
+            style="@style/Widget.MaterialComponents.Toolbar.Surface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/light_level"
+            android:elevation="0dp"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/guidance_menu"
+            app:navigationIcon="@drawable/back">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:text="Lighting Guidance"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="normal" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/lux_suggest_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/profile_below40_finework"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLuxSuggestion" />
+
+    <TextView
+        android:id="@+id/lux_suggest_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="500-700 Lux"
+        android:textAlignment="viewStart"
+        android:textColor="@color/light_level"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lux_suggest_txt"
+        app:layout_constraintTop_toBottomOf="@+id/lux_suggest_txt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/lux_suggest_below"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/light_level_below_suggest"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/lux_suggest_txt"
+        app:layout_constraintStart_toStartOf="@+id/lux_suggest_range"
+        app:layout_constraintTop_toBottomOf="@+id/lux_suggest_range"
+        app:layout_constraintVertical_bias="0.06000000" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/light_level_above_suggest"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/lux_suggest_below"
+        app:layout_constraintStart_toStartOf="@+id/lux_suggest_below"
+        app:layout_constraintTop_toBottomOf="@+id/lux_suggest_below"
+        app:layout_constraintVertical_bias="0.08" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
