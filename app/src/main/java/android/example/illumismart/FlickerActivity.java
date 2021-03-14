@@ -1,6 +1,7 @@
 package android.example.illumismart;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.example.illumismart.viewmodel.FlickerItemViewModel;
 import android.example.illumismart.viewmodel.dataItemViewModel;
 import android.example.illumismart.entity.FlickerItem;
@@ -11,6 +12,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -82,6 +84,10 @@ public class FlickerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // check if the user is the first time enter this page
+        if (isFirstTime()) {
+            startActivity(new Intent(FlickerActivity.this, FlickerGuideActivity.class));
+        }
         setContentView(R.layout.activity_flicker);
         initializeViews();
         initializeLightSensor();
@@ -117,6 +123,18 @@ public class FlickerActivity extends AppCompatActivity {
                 ViewModelProvider.
                         AndroidViewModelFactory.
                         getInstance(this.getApplication())).get(dataItemViewModel.class);
+    }
+
+    private boolean isFirstTime() {
+        SharedPreferences preferences = getSharedPreferences("Flicker",MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.apply();
+        }
+        return !ranBefore;
     }
 
     @Override

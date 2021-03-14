@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/illuminance_record_screen"
     tools:context=".IlluminanceRecordActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLuxRecord"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:background="@color/light_level"
         android:elevation="0dp"
         android:fitsSystemWindows="true"
@@ -21,7 +22,7 @@
             android:id="@+id/lux_record_app_bar"
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
             android:background="@color/light_level"
             android:elevation="0dp"

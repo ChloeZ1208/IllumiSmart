@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.example.illumismart.entity.FlickerItem;
 import android.example.illumismart.viewmodel.FlickerItemViewModel;
 import android.example.illumismart.viewmodel.dataItemViewModel;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -31,6 +32,9 @@ public class FlickerRecordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flicker_record);
+        View v = findViewById(R.id.flicker_record_screen);
+        View root = v.getRootView();
+        root.setBackgroundColor(Color.parseColor("#E5E5E5"));
         utils = new Utils();
 
         flickerFluctuationRate = findViewById(R.id.flicker_record_fluctuation);

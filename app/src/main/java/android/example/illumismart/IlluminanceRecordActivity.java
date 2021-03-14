@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.example.illumismart.entity.Illuminance;
 import android.example.illumismart.viewmodel.IlluminanceViewModel;
 import android.example.illumismart.viewmodel.dataItemViewModel;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -31,6 +32,10 @@ public class IlluminanceRecordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_illuminance_record);
+        View v = findViewById(R.id.illuminance_record_screen);
+        View root = v.getRootView();
+        root.setBackgroundColor(Color.parseColor("#E5E5E5"));
+
         utils = new Utils();
 
         luxAverage = findViewById(R.id.lux_record_average);

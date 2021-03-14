@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.example.illumismart.entity.Illuminance;
 import android.example.illumismart.entity.dataItem;
 import android.example.illumismart.viewmodel.IlluminanceViewModel;
@@ -66,6 +67,12 @@ public class LightLevelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // check if the user is the first time enter this page
+        if (isFirstTime()) {
+            startActivity(new Intent(LightLevelActivity.this, LightLevelGuideActivity.class));
+        }
+
         setContentView(R.layout.activity_light_level);
 
         initializeViews();
@@ -239,6 +246,18 @@ public class LightLevelActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private boolean isFirstTime() {
+        SharedPreferences preferences = getSharedPreferences("LightLevel",MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.apply();
+        }
+        return !ranBefore;
     }
 
     private void provideSuggestions() {

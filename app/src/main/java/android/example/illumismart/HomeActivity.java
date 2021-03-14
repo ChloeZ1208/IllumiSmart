@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case R.id.setting_page:
                         // TODO: profile
+                        startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
                         break;
                 }
                 return false;

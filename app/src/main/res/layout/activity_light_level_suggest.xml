@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLuxSuggestion"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:background="@color/light_level"
         android:fitsSystemWindows="true"
         app:elevation="0dp"
@@ -22,7 +22,7 @@
             android:id="@+id/lux_sugg_top_app_bar"
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:layout_gravity="center"
             android:background="@color/light_level"
             android:elevation="0dp"

@@ -56,6 +56,8 @@ public class DataActivity extends AppCompatActivity {
                         break;
                     case R.id.setting_page:
                         // TODO: profile
+                        startActivity(new Intent(DataActivity.this,
+                                ProfileActivity.class));
                         break;
                 }
                 return false;
