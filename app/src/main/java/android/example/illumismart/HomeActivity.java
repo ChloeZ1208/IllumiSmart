@@ -43,17 +43,12 @@ public class HomeActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()) {
-                    case R.id.data_page:
-                        startActivity(new Intent(HomeActivity.this, DataActivity.class));
-                        break;
-                    case R.id.info_page:
-                        // TODO: info
-                        break;
-                    case R.id.setting_page:
-                        // TODO: profile
-                        startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-                        break;
+                int itemId = item.getItemId();
+                if (itemId == R.id.data_page) {
+                    startActivity(new Intent(HomeActivity.this, DataActivity.class));
+                } else if (itemId == R.id.info_page) {// TODO: info
+                } else if (itemId == R.id.setting_page) {// TODO: profile
+                    startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
                 }
                 return false;
             }

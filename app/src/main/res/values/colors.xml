@@ -17,4 +17,6 @@
     <color name="data">#ECC781</color>
     <color name="home_red">#EA8B85</color>
     <color name="stroke">#E0E0E0</color>
+    <color name="age">#EBAA83</color>
+    <color name="occupation_age_btn">#20FFFFFF</color>
 </resources>
