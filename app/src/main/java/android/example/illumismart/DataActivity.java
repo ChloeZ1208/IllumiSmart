@@ -51,9 +51,9 @@ public class DataActivity extends AppCompatActivity {
                     startActivity(new Intent(DataActivity.this,
                             HomeActivity.class));
                 } else if (itemId == R.id.info_page) {// TODO: info
-                } else if (itemId == R.id.setting_page) {// TODO: profile
+                } else if (itemId == R.id.setting_page) {
                     startActivity(new Intent(DataActivity.this,
-                            ProfileActivity.class));
+                            SettingActivity.class));
                 }
                 return false;
             }

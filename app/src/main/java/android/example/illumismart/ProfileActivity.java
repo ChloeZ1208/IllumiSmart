@@ -42,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
         ageCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(ProfileActivity.this, ProfileAgeActivity.class));
+                startActivity(new Intent(ProfileActivity.this, ProfileAgeActivity.class));
             }
         });
 
@@ -53,12 +53,12 @@ public class ProfileActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                startActivity(new Intent(ProfileActivity.this, SettingActivity.class));;
             }
         });
 
         /*
-         * TODO：if user profile is finished, display delete menu
+         * if user profile finished, display delete menu
          */
         preferences = getSharedPreferences("ProfileInfo",MODE_PRIVATE);
         String occupation = preferences.getString("Occupation", null);
@@ -67,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
             topAppBar.inflateMenu(R.menu.delete_menu);
             topAppBar.setOnMenuItemClickListener(menuItem -> {
                 if(menuItem.getItemId() == R.id.delete_item) {
-                    // TODO: clear SharedPreference "Profile"
+                    // clear SharedPreference "Profile"
                     SharedPreferences.Editor edit = preferences.edit();
                     edit.clear();
                     edit.apply();
