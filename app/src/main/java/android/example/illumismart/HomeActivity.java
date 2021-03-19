@@ -61,8 +61,8 @@ public class HomeActivity extends AppCompatActivity {
                 if (itemId == R.id.data_page) {
                     startActivity(new Intent(HomeActivity.this, DataActivity.class));
                 } else if (itemId == R.id.info_page) {// TODO: info
-                } else if (itemId == R.id.setting_page) {// TODO: profile
-                    startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                } else if (itemId == R.id.setting_page) {
+                    startActivity(new Intent(HomeActivity.this, SettingActivity.class));
                 }
                 return false;
             }
