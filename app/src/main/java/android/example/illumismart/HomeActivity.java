@@ -3,7 +3,9 @@ package android.example.illumismart;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,10 +19,14 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions( new String[]{Manifest.permission.CAMERA}, 203);
+        }
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation_home);
         MaterialCardView enterLightLevel = findViewById(R.id.home_light_level);
         MaterialCardView enterLightFlicker = findViewById(R.id.home_light_flicker);
+        MaterialCardView enterLightGlare = findViewById(R.id.home_light_glare);
 
         bottomNav.getMenu().findItem(R.id.home_page).setChecked(true);
 
@@ -37,6 +43,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this,
                         FlickerActivity.class));
+            }
+        });
+
+        enterLightGlare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,
+                        GlareActivity.class));
             }
         });
 

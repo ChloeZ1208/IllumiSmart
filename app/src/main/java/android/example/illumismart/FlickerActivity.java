@@ -368,7 +368,6 @@ public class FlickerActivity extends AppCompatActivity {
     private void flickerEntityPrep() {
         Utils utils = new Utils();
         String timeStamp = utils.getSpecifiedTimestamp();
-        //String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CANADA).format(new Date());
         flickerEntityInstance = new FlickerItem(timeStamp,
                 df.format(fluctuationRate)+" Hz",
                 String.valueOf(flickerEventCount),
