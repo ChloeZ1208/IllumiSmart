@@ -16,7 +16,6 @@ public class Utils {
         SimpleDateFormat canadaFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         TimeZone canada = TimeZone.getTimeZone("EST");
         canadaFormat.setTimeZone(canada);
-        String timeStamp = canadaFormat.format(new Date());
-        return timeStamp;
+        return canadaFormat.format(new Date());
     }
 }

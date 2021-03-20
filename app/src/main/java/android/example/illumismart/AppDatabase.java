@@ -1,12 +1,14 @@
 package android.example.illumismart;
 
 import android.content.Context;
+import android.example.illumismart.DAO.GlareDao;
 import android.example.illumismart.DAO.IlluminanceDao;
 import android.example.illumismart.DAO.dataItemDao;
 import android.example.illumismart.DAO.FlickerDao;
 import android.example.illumismart.entity.Illuminance;
 import android.example.illumismart.entity.dataItem;
 import android.example.illumismart.entity.FlickerItem;
+import android.example.illumismart.entity.GlareItem;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -18,7 +20,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Illuminance.class, dataItem.class, FlickerItem.class},
+@Database(entities = {Illuminance.class, dataItem.class, FlickerItem.class, GlareItem.class},
           version = 1,
           exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
@@ -30,6 +32,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract dataItemDao itemDao();
 
     public abstract FlickerDao flickerDao();
+
+    public abstract GlareDao glareDao();
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
@@ -84,6 +88,9 @@ public abstract class AppDatabase extends RoomDatabase {
 
                 FlickerDao flicker_item_dao = INSTANCE.flickerDao();
                 flicker_item_dao.deleteAll();
+
+                GlareDao glare_item_dao = INSTANCE.glareDao();
+                glare_item_dao.deleteAll();
 
                 INSTANCE.setDatabaseCreated();
             });

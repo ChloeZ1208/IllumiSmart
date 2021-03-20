@@ -1,14 +1,21 @@
 package android.example.illumismart;
 
-import android.Manifest;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
+import android.example.illumismart.entity.GlareItem;
+import android.example.illumismart.entity.dataItem;
+import android.example.illumismart.viewmodel.GlareItemViewModel;
+import android.example.illumismart.viewmodel.dataItemViewModel;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -20,13 +27,30 @@ import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+
+import java.io.File;
+import java.text.DecimalFormat;
 
 public class GlareActivity extends AppCompatActivity implements
         CameraBridgeViewBase.CvCameraViewListener2{
     private static final String LOG_TAG = GlareActivity.class.getSimpleName();
-    private CameraBridgeViewBase mCVCamera;
-    private Mat mRgba;
+    private static final String ITEM_NAME = "Glare";
+    private CameraBridgeViewBase glareCVCamera;
+
+    private Mat glareFrame;
+    private float glareMaxPixelVal;
+    private boolean glareEvent;
+    private TextView glareTextViewResult;
+    private Button glareButtonSave;
+    private Utils utils;
+    private DecimalFormat df;
+
+    private GlareItemViewModel glareItemViewModel;
+    private dataItemViewModel dataItemViewModel;
+    private GlareItem glareEntityInstance;
+    private dataItem dataItemEntityInstance;
 
 
     BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -35,7 +59,7 @@ public class GlareActivity extends AppCompatActivity implements
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS:
                     Log.i(LOG_TAG, "OpenCV loaded successfully");
-                    mCVCamera.enableView();
+                    glareCVCamera.enableView();
                     break;
                 default:break;
             }
@@ -46,9 +70,68 @@ public class GlareActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glare);
+        utils = new Utils();
+        df = new DecimalFormat("0.00");
+        glareMaxPixelVal = 0;
+        glareEvent = false;
+        // GlareItem save
+        glareItemViewModel = new ViewModelProvider(this, ViewModelProvider.
+                AndroidViewModelFactory.
+                getInstance(this.getApplication())).get(GlareItemViewModel.class);
+        // DataItem(Glare) save
+        dataItemViewModel = new ViewModelProvider(this,
+                ViewModelProvider.
+                        AndroidViewModelFactory.
+                        getInstance(this.getApplication())).get(dataItemViewModel.class);
 
-        mCVCamera = (CameraBridgeViewBase) findViewById(R.id.glare_cv_camera);
-        mCVCamera.setCvCameraViewListener(this);
+        glareTextViewResult = findViewById(R.id.glare_text_result);
+        glareTextViewResult.setTextColor(Color.RED);
+        glareCVCamera = (CameraBridgeViewBase) findViewById(R.id.glare_cv_camera);
+        glareCVCamera.setCvCameraViewListener(this);
+        glareButtonSave = findViewById(R.id.glare_button_save);
+        glareButtonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (glareFrame != null && !glareFrame.empty()) {
+                    // Get image
+                    String timestamp = utils.getSpecifiedTimestamp();
+                    Mat inter = new Mat(glareFrame.width(), glareFrame.height(), CvType.CV_8UC4);
+                    Imgproc.cvtColor(glareFrame, inter, Imgproc.COLOR_RGBA2BGR);
+                    float glareMaxPixelStored = glareMaxPixelVal;
+
+                    // Store image
+                    File sdDir;
+                    boolean sdCardExist = Environment.getExternalStorageState().
+                            equals(Environment.MEDIA_MOUNTED);
+                    if(sdCardExist) {
+                        sdDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+                        if (!sdDir.exists()) {
+                            boolean ret = sdDir.mkdirs();
+                            if (!ret) {
+                                Toast.makeText(GlareActivity.this,
+                                        "Failed to create dir", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }
+                    } else {
+                        Toast.makeText(GlareActivity.this,
+                                "Failed to store due to device", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    String filePath = sdDir + "/" + timestamp + ".png";
+                    Imgcodecs.imwrite(filePath, inter);
+
+                    // DAO
+                    dataItemEntityInstance = new dataItem(timestamp, ITEM_NAME);
+                    glareEntityInstance = new GlareItem(timestamp,
+                            df.format(glareMaxPixelStored), filePath, String.valueOf(glareEvent));
+                    glareItemViewModel.insert(glareEntityInstance);
+                    dataItemViewModel.insert(dataItemEntityInstance);
+                    Toast.makeText(GlareActivity.this,
+                            "Glare image store path: "+ filePath, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -68,27 +151,27 @@ public class GlareActivity extends AppCompatActivity implements
 
     @Override
     protected void onDestroy() {
-        if(mCVCamera != null) {
-            mCVCamera.disableView();
+        if(glareCVCamera != null) {
+            glareCVCamera.disableView();
         }
         super.onDestroy();
     }
 
     @Override
     public void onCameraViewStarted(int width, int height) {
-        mRgba = new Mat(height, width, CvType.CV_8UC4);
+        glareFrame = new Mat(height, width, CvType.CV_8UC4);
     }
 
     @Override
     public void onCameraViewStopped() {
-        mRgba.release();
+        glareFrame.release();
     }
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
-        mRgba = inputFrame.rgba();
+        glareFrame = inputFrame.rgba();
         Mat grayScaleGaussianBlur = new Mat();
-        Imgproc.cvtColor(mRgba , grayScaleGaussianBlur, Imgproc.COLOR_BGR2GRAY);
+        Imgproc.cvtColor(glareFrame , grayScaleGaussianBlur, Imgproc.COLOR_BGR2GRAY);
         Imgproc.GaussianBlur(grayScaleGaussianBlur, grayScaleGaussianBlur,
                 new Size(7, 7), 0);
 
@@ -96,19 +179,38 @@ public class GlareActivity extends AppCompatActivity implements
 
         final double maxVal = minMaxLocResultBlur.maxVal;
         final double minVal = minMaxLocResultBlur.minVal;
+        glareMaxPixelVal = (float)minMaxLocResultBlur.maxVal;
 
-        if (maxVal >= 250.0 && minVal <= 0.0) {
+        if (maxVal >= 253.0 && minVal <= 0.0) {
             Log.w(LOG_TAG, "glare?");
             Point maxValPoint = minMaxLocResultBlur.maxLoc;
-            double leftX = Math.max(0, maxValPoint.x - 50);
-            double leftY = Math.max(0, maxValPoint.y - 50);
-            double rightX = Math.min(mRgba.width(), maxValPoint.x + 50);
-            double rightY = Math.min(mRgba.height(), maxValPoint.y + 50);
-            Imgproc.rectangle(mRgba, new Point(leftX,leftY), new Point(rightX,rightY),
+            double leftX = Math.max(0, maxValPoint.x - 100);
+            double leftY = Math.max(0, maxValPoint.y - 100);
+            double rightX = Math.min(glareFrame.width(), maxValPoint.x + 100);
+            double rightY = Math.min(glareFrame.height(), maxValPoint.y + 100);
+            Imgproc.rectangle(glareFrame, new Point(leftX,leftY), new Point(rightX,rightY),
                     new Scalar( 255, 0, 0 ), 2);
+            setGlareTextThread(true);
         } else {
             Log.w(LOG_TAG, "normal?");
+            setGlareTextThread(false);
         }
-        return mRgba;
+        return glareFrame;
+    }
+
+
+    private void setGlareTextThread(Boolean glareDetected) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(glareDetected) {
+                    glareTextViewResult.setText(R.string.glare_event_true);
+                    glareEvent = true;
+                } else {
+                    glareTextViewResult.setText(R.string.glare_event_false);
+                    glareEvent = false;
+                }
+            }
+        });
     }
 }

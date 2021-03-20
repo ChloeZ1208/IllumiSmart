@@ -41,6 +41,14 @@
         <item name="android:windowBackground">?attr/colorPrimaryVariant</item>
         <item name="android:textColor">@color/white</item>
     </style>
+    <style name="Theme.IllumiSmart.Glare" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/glare</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">?attr/colorPrimaryVariant</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
     <style name="Theme.IllumiSmart.Occupation" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/occupation_age_btn</item>
         <item name="colorPrimaryVariant">@color/home_red</item>

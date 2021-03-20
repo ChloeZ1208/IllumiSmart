@@ -55,6 +55,9 @@
             android:name=".GlareActivity"
             android:theme="@style/Theme.IllumiSmart.NoActionBar" />
         <activity
+            android:name=".GlareRecordActivity"
+            android:theme="@style/Theme.IllumiSmart.Glare" />
+        <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.IllumiSmart.Launcher">
             <intent-filter>
