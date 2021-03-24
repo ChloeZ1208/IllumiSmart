@@ -3,14 +3,17 @@ package android.example.illumismart;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
 public class LightLevelSuggestActivity extends AppCompatActivity {
     private MaterialToolbar topAppBar;
+    private TextView luxSuggestRange;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,7 @@ public class LightLevelSuggestActivity extends AppCompatActivity {
         root.setBackgroundColor(Color.parseColor("#FAFAFA"));
 
         topAppBar = findViewById(R.id.lux_sugg_top_app_bar);
+        luxSuggestRange = findViewById(R.id.lux_suggest_range);
 
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -39,7 +43,11 @@ public class LightLevelSuggestActivity extends AppCompatActivity {
             }
             return false;
         });
-
-
+        // Set illuminance range
+        Intent intent = getIntent();
+        String min = intent.getStringExtra("luxRangeMin");
+        String max = intent.getStringExtra("luxRangeMax");
+        String range = min + "-" + max + " Lux";
+        luxSuggestRange.setText(range);
     }
 }

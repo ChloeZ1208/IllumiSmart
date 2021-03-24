@@ -48,6 +48,8 @@ public class LightLevelActivity extends AppCompatActivity {
     private TextView lightLevelViewDetails;
     private ArrayList<Float> luxMeasurementTmpList;
     private Boolean luxMeasurementActivated;
+    private int luxRangeMin;
+    private int luxRangeMax;
 
     private CountDownTimer luxMeasurementTimer;
     private static final long COUNT_DOWN_TIME = 60000;
@@ -106,6 +108,13 @@ public class LightLevelActivity extends AppCompatActivity {
             }
             return false;
         });
+
+        lightLevelReset.setClickable(false);
+        lightLevelPause.setClickable(false);
+        lightLevelSave.setClickable(false);
+        lightLevelReset.setImageResource(R.drawable.lux_reset_pressed);
+        lightLevelPause.setImageResource(R.drawable.lux_pause_pressed);
+        lightLevelSave.setImageResource(R.drawable.lux_save_pressed);
 
         sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         if (sensorManager != null) {
@@ -166,7 +175,7 @@ public class LightLevelActivity extends AppCompatActivity {
 
                 lightLevelReset.setImageResource(R.drawable.light_level_reset);
                 lightLevelSave.setImageResource(R.drawable.light_level_save);
-                //lightLevelPause.setImageResource(R.drawable.lux_pause_pressed);
+                lightLevelPause.setImageResource(R.drawable.lux_pause_pressed);
                 provideSuggestions();
             }
         };
@@ -223,6 +232,13 @@ public class LightLevelActivity extends AppCompatActivity {
 
                 lightLevelPlay.setClickable(true);
                 lightLevelPlay.setImageResource(R.drawable.light_level_play);
+
+                lightLevelReset.setClickable(false);
+                lightLevelPause.setClickable(false);
+                lightLevelSave.setClickable(false);
+                lightLevelReset.setImageResource(R.drawable.lux_reset_pressed);
+                lightLevelPause.setImageResource(R.drawable.lux_pause_pressed);
+                lightLevelSave.setImageResource(R.drawable.lux_save_pressed);
             }
         });
 
@@ -236,6 +252,8 @@ public class LightLevelActivity extends AppCompatActivity {
                     illuminanceViewModel.insert(illuminanceEntityInstance);
                     dataItemViewModel.insert(dataItemEntityInstance);
                     luxMeasurementTmpList.clear();
+                    lightLevelSave.setClickable(false);
+                    lightLevelSave.setImageResource(R.drawable.lux_save_pressed);
                     Toast.makeText(LightLevelActivity.this,
                             "Illuminance record saved successfully!",
                             Toast.LENGTH_SHORT).show();
@@ -260,21 +278,64 @@ public class LightLevelActivity extends AppCompatActivity {
         return !ranBefore;
     }
 
-    private void provideSuggestions() {
-        if (avgLux < 500) {
-            lightLevelSuggestion.setText(R.string.light_level_guidance_below);
-        } else if (avgLux > 700)
-            lightLevelSuggestion.setText(R.string.light_level_guidance_above);
-        else {
-            lightLevelSuggestion.setText(R.string.light_level_guidance_among);
+    private void luxRangeCalculate() {
+        SharedPreferences preferences = getSharedPreferences("ProfileInfo",MODE_PRIVATE);
+        String occupation = preferences.getString("Occupation", null);
+        String age = preferences.getString("Age", null);
+        if (occupation == null) {
+            luxRangeMin = 0;
+            luxRangeMax = 0;
+        } else if (occupation.equals("GeneralWork")) {
+            luxRangeMin = 80;
+            luxRangeMax = 170;
+        } else if (occupation.equals("ModerateWork")) {
+            luxRangeMin = 200;
+            luxRangeMax = 250;
+        } else if (occupation.equals("PreciseWork")) {
+            luxRangeMin = 250;
+            luxRangeMax = 300;
+        } else if (occupation.equals("FineWork")) {
+            luxRangeMin = 500;
+            luxRangeMax = 700;
+        } else if (occupation.equals("VeryFineWork")) {
+            luxRangeMin = 1000;
+            luxRangeMax = 2000;
         }
-        //viewDetails(lightLevelViewDetails);
-        lightLevelSuggestion.setVisibility(View.VISIBLE);
-        lightLevelViewDetails.setVisibility(View.VISIBLE);
+        double ageFactor = 0;
+        if (age == null) {
+        } else if (age.equals("below40")) {
+            ageFactor = 1;
+        } else if (age.equals("4050")) {
+            ageFactor = 1.2;
+        } else if (age.equals("5065")) {
+            ageFactor = 1.6;
+        } else if (age.equals("above65")) {
+            ageFactor = 2.7;
+        }
+        luxRangeMin = (int) ageFactor * luxRangeMin;
+        luxRangeMax = (int) ageFactor * luxRangeMax;
+    }
+
+    private void provideSuggestions() {
+        luxRangeCalculate();
+        if (luxRangeMin != 0 && luxRangeMax != 0){
+            if (avgLux < luxRangeMin) {
+                lightLevelSuggestion.setText(R.string.light_level_guidance_below);
+            } else if (avgLux > luxRangeMax)
+                lightLevelSuggestion.setText(R.string.light_level_guidance_above);
+            else {
+                lightLevelSuggestion.setText(R.string.light_level_guidance_among);
+            }
+            lightLevelSuggestion.setVisibility(View.VISIBLE);
+            lightLevelViewDetails.setVisibility(View.VISIBLE);
+        }
     }
 
     public void viewDetails(View view) {
-        startActivity(new Intent(LightLevelActivity.this, LightLevelSuggestActivity.class));
+        Intent i = new Intent(LightLevelActivity.this, LightLevelSuggestActivity.class);
+        i.putExtra("luxRangeMin", String.valueOf(luxRangeMin));
+        i.putExtra("luxRangeMax", String.valueOf(luxRangeMax));
+        startActivity(i);
     }
 
     private void lightLevelAnalysis() {

@@ -33,14 +33,14 @@
     <string name="light_level_guidance_above">The average lighting level is above the guideline suggestions</string>
     <string name="light_level_guidance_among">The average lighting level follows the guidance.</string>
     <string name="light_level_view_details"><u>View Details</u></string>
-    <string name="profile_below40_finework">According to your age (below 40) and type of task being done (fine work), the recommended illuminance is:</string>
+    <string name="profile_below40_finework">According to your age and type of task being done, the recommended illuminance is:</string>
     <string name="light_level_below_suggest">If the measured average light level is under the guidance, view <u>Correction of Insufficient Light</u></string>
     <string name="light_level_above_suggest">If the measured average light level is above the guidance, it is suggested to conduct a glare test next.</string>
     <string name="occupation_question">Which of the following answers best describes your work type?</string>
-    <string name="occupation_general_txt">Examples: Storeroom...</string>
-    <string name="occupation_moderate_txt">Examples: Packing; despatch...</string>
-    <string name="occupation_precise_txt">Examples: Simple assembly; locksmith’s work; winding thick wire onto spools; work on carpenter’s bench; milling...</string>
-    <string name="occupation_fine_txt">Examples: Reading; writing; book-keeping; laboratory technician; assembly of fine equipment; woodworking by machine; fine work on toolmaking gig...</string>
+    <string name="occupation_general_txt">Examples: Storeroom…</string>
+    <string name="occupation_moderate_txt">Examples: Packing; despatch…</string>
+    <string name="occupation_precise_txt">Examples: Simple assembly; locksmith’s work; winding thick wire onto spools; work on carpenter’s bench; milling…</string>
+    <string name="occupation_fine_txt">Examples: Reading; writing; book-keeping; laboratory technician; assembly of fine equipment; woodworking by machine; fine work on toolmaking gig…</string>
     <string name="occupation_veryfine_txt">Examples: Technical drawing; colour proofing; adjusting and testing electrical equipement; assembling delicate electronics; watchmaking; invisible mending</string>
     <string name="age_question">What is your age?</string>
 </resources>

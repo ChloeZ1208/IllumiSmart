@@ -271,7 +271,19 @@
         app:layout_constraintTop_toBottomOf="@+id/appBarFlicker"
         app:layout_constraintVertical_bias="0.7" />
 
-
+    <TextView
+        android:id="@+id/flicker_view_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="flickerViewDetails"
+        android:text="@string/light_level_view_details"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/flicker_text_info"
+        app:layout_constraintStart_toStartOf="@+id/flicker_text_info"
+        app:layout_constraintTop_toBottomOf="@+id/flicker_text_info"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

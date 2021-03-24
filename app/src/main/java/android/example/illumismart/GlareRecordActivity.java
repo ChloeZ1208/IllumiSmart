@@ -36,7 +36,7 @@ public class GlareRecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_glare_record);
         View v = findViewById(R.id.glare_record_screen);
         View root = v.getRootView();
-        root.setBackgroundColor(Color.parseColor("#CA9AB1"));
+        root.setBackgroundColor(Color.parseColor("#E5E5E5"));
         utils = new Utils();
 
         glareMaxPixelVal = findViewById(R.id.glare_record_pixel);

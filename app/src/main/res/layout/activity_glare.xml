@@ -8,42 +8,46 @@
     android:layout_height="match_parent"
     tools:context=".GlareActivity">
 
+
     <org.opencv.android.JavaCameraView
         android:id="@+id/glare_cv_camera"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:screenOrientation="landscape"
+        android:layout_height="0dp"
+        android:screenOrientation="portrait"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         opencv:camera_id="any"
         opencv:show_fps="true" />
 
-    <RelativeLayout
-        android:id="@+id/glare_text_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|center_horizontal">
+    <TextView
+        android:id="@+id/glare_text_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Glare event: False"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/glare_text_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="111dp"
-            android:layout_marginTop="692dp"
-            android:layout_marginEnd="112dp"
-            android:text="Glare event: False"
-            android:textSize="24sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/glare_button_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|left">
-
-        <Button
-            android:id="@+id/glare_button_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save" />
-    </RelativeLayout>
+    <Button
+        android:id="@+id/glare_button_save"
+        style="@style/roundedImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/glare"
+        android:elevation="0dp"
+        android:text="Save"
+        android:textSize="16sp"
+        app:cornerRadius="20dp"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
