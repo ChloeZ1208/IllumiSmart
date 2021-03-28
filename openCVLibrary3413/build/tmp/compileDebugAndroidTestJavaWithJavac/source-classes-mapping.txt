@@ -1,2 +1,0 @@
-org/opencv/test/BuildConfig.java
- org.opencv.test.BuildConfig

@@ -19,4 +19,7 @@
     <color name="stroke">#E0E0E0</color>
     <color name="age">#EBAA83</color>
     <color name="occupation_age_btn">#20FFFFFF</color>
+    <color name="question_background">#FAFAFA</color>
+    <color name="question_text">#333333</color>
+    <color name="question_btn">#F2F2F2</color>
 </resources>

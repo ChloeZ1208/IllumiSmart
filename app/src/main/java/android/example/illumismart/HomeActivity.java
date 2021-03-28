@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         MaterialCardView enterLightLevel = findViewById(R.id.home_light_level);
         MaterialCardView enterLightFlicker = findViewById(R.id.home_light_flicker);
         MaterialCardView enterLightGlare = findViewById(R.id.home_light_glare);
+        MaterialCardView enterSelfAssessment = findViewById(R.id.home_self_assessment);
 
         bottomNav.getMenu().findItem(R.id.home_page).setChecked(true);
 
@@ -60,6 +61,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this,
                         GlareActivity.class));
+            }
+        });
+
+        enterSelfAssessment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,
+                        Question1Activity.class));
             }
         });
 
