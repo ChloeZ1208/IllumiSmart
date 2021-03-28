@@ -13,7 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IllumiSmart">
-        <activity android:name=".Question10Activity"></activity>
+        <activity android:name=".QuestionFinishActivity"
+            android:theme="@style/Theme.IllumiSmart.Question"/>
+        <activity
+            android:name=".QuestionSuggestActivity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity android:name=".Question10Activity" />
         <activity
             android:name=".Question9Activity"
             android:theme="@style/Theme.IllumiSmart.Question" />

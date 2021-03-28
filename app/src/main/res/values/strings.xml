@@ -45,7 +45,7 @@
     <string name="age_question">What is your age?</string>
     <string name="question1_work">Do you work in the office or industry setting?</string>
     <string name="question_select_header">Choose one of the following</string>
-    <string name="question2_discomfort">Are there any signs of frequent eye discomfort (e.g. eyestrain, blurred vision...) and/or headaches?</string>
+    <string name="question2_discomfort">Are there any signs of frequent eye discomfort (e.g. eyestrain, blurred vision…) and/or headaches?</string>
     <string name="question_back_header">Back to the Previous Question</string>
     <string name="question3_sunlight">Does your workplace have access to the natural light (sunlight) via windows?</string>
     <string name="question4_curtains">Are there blinds or curtains on windows?</string>
@@ -64,4 +64,56 @@
     <string name="question10_clean">Do you usually clean light fixtures, upper walls, ceilings and task stations?</string>
     <string name="question10_a">Yes, on regular schedule or whenever needed</string>
     <string name="question10_b">Never</string>
+    <string name="question2suggest_a">
+        In general, eye discomfort symptoms may be caused by: \n
+        1. poor lighting \n
+        2. glare on a computer or tablet screen \n
+        3. poor quality computer or tablet screen (e.g., poor resolution, blurry image, etc.)\n
+        4. improper viewing distances \n
+        5. poor sitting posture \n
+        6. uncorrected vision problems \n
+        7. dry air \n
+        8. air movement, or \n
+        9. a combination of these factors \n\n
+        Other examples of work-related risk factors that contribute to eye discomfort are: \n
+        maintaining a fixed and close visual distance for a long time, \n
+        1. glare from the unshaded or un-diffused lighting fixtures, \n
+        2. poor lighting, involving unchanged (and unchangeable) levels of illumination,\n
+        3. unsuitable workstations (dimensions and arrangement),\n
+        4. low ambient humidity,\n
+        5. uncorrected vision problems, and \n
+        6. lack of colour variety in one\'s surroundings.\n\n
+        As you go through this assessment, some of the problems above will be addressed. If the eye discomfort has not been reduced after suggested actions taken, have your eyes examined by an eye specialist or medical professional.
+    </string>
+    <string name="question4suggest_b">
+        It is recommended to have blinds or curtains on your windows, as they can control the amount of daylight entering the workplace. Excessive amounts of daylight may cause annoying reflections, and some angles of light may cause glares. It is important to adjust the curtains positions accordingly.
+    </string>
+    <string name="question6suggest_b">
+        Placing your monitor in front of the window is not a wise choice. When looking at the monitor, the daylight coming through the window can be a source of glare and make it difficult to see the contents on the screen. To confirm, put your hands on the top of the monitor to shield some light entering the window. If such a shield makes the contents on the screen more visible, then the glare is presented.\n\n
+        As a means of eliminating window-related glare, it is suggested that you place your screen at a ninety-degree angle from all nearby windows, or else that you make use of window shades.
+    </string>
+    <string name="question6suggest_c">
+        Facing the monitor to a window is not a wise choice. The monitor is a reflective surface and will reflect the external light source and possibly cause glare. The presence of glare is easily determined by turning off your screen. If glare is present, you will obviously see it all over your darkened screen.\n\n
+        As a means of eliminating window-related glare, it is suggested that you place your screen at a ninety-degree angle from all nearby windows, or else that you make use of window shades. If you\’ve already taken all possible steps to handle the glare and find it still present, then perhaps a third-party accessory is needed. Glare and light filters are often used for this purpose.
+    </string>
+    <string name="question7suggest_a">
+        Difficulty of seeing is usually due to insufficient light or high contrast in the visual environment. Most office work involves using the monitor and paper documents at the same time. Paper documents require a higher light level than the monitor. Glare can result from an improper match or excessive contrast in light levels between the monitor screen and the paper.\n\n
+        To address this, frst, check whether the documents are placed in the shadows. If so, move it away from the shadows or remove the objects that caused the shadows. If there is still insufficient light, a desk lamp (any type of soft task light) can be used to illuminate documents while avoiding excessive light near the monitor.
+    </string>
+    <string name="question8suggest_a">
+        The pupil and the retina of the eye can cope with changes in luminance only after a certain delay so that fluctuating brightness leaves the eyes either under- or over-exposed for much of the time. It is suggested that all the objects and major surfaces along the main axes of sight should appear to be about equally bright, and it is better to place the task objects as near as possible to avoid exhaustedly moving the sight.
+    </string>
+    <string name="question9suggest_a">
+        Replacing a light bulb when it does not work is always the easiest way. However, it is also important to notice that sometimes even if the light bulb is working, it may still need to be replaced due to dimming or flickering. Using the "Light Level Measurement" function to test if the light bulb is less bright, and using the "Flicker Detection" function to check whether it is flickering. Troubleshoot and replace the light bulbs when necessary.\n\n
+        Tip: Replacing your incandescents and halogen bulbs with LEDs will save you money in the long run. The money you spend to power a 60-Watt incandescent bulb for the maximum 2,000-hour lifespan could pay the initial cost of purchasing an energy-saving LED.
+    </string>
+    <string name="question9suggest_b">
+        It seems you have a great sense of taking care of your eyes! Just note that, not just the light bulb itself, many other factors such as power fluctuations, corrupt or incorrect wiring may cause the light unstable. Before replacing the light bulbs, you may troubleshoot them by the tips given in this article: https://blog.1000bulbs.com/home/help-my-lights-dont-work.
+    </string>
+    <string name="question9suggest_c">
+        It seems you have a great sense of taking care of your lamps! The following table lists the accepted average life hours of different standard types of light bulbs, which may help you better adjust your replacing schedule.
+    </string>
+    <string name="question10suggest_b">
+        To reach proper light levels and uniform light distribution in the visual environment, many light fixtures are designed to reflect light off walls, ceilings and objects.  Components of the light fixtures such as the covers are crucial for light to be diffused evenly, and dirt on walls or ceilings may influence the surface reflectance. It is recommended to clean light fixtures, upper walls, ceilings and task stations regularly to avoid poorly distributed light.
+    </string>
 </resources>

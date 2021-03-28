@@ -41,6 +41,7 @@ public class Question2Activity extends AppCompatActivity implements View.OnClick
         int id = v.getId();
         if(id == R.id.question2_a) {
             //TODO: goto suggest-eye discomfort
+            startActivity(new Intent(Question2Activity.this, QuestionSuggestActivity.class));
         } else if(id == R.id.question2_b) {
             startActivity(new Intent(Question2Activity.this, Question3Activity.class));
         } else if(id == R.id.question2_back) {
