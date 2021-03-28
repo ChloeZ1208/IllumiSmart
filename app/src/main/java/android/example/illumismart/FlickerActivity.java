@@ -48,6 +48,7 @@ public class FlickerActivity extends AppCompatActivity {
     private TextView flickerLuxMax;
     private TextView flickerLuxAvg;
     private TextView flickerLuxAvgHeader;
+    private TextView flickerViewDetails;
 
     private SensorManager mSensorManager;
     private Sensor mLightSensor;
@@ -109,6 +110,11 @@ public class FlickerActivity extends AppCompatActivity {
             return false;
         });
 
+        flickerButtonReset.setClickable(false);
+        flickerButtonSave.setClickable(false);
+        flickerButtonReset.setImageResource(R.drawable.lux_reset_pressed);
+        flickerButtonSave.setImageResource(R.drawable.lux_save_pressed);
+
         // FlickerItem save
         flickerItemViewModel = new ViewModelProvider(this, ViewModelProvider.
                 AndroidViewModelFactory.
@@ -138,9 +144,6 @@ public class FlickerActivity extends AppCompatActivity {
         if (mSensorManager != null && mLightSensor != null) {
             mSensorManager.unregisterListener(mSensorEventListener, mLightSensor);
         }
-        /*
-         *  TODO: save view details info to preferences
-         */
     }
 
     @Override
@@ -167,6 +170,7 @@ public class FlickerActivity extends AppCompatActivity {
         flickerButtonSave = findViewById(R.id.flicker_save);
         flickerTextTimeRemaining = findViewById(R.id.flicker_text_time_remain);
         flickerTextInfo = findViewById(R.id.flicker_text_info);
+        flickerViewDetails = findViewById(R.id.flicker_view_details);
 
         flickerLuxMin = findViewById(R.id.flicker_min_txt);
         flickerLuxMax = findViewById(R.id.flicker_max_txt);
@@ -189,11 +193,7 @@ public class FlickerActivity extends AppCompatActivity {
                 flickerLuxMax.setVisibility(View.VISIBLE);
                 flickerTextTimeRemaining.setVisibility(View.VISIBLE);
                 flickerButtonStart.setImageResource(R.drawable.lux_play_pressed);
-                flickerButtonReset.setImageResource(R.drawable.lux_reset_pressed);
-                flickerButtonSave.setImageResource(R.drawable.lux_save_pressed);
                 flickerButtonStart.setClickable(false);
-                flickerButtonReset.setClickable(false);
-                flickerButtonSave.setClickable(false);
                 flickerDetectionTimer.start();
                 flickerDetectionActivated = true;
             }
@@ -204,6 +204,10 @@ public class FlickerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 flickerButtonStart.setClickable(true);
                 flickerButtonStart.setImageResource(R.drawable.flicker_play);
+                flickerButtonReset.setClickable(false);
+                flickerButtonSave.setClickable(false);
+                flickerButtonReset.setImageResource(R.drawable.lux_reset_pressed);
+                flickerButtonSave.setImageResource(R.drawable.lux_save_pressed);
 
                 flickerDetectionTmpList.clear();
                 lightLevelTxt.setText("Instantaneous Level");
@@ -230,6 +234,8 @@ public class FlickerActivity extends AppCompatActivity {
                     Toast.makeText(FlickerActivity.this,
                             "Flicker record saved successfully!",
                             Toast.LENGTH_SHORT).show();
+                    flickerButtonSave.setClickable(false);
+                    flickerButtonSave.setImageResource(R.drawable.lux_save_pressed);
                 } else {
                     Toast.makeText(FlickerActivity.this,
                             "No data to save. Click play!", Toast.LENGTH_SHORT).show();
@@ -290,8 +296,10 @@ public class FlickerActivity extends AppCompatActivity {
                     flickerTextInfo.setText(R.string.flicker_guidance_0);
                 } else if (flickerEventCount >= 1 && flickerEventCount <= 3) {
                     flickerTextInfo.setText(R.string.flicker_guidance_1to3);
+                    flickerViewDetails.setVisibility(View.VISIBLE);
                 } else if (flickerEventCount > 3) {
                     flickerTextInfo.setText(R.string.flicker_guidance_3);
+                    flickerViewDetails.setVisibility(View.VISIBLE);
                 }
 
                 lightLevelTxt.setText("Fluctuation Rate");
@@ -371,5 +379,9 @@ public class FlickerActivity extends AppCompatActivity {
                 df.format(minLux)+" Hz",
                 df.format(avgLux) + " Lux");
         dataItemEntityInstance = new dataItem(timeStamp, ITEM_NAME);
+    }
+
+    public void flickerViewDetails(View view) {
+        //TODO: flicker suggestions
     }
 }

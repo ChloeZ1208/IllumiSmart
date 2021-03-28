@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.example.illumismart">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -13,8 +13,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IllumiSmart">
-        <activity android:name=".SettingActivity"
-            android:theme="@style/Theme.IllumiSmart.NoActionBar"/>
+        <activity android:name=".Question10Activity"></activity>
+        <activity
+            android:name=".Question9Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".Question8Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".Question7Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".Question6Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".Question5Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".Question4Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".Question3Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".Question2Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".Question1Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".SettingActivity"
+            android:theme="@style/Theme.IllumiSmart.NoActionBar" />
         <activity
             android:name=".ProfileAgeActivity"
             android:theme="@style/Theme.IllumiSmart.Age" />
@@ -50,6 +79,7 @@
             android:theme="@style/Theme.IllumiSmart.LightLevel" />
         <activity
             android:name=".HomeActivity"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.IllumiSmart.NoActionBar" />
         <activity
             android:name=".GlareActivity"

@@ -117,7 +117,7 @@
 
         <ImageView
             android:layout_width="25dp"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="18dp"
             app:srcCompat="@drawable/setting_about" />
@@ -155,7 +155,7 @@
         app:strokeWidth="0.5dp">
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="18dp"
