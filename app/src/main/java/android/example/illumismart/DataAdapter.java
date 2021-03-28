@@ -42,6 +42,8 @@ public class DataAdapter extends ListAdapter<dataItem, DataAdapter.DataViewHolde
             holder.mdataItem.setTextColor(Color.parseColor("#B49EBC"));
         } else if (current.getDataItem().equals("Glare")) {
             holder.mdataItem.setTextColor(Color.parseColor("#CA9AB1"));
+        } else if (current.getDataItem().equals("Self Assessment")) {
+            holder.mdataItem.setTextColor(Color.parseColor("#7AB5A5"));
         }
     }
 
@@ -88,6 +90,10 @@ public class DataAdapter extends ListAdapter<dataItem, DataAdapter.DataViewHolde
                         ctx.startActivity(intent);
                     } else if (click_item.equals("Glare")) {
                         Intent intent = new Intent(ctx, GlareRecordActivity.class);
+                        intent.putExtra("timestamp", click_timestamp);
+                        ctx.startActivity(intent);
+                    } else if (click_item.equals("Self Assessment")) {
+                        Intent intent = new Intent(ctx, SelfAssessmentRecordActivity.class);
                         intent.putExtra("timestamp", click_timestamp);
                         ctx.startActivity(intent);
                     }
