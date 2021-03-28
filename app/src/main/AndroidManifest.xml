@@ -58,6 +58,9 @@
             android:name=".GlareRecordActivity"
             android:theme="@style/Theme.IllumiSmart.Glare" />
         <activity
+            android:name=".SelfAssessmentRecordActivity"
+            android:theme="@style/Theme.IllumiSmart.SelfAssessment" />
+        <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.IllumiSmart.Launcher">
             <intent-filter>
