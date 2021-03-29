@@ -129,6 +129,18 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/elf_assessment_record_arrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
+            android:textSize="18sp" />
+
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -155,6 +167,18 @@
             android:gravity="center_vertical"
             android:text="PlaceHolder"
             android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/elf_assessment_record_arrow_2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
             android:textSize="18sp" />
     </com.google.android.material.card.MaterialCardView>
 
@@ -183,6 +207,18 @@
             android:text="PlaceHolder"
             android:textColor="@color/black"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/elf_assessment_record_arrow_3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
+            android:textSize="18sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -210,6 +246,18 @@
             android:text="PlaceHolder"
             android:textColor="@color/black"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/elf_assessment_record_arrow_4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
+            android:textSize="18sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -236,6 +284,18 @@
             android:gravity="center_vertical"
             android:text="PlaceHolder"
             android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/elf_assessment_record_arrow_5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
             android:textSize="18sp" />
     </com.google.android.material.card.MaterialCardView>
 
