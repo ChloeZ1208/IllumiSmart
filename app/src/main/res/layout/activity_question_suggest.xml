@@ -33,19 +33,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="Question 2:"
+            android:layout_marginBottom="15dp"
+            android:text="Suggestion"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/question_select"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="16dp"
-            android:text="Selected 'Yes'"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -65,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/question2suggest_a"
-            android:textAlignment="viewStart"
+            android:textAlignment="textStart"
             android:textColor="@color/question_text"
             android:textSize="14sp" />
     </ScrollView>

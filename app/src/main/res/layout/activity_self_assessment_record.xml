@@ -37,10 +37,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical"
                 android:text="Self Assessment Record"
                 android:textColor="@color/white"
-                android:textSize="23sp"
+                android:textSize="21sp"
                 android:textStyle="normal" />
 
         </com.google.android.material.appbar.MaterialToolbar>

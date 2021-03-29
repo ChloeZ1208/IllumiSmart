@@ -56,7 +56,7 @@ public class ProfileAgeActivity extends AppCompatActivity implements View.OnClic
             editor.putString("Age", "above65");
         }
         editor.apply();
-        startActivity(new Intent(ProfileAgeActivity.this, ProfileActivity.class));
+        startActivity(new Intent(ProfileAgeActivity.this, HomeActivity.class));
 
         if (id == R.id.age_skip) {
             startActivity(new Intent(ProfileAgeActivity.this, HomeActivity.class));

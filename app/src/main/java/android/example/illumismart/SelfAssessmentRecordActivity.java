@@ -29,7 +29,7 @@ public class SelfAssessmentRecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_self_assessment_record);
         View v = findViewById(R.id.self_assessment_record_screen);
         View root = v.getRootView();
-        root.setBackgroundColor(Color.parseColor("#7AB5A5"));
+        root.setBackgroundColor(Color.parseColor("#E5E5E5"));
         utils = new Utils();
 
         selfAssessmentTimestamp = findViewById(R.id.self_assessment_record_time);

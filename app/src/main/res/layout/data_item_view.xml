@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="210dp"
+            android:layout_marginStart="195dp"
             android:fontFamily="sans-serif"
             android:text="Illuminance"
             android:textColor="@color/black"
@@ -38,7 +38,7 @@
         <ImageButton
             android:id="@+id/click_item"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:scaleType="centerInside"

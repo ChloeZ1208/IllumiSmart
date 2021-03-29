@@ -75,46 +75,60 @@
         app:layout_constraintTop_toTopOf="@+id/appBarHome"
         app:layout_constraintVertical_bias="0.24">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|start"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:lineSpacingExtra="10sp"
-            android:text="@string/self_assessment"
-            android:textColor="@color/app_green"
-            android:textSize="21sp" />
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_gravity="top|start|end"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="46dp"
-            android:layout_marginEnd="72dp"
-            android:background="@color/nav_grey" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start|end"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="18dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/home_selfassess"
-            android:textColor="@color/nav_grey"
-            android:textSize="13sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="38dp"
-            android:layout_height="40dp"
-            android:layout_gravity="end|top"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/home_self" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="10sp"
+                    android:text="@string/self_assessment"
+                    android:textColor="@color/app_green"
+                    android:textSize="21sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="top|start|end"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/nav_grey" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start|end"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/home_selfassess"
+                    android:textColor="@color/nav_grey"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end|top"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="0.1"
+                android:src="@drawable/home_self" />
+        </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -131,47 +145,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_self_assessment"
         app:layout_constraintVertical_bias="0.0">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|start"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:lineSpacingExtra="10sp"
-            android:text="@string/measure_light_level"
-            android:textColor="@color/light_level"
-            android:textSize="21sp" />
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_gravity="top|start|end"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="46dp"
-            android:layout_marginEnd="72dp"
-            android:background="@color/nav_grey" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start|end"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="18dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/home_lightlevel"
-            android:textColor="@color/nav_grey"
-            android:textSize="13sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="10sp"
+                    android:text="@string/measure_light_level"
+                    android:textColor="@color/light_level"
+                    android:textSize="21sp" />
 
-        <ImageView
-            android:layout_width="38dp"
-            android:layout_height="40dp"
-            android:layout_gravity="end|top"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/home_light" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="top|start|end"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/nav_grey" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start|end"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/home_lightlevel"
+                    android:textColor="@color/nav_grey"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end|top"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/home_light" />
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -189,46 +212,58 @@
         app:layout_constraintTop_toBottomOf="@+id/home_light_level"
         app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|start"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:lineSpacingExtra="10sp"
-            android:text="@string/detect_light_flicker"
-            android:textColor="@color/flicker"
-            android:textSize="21sp" />
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_gravity="top|start|end"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="46dp"
-            android:layout_marginEnd="72dp"
-            android:background="@color/nav_grey" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start|end"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="18dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/home_flicker"
-            android:textColor="@color/nav_grey"
-            android:textSize="13sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="10sp"
+                    android:text="@string/detect_light_flicker"
+                    android:textColor="@color/flicker"
+                    android:textSize="21sp" />
 
-        <ImageView
-            android:layout_width="38dp"
-            android:layout_height="40dp"
-            android:layout_gravity="end|top"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/home_flicker" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="top|start|end"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/nav_grey" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start|end"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/home_flicker"
+                    android:textColor="@color/nav_grey"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end|top"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/home_flicker" />
+
+        </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -246,46 +281,58 @@
         app:layout_constraintTop_toBottomOf="@+id/home_light_flicker"
         app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|start"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:lineSpacingExtra="10sp"
-            android:text="@string/detect_glare"
-            android:textColor="@color/glare"
-            android:textSize="21sp" />
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_gravity="top|start|end"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="46dp"
-            android:layout_marginEnd="72dp"
-            android:background="@color/nav_grey" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start|end"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="18dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/a_quick_tool_to_check_whether_there_is_glare_hazard"
-            android:textColor="@color/nav_grey"
-            android:textSize="13sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingExtra="10sp"
+                    android:text="@string/detect_glare"
+                    android:textColor="@color/glare"
+                    android:textSize="21sp" />
 
-        <ImageView
-            android:layout_width="38dp"
-            android:layout_height="40dp"
-            android:layout_gravity="end|top"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/home_glare" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="top|start|end"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/nav_grey" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start|end"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/a_quick_tool_to_check_whether_there_is_glare_hazard"
+                    android:textColor="@color/nav_grey"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end|top"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/home_glare" />
+
+        </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
