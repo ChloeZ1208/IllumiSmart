@@ -10,6 +10,7 @@
     <string name="detect_glare">Detect Glare</string>z
     <string name="glare_event_true">Glare event: True</string>
     <string name="glare_event_false">Glare event: False</string>
+    <string name="self_assessment_extra_name">self assessment extra name</string>
     <string name="a_quick_tool_to_check_whether_there_is_glare_hazard">A quick tool to check whether there is glare hazard.</string>
     <string name="lightlevel_guidance">Light level is an important factor in the workplace. To measure the illuminance using this function:\n\n
         1. Push \t\t\t to start recording \n
@@ -64,6 +65,9 @@
     <string name="question10_clean">Do you usually clean light fixtures, upper walls, ceilings and task stations?</string>
     <string name="question10_a">Yes, on regular schedule or whenever needed</string>
     <string name="question10_b">Never</string>
+    <string name="question1suggest">
+        Sorry, this assessment is temporarily for office workers only. Newer versions of assessment for industry settings will be updated in the future :)
+    </string>
     <string name="question2suggest_a">
         In general, eye discomfort symptoms may be caused by: \n
         1. poor lighting \n
@@ -98,7 +102,7 @@
     </string>
     <string name="question7suggest_a">
         Difficulty of seeing is usually due to insufficient light or high contrast in the visual environment. Most office work involves using the monitor and paper documents at the same time. Paper documents require a higher light level than the monitor. Glare can result from an improper match or excessive contrast in light levels between the monitor screen and the paper.\n\n
-        To address this, frst, check whether the documents are placed in the shadows. If so, move it away from the shadows or remove the objects that caused the shadows. If there is still insufficient light, a desk lamp (any type of soft task light) can be used to illuminate documents while avoiding excessive light near the monitor.
+        To address this, first, check whether the documents are placed in the shadows. If so, move it away from the shadows or remove the objects that caused the shadows. If there is still insufficient light, a desk lamp (any type of soft task light) can be used to illuminate documents while avoiding excessive light near the monitor.
     </string>
     <string name="question8suggest_a">
         The pupil and the retina of the eye can cope with changes in luminance only after a certain delay so that fluctuating brightness leaves the eyes either under- or over-exposed for much of the time. It is suggested that all the objects and major surfaces along the main axes of sight should appear to be about equally bright, and it is better to place the task objects as near as possible to avoid exhaustedly moving the sight.
@@ -115,5 +119,35 @@
     </string>
     <string name="question10suggest_b">
         To reach proper light levels and uniform light distribution in the visual environment, many light fixtures are designed to reflect light off walls, ceilings and objects.  Components of the light fixtures such as the covers are crucial for light to be diffused evenly, and dirt on walls or ceilings may influence the surface reflectance. It is recommended to clean light fixtures, upper walls, ceilings and task stations regularly to avoid poorly distributed light.
+    </string>
+    <string name="question2suggest_a_keyword">
+        Eye Discomfort
+    </string>
+    <string name="question4suggest_b_keyword">
+        Curtains
+    </string>
+    <string name="question6suggest_b_keyword">
+        Monitor Position
+    </string>
+    <string name="question6suggest_c_keyword">
+        Monitor Position
+    </string>
+    <string name="question7suggest_a_keyword">
+        Paper Documents
+    </string>
+    <string name="question8suggest_a_keyword">
+        Reflections
+    </string>
+    <string name="question9suggest_a_keyword">
+        Vision Transitions
+    </string>
+    <string name="question9suggest_b_keyword">
+        Vision Transitions
+    </string>
+    <string name="question9suggest_c_keyword">
+        Vision Transitions
+    </string>
+    <string name="question10suggest_b_keyword">
+        Light Flicker
     </string>
 </resources>

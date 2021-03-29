@@ -9,8 +9,11 @@ import android.view.View;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.card.MaterialCardView;
 
+import java.util.ArrayList;
+
 public class Question1Activity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final int QUESTION_ID = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +40,24 @@ public class Question1Activity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        Intent intent = null;
+        ArrayList<String> arr = new ArrayList<String>();
         if(id == R.id.question1_a) {
-            startActivity(new Intent(Question1Activity.this, Question2Activity.class));
+            intent = new Intent(Question1Activity.this, Question2Activity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    new SelfAssessmentExtra(QUESTION_ID, arr, null)
+            );
         } else if(id == R.id.question1_b) {
-            //TODO: goto suggest page
+            intent = new Intent(Question1Activity.this,
+                    QuestionFinishActivity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    new SelfAssessmentExtra(QUESTION_ID, arr, null)
+            );
         }
+        startActivity(intent);
     }
+
+
 }

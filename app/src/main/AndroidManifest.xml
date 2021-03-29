@@ -18,7 +18,9 @@
         <activity
             android:name=".QuestionSuggestActivity"
             android:theme="@style/Theme.IllumiSmart.Question" />
-        <activity android:name=".Question10Activity" />
+        <activity
+            android:name=".Question10Activity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
         <activity
             android:name=".Question9Activity"
             android:theme="@style/Theme.IllumiSmart.Question" />
@@ -94,7 +96,10 @@
             android:theme="@style/Theme.IllumiSmart.Glare" />
         <activity
             android:name=".SelfAssessmentRecordActivity"
-            android:theme="@style/Theme.IllumiSmart.SelfAssessment" />
+            android:theme="@style/Theme.IllumiSmart.Question" />
+        <activity
+            android:name=".SelfAssessmentDetailActivity"
+            android:theme="@style/Theme.IllumiSmart.Question" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.IllumiSmart.Launcher">

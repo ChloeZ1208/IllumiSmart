@@ -76,23 +76,42 @@ public class SelfAssessmentRecordActivity extends AppCompatActivity {
                                     R.id.self_assessment_record_issue_2,
                                     R.id.self_assessment_record_issue_3,
                                     R.id.self_assessment_record_issue_4,
-                                    R.id.self_assessment_record_issue_5
+                                    R.id.self_assessment_record_issue_5,
+                                    R.id.self_assessment_record_issue_6,
+                                    R.id.self_assessment_record_issue_7
                             };
                             int [] textViewId = {
                                     R.id.self_assessment_record_issue_text_1,
                                     R.id.self_assessment_record_issue_text_2,
                                     R.id.self_assessment_record_issue_text_3,
                                     R.id.self_assessment_record_issue_text_4,
-                                    R.id.self_assessment_record_issue_text_5
+                                    R.id.self_assessment_record_issue_text_5,
+                                    R.id.self_assessment_record_issue_text_6,
+                                    R.id.self_assessment_record_issue_text_7
                             };
                             String [] issuesArr = utils.deserializeSelfAssessmentIssues(
                                     item.getIssues()
                             );
                             for (int index = 0; index < issuesArr.length; index++) {
+                                // set maximum of issues
+                                if (index == 7) {
+                                    break;
+                                }
                                 MaterialCardView cardView = findViewById(cardViewId[index]);
                                 TextView textView = findViewById(textViewId[index]);
                                 cardView.setVisibility(View.VISIBLE);
-                                textView.setText(issuesArr[index]);
+                                String keyword = issuesArr[index];
+                                textView.setText(utils.getKeywordStringId(keyword));
+                                cardView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(
+                                                SelfAssessmentRecordActivity.this,
+                                                SelfAssessmentDetailActivity.class);
+                                        intent.putExtra("keyword", keyword);
+                                        startActivity(intent);
+                                    }
+                                });
                             }
                         }
                     }

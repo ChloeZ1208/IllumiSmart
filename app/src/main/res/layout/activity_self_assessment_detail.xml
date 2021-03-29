@@ -47,7 +47,26 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarSelfAssessmentDetail">
 
+        <TextView
+            android:id="@+id/self_assessment_detail_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PlaceHolder"
+            android:textAlignment="viewStart"
+            android:textColor="@color/question_text"
+            android:textSize="14sp" />
+    </ScrollView>
 
 
 

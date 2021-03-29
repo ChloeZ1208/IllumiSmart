@@ -9,11 +9,11 @@ import android.view.View;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.card.MaterialCardView;
 
+import java.util.ArrayList;
+
 public class Question5Activity extends AppCompatActivity implements View.OnClickListener {
-    private MaterialToolbar topAppBar;
-    private MaterialCardView question5A;
-    private MaterialCardView question5B;
-    private MaterialCardView question5Back;
+    private static final int QUESTION_ID = 5;
+    private SelfAssessmentExtra selfAssessmentExtra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,11 @@ public class Question5Activity extends AppCompatActivity implements View.OnClick
         MaterialCardView question5B = findViewById(R.id.question5_b);
         MaterialCardView question5Back = findViewById(R.id.question5_back);
         MaterialToolbar topAppBar = findViewById(R.id.question5_toolbar);
+
+        selfAssessmentExtra = (SelfAssessmentExtra) getIntent().
+                getSerializableExtra(
+                        getString(R.string.self_assessment_extra_name)
+                );
 
         question5A.setOnClickListener(this);
         question5B.setOnClickListener(this);
@@ -43,10 +48,25 @@ public class Question5Activity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        ArrayList<String> arr = selfAssessmentExtra.getIssues();
         if(id == R.id.question5_a) {
-            startActivity(new Intent(Question5Activity.this, Question6Activity.class));
+            Intent intent = new Intent(Question5Activity.this,
+                    Question6Activity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    new SelfAssessmentExtra(QUESTION_ID,
+                            arr, null)
+            );
+            startActivity(intent);
         } else if(id == R.id.question5_b) {
-            startActivity(new Intent(Question5Activity.this, Question7Activity.class));
+            Intent intent = new Intent(Question5Activity.this,
+                    Question7Activity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    new SelfAssessmentExtra(QUESTION_ID,
+                            arr, null)
+            );
+            startActivity(intent);
         } else if(id == R.id.question5_back) {
             onBackPressed();
         }

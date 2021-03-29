@@ -299,4 +299,82 @@
             android:textSize="18sp" />
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/self_assessment_record_issue_6"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/self_assessment_record_issue_5"
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="@color/stroke"
+        app:strokeWidth="0.5dp">
+
+        <TextView
+            android:id="@+id/self_assessment_record_issue_text_6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="PlaceHolder"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/elf_assessment_record_arrow_6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
+            android:textSize="18sp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/self_assessment_record_issue_7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/self_assessment_record_issue_6"
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="@color/stroke"
+        app:strokeWidth="0.5dp">
+
+        <TextView
+            android:id="@+id/self_assessment_record_issue_text_7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="PlaceHolder"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/elf_assessment_record_arrow_7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
+            android:textSize="18sp" />
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
