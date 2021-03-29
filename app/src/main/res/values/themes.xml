@@ -80,6 +80,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <item name="android:windowBackground">?attr/colorPrimaryVariant</item>
         <item name="android:textColor">@color/question_text</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
     </style>
 
 </resources>
