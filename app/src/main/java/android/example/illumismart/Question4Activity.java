@@ -9,8 +9,11 @@ import android.view.View;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.card.MaterialCardView;
 
-public class Question4Activity extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
 
+public class Question4Activity extends AppCompatActivity implements View.OnClickListener {
+    private static final int QUESTION_ID = 4;
+    private SelfAssessmentExtra selfAssessmentExtra;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +23,11 @@ public class Question4Activity extends AppCompatActivity implements View.OnClick
         MaterialCardView question4B = findViewById(R.id.question4_b);
         MaterialCardView question4Back = findViewById(R.id.question4_back);
         MaterialToolbar topAppBar = findViewById(R.id.question4_toolbar);
+
+        selfAssessmentExtra = (SelfAssessmentExtra) getIntent().
+                getSerializableExtra(
+                        getString(R.string.self_assessment_extra_name)
+                );
 
         question4A.setOnClickListener(this);
         question4B.setOnClickListener(this);
@@ -39,10 +47,26 @@ public class Question4Activity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        ArrayList<String> arr = selfAssessmentExtra.getIssues();
         if(id == R.id.question4_a) {
-            startActivity(new Intent(Question4Activity.this, Question5Activity.class));
+            Intent intent = new Intent(Question4Activity.this,
+                    Question5Activity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    new SelfAssessmentExtra(QUESTION_ID,
+                            arr, null)
+            );
+            startActivity(intent);
         } else if(id == R.id.question4_b) {
-            //TODO: goto suggestion curtains
+            arr.add("question4suggest_b_keyword");
+            Intent intent = new Intent(Question4Activity.this,
+                    QuestionSuggestActivity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    new SelfAssessmentExtra(QUESTION_ID,
+                            arr, "question4suggest_b_keyword")
+            );
+            startActivity(intent);
         } else if(id == R.id.question4_back) {
             onBackPressed();
         }

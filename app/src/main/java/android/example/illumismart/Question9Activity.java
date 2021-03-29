@@ -9,7 +9,11 @@ import android.view.View;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.card.MaterialCardView;
 
+import java.util.ArrayList;
+
 public class Question9Activity extends AppCompatActivity implements View.OnClickListener {
+    private static final int QUESTION_ID = 9;
+    private SelfAssessmentExtra selfAssessmentExtra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +25,11 @@ public class Question9Activity extends AppCompatActivity implements View.OnClick
         MaterialCardView question9C = findViewById(R.id.question9_c);
         MaterialCardView question9Back = findViewById(R.id.question9_back);
         MaterialToolbar topAppBar = findViewById(R.id.question9_toolbar);
+
+        selfAssessmentExtra = (SelfAssessmentExtra) getIntent().
+                getSerializableExtra(
+                        getString(R.string.self_assessment_extra_name)
+                );
 
         question9A.setOnClickListener(this);
         question9B.setOnClickListener(this);
@@ -40,12 +49,37 @@ public class Question9Activity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        ArrayList<String> arr = selfAssessmentExtra.getIssues();
         if(id == R.id.question9_a) {
-            //TODO: goto suggestion light bulb a
+            arr.add("question9suggest_a_keyword");
+            Intent intent = new Intent(Question9Activity.this,
+                    QuestionSuggestActivity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    new SelfAssessmentExtra(QUESTION_ID,
+                            arr, "question9suggest_a_keyword")
+            );
+            startActivity(intent);
         } else if(id == R.id.question9_b) {
-            //TODO: goto suggestion light bulb b
+            arr.add("question9suggest_b_keyword");
+            Intent intent = new Intent(Question9Activity.this,
+                    QuestionSuggestActivity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    new SelfAssessmentExtra(QUESTION_ID,
+                            arr, "question9suggest_b_keyword")
+            );
+            startActivity(intent);
         } else if(id == R.id.question9_c){
-            //TODO: goto suggestion light bulb c
+            arr.add("question9suggest_c_keyword");
+            Intent intent = new Intent(Question9Activity.this,
+                    QuestionSuggestActivity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    new SelfAssessmentExtra(QUESTION_ID,
+                            arr, "question9suggest_c_keyword")
+            );
+            startActivity(intent);
         } else if(id == R.id.question9_back) {
             onBackPressed();
         }

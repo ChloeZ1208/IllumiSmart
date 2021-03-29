@@ -3,9 +3,11 @@ package android.example.illumismart;
 import android.content.Context;
 import android.example.illumismart.DAO.GlareDao;
 import android.example.illumismart.DAO.IlluminanceDao;
+import android.example.illumismart.DAO.SelfAssessmentDao;
 import android.example.illumismart.DAO.dataItemDao;
 import android.example.illumismart.DAO.FlickerDao;
 import android.example.illumismart.entity.Illuminance;
+import android.example.illumismart.entity.SelfAssessmentItem;
 import android.example.illumismart.entity.dataItem;
 import android.example.illumismart.entity.FlickerItem;
 import android.example.illumismart.entity.GlareItem;
@@ -20,7 +22,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Illuminance.class, dataItem.class, FlickerItem.class, GlareItem.class},
+@Database(entities = {Illuminance.class, dataItem.class, FlickerItem.class, GlareItem.class, SelfAssessmentItem.class},
           version = 1,
           exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
@@ -34,6 +36,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract FlickerDao flickerDao();
 
     public abstract GlareDao glareDao();
+
+    public abstract SelfAssessmentDao selfAssessmentDao();
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
@@ -91,6 +95,9 @@ public abstract class AppDatabase extends RoomDatabase {
 
                 GlareDao glare_item_dao = INSTANCE.glareDao();
                 glare_item_dao.deleteAll();
+
+                SelfAssessmentDao self_assessment_item_dao = INSTANCE.selfAssessmentDao();
+                self_assessment_item_dao.deleteAll();
 
                 INSTANCE.setDatabaseCreated();
             });
