@@ -51,7 +51,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/setting_profile_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,13 +78,16 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <ImageButton
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/right" />
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
+            android:textSize="18sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
@@ -104,7 +107,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/setting_about_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,19 +135,22 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <ImageButton
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/right" />
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
+            android:textSize="18sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/setting_contact_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -171,13 +177,16 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <ImageButton
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/right" />
+            android:layout_marginEnd="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=">"
+            android:textColor="@color/stroke"
+            android:textSize="18sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

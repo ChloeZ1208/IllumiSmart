@@ -129,7 +129,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/elf_assessment_record_arrow_1"
+            android:id="@+id/self_assessment_record_arrow_1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"

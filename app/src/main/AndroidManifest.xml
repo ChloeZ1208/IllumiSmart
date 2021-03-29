@@ -74,6 +74,7 @@
             android:theme="@style/Theme.IllumiSmart.Flicker" />
         <activity
             android:name=".FlickerActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.IllumiSmart.Flicker" />
         <activity
             android:name=".DataActivity"
@@ -83,13 +84,16 @@
             android:theme="@style/Theme.IllumiSmart.LightLevel" />
         <activity
             android:name=".LightLevelActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.IllumiSmart.LightLevel" />
         <activity
             android:name=".HomeActivity"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.IllumiSmart.NoActionBar" />
         <activity
             android:name=".GlareActivity"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.IllumiSmart.NoActionBar" />
         <activity
             android:name=".GlareRecordActivity"

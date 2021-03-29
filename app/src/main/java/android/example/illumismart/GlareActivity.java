@@ -44,6 +44,7 @@ public class GlareActivity extends AppCompatActivity implements
     private boolean glareEvent;
     private TextView glareTextViewResult;
     private Button glareButtonSave;
+    private Button glareButtonBack;
     private Utils utils;
     private DecimalFormat df;
 
@@ -89,6 +90,7 @@ public class GlareActivity extends AppCompatActivity implements
         glareCVCamera = (CameraBridgeViewBase) findViewById(R.id.glare_cv_camera);
         glareCVCamera.setCvCameraViewListener(this);
         glareButtonSave = findViewById(R.id.glare_button_save);
+        glareButtonBack = findViewById(R.id.glare_button_back);
         glareButtonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,6 +132,12 @@ public class GlareActivity extends AppCompatActivity implements
                     Toast.makeText(GlareActivity.this,
                             "Glare image store path: "+ filePath, Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        glareButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }

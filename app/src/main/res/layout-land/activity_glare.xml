@@ -13,7 +13,7 @@
         android:id="@+id/glare_cv_camera"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:screenOrientation="portrait"
+        android:screenOrientation="landscape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,22 +35,6 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/glare_button_back"
-        style="@style/roundedImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/glare"
-        android:elevation="0dp"
-        android:text="Back"
-        android:textSize="16sp"
-        app:cornerRadius="20dp"
-        app:elevation="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/glare_button_save"
         style="@style/roundedImageView"
         android:layout_width="wrap_content"
@@ -65,5 +49,21 @@
         app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/glare_button_back"
+        style="@style/roundedImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/glare"
+        android:elevation="0dp"
+        android:text="Back"
+        android:textSize="16sp"
+        app:cornerRadius="20dp"
+        app:elevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
