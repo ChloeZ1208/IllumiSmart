@@ -285,31 +285,31 @@ public class LightLevelActivity extends AppCompatActivity {
         if (occupation == null) {
             luxRangeMin = 0;
             luxRangeMax = 0;
-        } else if (occupation.equals("GeneralWork")) {
+        } else if (occupation.equals("General Work")) {
             luxRangeMin = 80;
             luxRangeMax = 170;
-        } else if (occupation.equals("ModerateWork")) {
+        } else if (occupation.equals("Moderate Work")) {
             luxRangeMin = 200;
             luxRangeMax = 250;
-        } else if (occupation.equals("PreciseWork")) {
+        } else if (occupation.equals("Precise Work")) {
             luxRangeMin = 250;
             luxRangeMax = 300;
-        } else if (occupation.equals("FineWork")) {
+        } else if (occupation.equals("Fine Work")) {
             luxRangeMin = 500;
             luxRangeMax = 700;
-        } else if (occupation.equals("VeryFineWork")) {
+        } else if (occupation.equals("Very Fine to Precise Work")) {
             luxRangeMin = 1000;
             luxRangeMax = 2000;
         }
         double ageFactor = 0;
         if (age == null) {
-        } else if (age.equals("below40")) {
+        } else if (age.equals("Below 40")) {
             ageFactor = 1;
-        } else if (age.equals("4050")) {
+        } else if (age.equals("40-50")) {
             ageFactor = 1.2;
-        } else if (age.equals("5065")) {
+        } else if (age.equals("50-65")) {
             ageFactor = 1.6;
-        } else if (age.equals("above65")) {
+        } else if (age.equals("Above 65")) {
             ageFactor = 2.7;
         }
         luxRangeMin = (int) ageFactor * luxRangeMin;

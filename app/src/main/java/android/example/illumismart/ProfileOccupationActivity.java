@@ -50,15 +50,15 @@ public class ProfileOccupationActivity extends AppCompatActivity implements View
         int id = v.getId();
         editor = preferences.edit();
         if (id == R.id.occupation_general_btn) {
-            editor.putString("Occupation", "GeneralWork");
+            editor.putString("Occupation", "General Work");
         } else if (id == R.id.occupation_moderate_btn) {
-            editor.putString("Occupation", "ModerateWork");
+            editor.putString("Occupation", "Moderate Work");
         } else if (id == R.id.age_5065_btn) {
-            editor.putString("Occupation", "PreciseWork");
+            editor.putString("Occupation", "Precise Work");
         } else if (id == R.id.age_above65_btn) {
-            editor.putString("Occupation", "FineWork");
+            editor.putString("Occupation", "Fine Work");
         } else if (id == R.id.occupation_veryfine_btn) {
-            editor.putString("Occupation", "VeryFineWork");
+            editor.putString("Occupation", "Very Fine to Precise Work");
         }
         editor.apply();
         startActivity(new Intent(ProfileOccupationActivity.this, ProfileAgeActivity.class));

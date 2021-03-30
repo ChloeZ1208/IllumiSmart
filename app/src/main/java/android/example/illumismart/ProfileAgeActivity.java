@@ -47,13 +47,13 @@ public class ProfileAgeActivity extends AppCompatActivity implements View.OnClic
         int id = v.getId();
         editor = preferences.edit();
         if (id == R.id.age_below40_btn) {
-            editor.putString("Age", "below40");
+            editor.putString("Age", "Below 40");
         } else if (id == R.id.age_4050_btn) {
-            editor.putString("Age", "4050");
+            editor.putString("Age", "40-50");
         } else if (id == R.id.age_5065_btn) {
-            editor.putString("Age", "5065");
+            editor.putString("Age", "50-65");
         } else if (id == R.id.age_above65_btn) {
-            editor.putString("Age", "above65");
+            editor.putString("Age", "Above 65");
         }
         editor.apply();
         startActivity(new Intent(ProfileAgeActivity.this, HomeActivity.class));

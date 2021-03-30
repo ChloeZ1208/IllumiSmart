@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.card.MaterialCardView;
@@ -16,6 +17,8 @@ public class ProfileActivity extends AppCompatActivity {
     private MaterialCardView occupationCard;
     private MaterialCardView ageCard;
     private SharedPreferences preferences;
+    private TextView userOccupation;
+    private TextView userAge;
 
 
     @Override
@@ -29,6 +32,8 @@ public class ProfileActivity extends AppCompatActivity {
         topAppBar = findViewById(R.id.profile_app_bar);
         occupationCard = findViewById(R.id.profile_occupation_card);
         ageCard = findViewById(R.id.profile_age_card);
+        userOccupation = findViewById(R.id.profile_occupation);
+        userAge = findViewById(R.id.profile_age);
 
         setNavigationBar();
 
@@ -72,9 +77,18 @@ public class ProfileActivity extends AppCompatActivity {
                     edit.clear();
                     edit.apply();
                     topAppBar.getMenu().clear();
+                    userAge.setText(null);
+                    userOccupation.setText(null);
                 }
                 return false;
             });
+
+            userOccupation.setText(occupation);
+            userAge.setText(age);
+        } else if (occupation != null && age == null) {
+            userOccupation.setText(occupation);
+        } else if (occupation == null && age != null) {
+            userAge.setText(age);
         }
     }
 }

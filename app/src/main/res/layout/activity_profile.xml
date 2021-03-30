@@ -64,9 +64,21 @@
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="20dp"
             android:fontFamily="sans-serif"
-            android:text="Occupation Information"
+            android:text="Occupation"
             android:textColor="@color/black"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/profile_occupation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="sans-serif"
+            android:text=""
+            android:textColor="@color/light_level"
+            android:textSize="18sp" />
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -101,6 +113,17 @@
             android:fontFamily="sans-serif"
             android:text="Age"
             android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/profile_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="sans-serif"
+            android:text=""
+            android:textColor="@color/light_level"
             android:textSize="18sp" />
 
         <TextView
