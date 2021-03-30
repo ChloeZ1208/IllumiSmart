@@ -122,6 +122,7 @@ public class GlareActivity extends AppCompatActivity implements
                     }
                     String filePath = sdDir + "/" + timestamp + ".png";
                     Imgcodecs.imwrite(filePath, inter);
+                    inter.release();
 
                     // DAO
                     dataItemEntityInstance = new dataItem(timestamp, ITEM_NAME);
@@ -203,6 +204,8 @@ public class GlareActivity extends AppCompatActivity implements
             Log.w(LOG_TAG, "normal?");
             setGlareTextThread(false);
         }
+        grayScaleGaussianBlur.release();
+        System.gc();
         return glareFrame;
     }
 
