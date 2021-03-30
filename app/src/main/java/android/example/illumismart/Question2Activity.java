@@ -29,6 +29,7 @@ public class Question2Activity extends AppCompatActivity implements View.OnClick
                 getSerializableExtra(
                         getString(R.string.self_assessment_extra_name)
                 );
+        selfAssessmentExtra.setQuestionId(QUESTION_ID);
 
         question2A.setOnClickListener(this);
         question2B.setOnClickListener(this);
@@ -50,13 +51,13 @@ public class Question2Activity extends AppCompatActivity implements View.OnClick
         int id = v.getId();
         ArrayList<String> arr = selfAssessmentExtra.getIssues();
         if(id == R.id.question2_a) {
-            arr.add("question2suggest_a_keyword");
+            arr.add("question_2_suggest_a_keyword");
             Intent intent = new Intent(Question2Activity.this,
                     QuestionSuggestActivity.class);
             intent.putExtra(
                     getString(R.string.self_assessment_extra_name),
                     new SelfAssessmentExtra(QUESTION_ID,
-                            arr, "question2suggest_a_keyword")
+                            arr, "question_2_suggest_a_keyword")
             );
             startActivity(intent);
         } else if(id == R.id.question2_b) {
@@ -69,7 +70,14 @@ public class Question2Activity extends AppCompatActivity implements View.OnClick
             );
             startActivity(intent);
         } else if(id == R.id.question2_back) {
-            onBackPressed();
+            Utils utils = new Utils();
+            Intent intent = new Intent(Question2Activity.this,
+                    Question1Activity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    utils.getOnBackPressedExtra(selfAssessmentExtra)
+            );
+            startActivity(intent);
         }
     }
 }

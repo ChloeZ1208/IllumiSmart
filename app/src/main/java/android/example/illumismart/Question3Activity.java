@@ -29,6 +29,7 @@ public class Question3Activity extends AppCompatActivity implements View.OnClick
                 getSerializableExtra(
                         getString(R.string.self_assessment_extra_name)
                 );
+        selfAssessmentExtra.setQuestionId(QUESTION_ID);
 
         question3A.setOnClickListener(this);
         question3B.setOnClickListener(this);
@@ -68,7 +69,14 @@ public class Question3Activity extends AppCompatActivity implements View.OnClick
             );
             startActivity(intent);
         } else if(id == R.id.question3_back) {
-            onBackPressed();
+            Utils utils = new Utils();
+            Intent intent = new Intent(Question3Activity.this,
+                    Question2Activity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    utils.getOnBackPressedExtra(selfAssessmentExtra)
+            );
+            startActivity(intent);
         }
     }
 }
