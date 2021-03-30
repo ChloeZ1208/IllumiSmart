@@ -31,6 +31,7 @@ public class Question6Activity extends AppCompatActivity implements View.OnClick
                 getSerializableExtra(
                         getString(R.string.self_assessment_extra_name)
                 );
+        selfAssessmentExtra.setQuestionId(QUESTION_ID);
 
         question6A.setOnClickListener(this);
         question6B.setOnClickListener(this);
@@ -62,23 +63,23 @@ public class Question6Activity extends AppCompatActivity implements View.OnClick
             );
             startActivity(intent);
         } else if(id == R.id.question6_b) {
-            arr.add("question6suggest_b_keyword");
+            arr.add("question_6_suggest_b_keyword");
             Intent intent = new Intent(Question6Activity.this,
                     QuestionSuggestActivity.class);
             intent.putExtra(
                     getString(R.string.self_assessment_extra_name),
                     new SelfAssessmentExtra(QUESTION_ID,
-                            arr, "question6suggest_b_keyword")
+                            arr, "question_6_suggest_b_keyword")
             );
             startActivity(intent);
         } else if(id == R.id.question6_c) {
-            arr.add("question6suggest_c_keyword");
+            arr.add("question_6_suggest_c_keyword");
             Intent intent = new Intent(Question6Activity.this,
                     QuestionSuggestActivity.class);
             intent.putExtra(
                     getString(R.string.self_assessment_extra_name),
                     new SelfAssessmentExtra(QUESTION_ID,
-                            arr, "question6suggest_c_keyword")
+                            arr, "question_6_suggest_c_keyword")
             );
             startActivity(intent);
         } else if(id == R.id.question6_d) {
@@ -91,7 +92,14 @@ public class Question6Activity extends AppCompatActivity implements View.OnClick
             );
             startActivity(intent);
         } else if(id == R.id.question6_back) {
-            onBackPressed();
+            Utils utils = new Utils();
+            Intent intent = new Intent(Question6Activity.this,
+                    Question5Activity.class);
+            intent.putExtra(
+                    getString(R.string.self_assessment_extra_name),
+                    utils.getOnBackPressedExtra(selfAssessmentExtra)
+            );
+            startActivity(intent);
         }
     }
 
