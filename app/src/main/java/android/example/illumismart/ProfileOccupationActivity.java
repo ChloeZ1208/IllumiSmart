@@ -61,7 +61,7 @@ public class ProfileOccupationActivity extends AppCompatActivity implements View
             editor.putString("Occupation", "Very Fine to Precise Work");
         }
         editor.apply();
-        startActivity(new Intent(ProfileOccupationActivity.this, ProfileAgeActivity.class));
+        startActivity(new Intent(ProfileOccupationActivity.this, ProfileActivity.class));
 
         if (id == R.id.occupation_skip) {
             startActivity(new Intent(ProfileOccupationActivity.this, HomeActivity.class));
