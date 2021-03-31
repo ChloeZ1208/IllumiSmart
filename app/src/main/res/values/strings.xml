@@ -150,4 +150,11 @@
     <string name="question10suggest_b_keyword">
         Light Flicker
     </string>
+    <string name="glare_guidance">
+        Glare is what happens when a bright light source or reflection interferes with how you are \'seeing\' an object. It can cause annoyance and discomfort, and can actually decrease a person\'s ability to see. To detect the possible glare using this function:\n\n
+        1. Face the camera to the working visual area\n
+        2. The possible glare will be marked instantaneously\n\n
+        In addition:\n
+        Use the botton at the bottom to capture the screen and save it.
+    </string>
 </resources>

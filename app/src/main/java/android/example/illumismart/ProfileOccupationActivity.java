@@ -61,10 +61,28 @@ public class ProfileOccupationActivity extends AppCompatActivity implements View
             editor.putString("Occupation", "Very Fine to Precise Work");
         }
         editor.apply();
-        startActivity(new Intent(ProfileOccupationActivity.this, ProfileActivity.class));
+
+        SharedPreferences preferences = getSharedPreferences("Profile",MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            startActivity(new Intent(ProfileOccupationActivity.this, ProfileAgeActivity.class));
+        } else {
+            //enter from profile
+            startActivity(new Intent(ProfileOccupationActivity.this, ProfileActivity.class));
+        }
 
         if (id == R.id.occupation_skip) {
-            startActivity(new Intent(ProfileOccupationActivity.this, HomeActivity.class));
+            if (!ranBefore) {
+                //fist time
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("RanBefore", true);
+                editor.apply();
+                startActivity(new Intent(ProfileOccupationActivity.this, HomeActivity.class));
+            } else {
+                //enter from profile
+                startActivity(new Intent(ProfileOccupationActivity.this, ProfileActivity.class));
+            }
         }
     }
 }

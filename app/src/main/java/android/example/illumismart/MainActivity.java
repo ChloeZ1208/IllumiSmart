@@ -24,12 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isFirstTime() {
         SharedPreferences preferences = getSharedPreferences("Profile",MODE_PRIVATE);
         boolean ranBefore = preferences.getBoolean("RanBefore", false);
-        if (!ranBefore) {
-            // first time
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("RanBefore", true);
-            editor.apply();
-        }
         return !ranBefore;
     }
 }

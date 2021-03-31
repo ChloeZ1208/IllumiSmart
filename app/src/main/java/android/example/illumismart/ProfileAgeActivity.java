@@ -56,10 +56,31 @@ public class ProfileAgeActivity extends AppCompatActivity implements View.OnClic
             editor.putString("Age", "Above 65");
         }
         editor.apply();
-        startActivity(new Intent(ProfileAgeActivity.this, ProfileActivity.class));
+
+        SharedPreferences preferences = getSharedPreferences("Profile",MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            //fist time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.apply();
+            startActivity(new Intent(ProfileAgeActivity.this, HomeActivity.class));
+        } else {
+            //enter from profile
+            startActivity(new Intent(ProfileAgeActivity.this, ProfileActivity.class));
+        }
 
         if (id == R.id.age_skip) {
-            startActivity(new Intent(ProfileAgeActivity.this, HomeActivity.class));
+            if (!ranBefore) {
+                //fist time
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("RanBefore", true);
+                editor.apply();
+                startActivity(new Intent(ProfileAgeActivity.this, HomeActivity.class));
+            } else {
+                //enter from profile
+                startActivity(new Intent(ProfileAgeActivity.this, ProfileActivity.class));
+            }
         }
     }
 }

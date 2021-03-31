@@ -1,5 +1,6 @@
 package android.example.illumismart;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.example.illumismart.entity.GlareItem;
 import android.example.illumismart.entity.dataItem;
@@ -11,6 +12,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +49,7 @@ public class GlareActivity extends AppCompatActivity implements
     private Button glareButtonBack;
     private Utils utils;
     private DecimalFormat df;
+    private ImageView glareGuidance;
 
     private GlareItemViewModel glareItemViewModel;
     private dataItemViewModel dataItemViewModel;
@@ -141,6 +144,14 @@ public class GlareActivity extends AppCompatActivity implements
                 onBackPressed();
             }
         });
+
+        glareGuidance = findViewById(R.id.glare_guidance);
+        glareGuidance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GlareActivity.this, GlareGuideActivity.class));
+            }
+        });
     }
 
     @Override
@@ -224,4 +235,5 @@ public class GlareActivity extends AppCompatActivity implements
             }
         });
     }
+
 }
