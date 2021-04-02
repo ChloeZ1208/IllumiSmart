@@ -50,7 +50,8 @@ public class DataActivity extends AppCompatActivity {
                 if (itemId == R.id.home_page) {
                     startActivity(new Intent(DataActivity.this,
                             HomeActivity.class));
-                } else if (itemId == R.id.info_page) {// TODO: info
+                } else if (itemId == R.id.info_page) {
+                    startActivity(new Intent(DataActivity.this, InfoActivity.class));
                 } else if (itemId == R.id.setting_page) {
                     startActivity(new Intent(DataActivity.this,
                             SettingActivity.class));

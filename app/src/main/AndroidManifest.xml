@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IllumiSmart">
+        <activity android:name=".InfoActivity"
+            android:theme="@style/Theme.IllumiSmart.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".QuestionFinishActivity"
             android:theme="@style/Theme.IllumiSmart.Question" />
@@ -101,9 +104,10 @@
             android:name=".GlareActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.IllumiSmart.NoActionBar" />
-        <activity android:name=".GlareGuideActivity"
+        <activity
+            android:name=".GlareGuideActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.IllumiSmart.Glare"/>
+            android:theme="@style/Theme.IllumiSmart.Glare" />
         <activity
             android:name=".GlareRecordActivity"
             android:screenOrientation="portrait"

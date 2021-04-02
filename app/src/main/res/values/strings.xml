@@ -157,4 +157,12 @@
         In addition:\n
         Use the botton at the bottom to capture the screen and save it.
     </string>
+    <string name="info_important_head">Why is Lighting Important?</string>
+    <string name="info_important_txt">Information about how lighting is related to working efficiency and health in both industrial and office settings.</string>
+    <string name="info_different_head">What are Different Sources of Lights?</string>
+    <string name="info_different_txt">Information about daylight and different types of artificial lighting and light fixtures.</string>
+    <string name="info_flicker_head">What is Light Flicker?</string>
+    <string name="info_flicker_txt">Information about what light flicker is, how it is caused, why it is a problem and how to deal with it.</string>
+    <string name="info_glare_head">What is Glare?</string>
+    <string name="info_glare_txt">Information about what glare is, how it is caused, why it is a problem and how to deal with it.</string>
 </resources>

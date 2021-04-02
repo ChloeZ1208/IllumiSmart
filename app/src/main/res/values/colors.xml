@@ -23,4 +23,5 @@
     <color name="question_background">#FAFAFA</color>
     <color name="question_text">#333333</color>
     <color name="question_btn">#F2F2F2</color>
+    <color name="info_txt">#828282</color>
 </resources>

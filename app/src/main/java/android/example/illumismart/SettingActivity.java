@@ -35,7 +35,9 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                         if (itemId == R.id.home_page) {
                             startActivity(new Intent(SettingActivity.this,
                                     HomeActivity.class));
-                        } else if (itemId == R.id.info_page) {// TODO: info
+                        } else if (itemId == R.id.info_page) {
+                            startActivity(new Intent(SettingActivity.this,
+                                    InfoActivity.class));
                         } else if (itemId == R.id.data_page) {
                             startActivity(new Intent(SettingActivity.this,
                                     DataActivity.class));

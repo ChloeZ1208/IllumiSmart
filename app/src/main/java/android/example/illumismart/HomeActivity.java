@@ -78,7 +78,8 @@ public class HomeActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
                 if (itemId == R.id.data_page) {
                     startActivity(new Intent(HomeActivity.this, DataActivity.class));
-                } else if (itemId == R.id.info_page) {// TODO: info
+                } else if (itemId == R.id.info_page) {
+                    startActivity(new Intent(HomeActivity.this, InfoActivity.class));
                 } else if (itemId == R.id.setting_page) {
                     startActivity(new Intent(HomeActivity.this, SettingActivity.class));
                 }
