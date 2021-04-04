@@ -10,6 +10,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -382,6 +383,6 @@ public class FlickerActivity extends AppCompatActivity {
     }
 
     public void flickerViewDetails(View view) {
-        //TODO: flicker suggestions
+        startActivity(new Intent(FlickerActivity.this, FlickerSuggestActivity.class));
     }
 }

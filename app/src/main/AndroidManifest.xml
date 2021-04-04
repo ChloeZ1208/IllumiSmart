@@ -13,9 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IllumiSmart">
-        <activity android:name=".InfoActivity"
-            android:theme="@style/Theme.IllumiSmart.NoActionBar"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".FlickerSuggestActivity"
+            android:theme="@style/Theme.IllumiSmart.Flicker"/>
+        <activity
+            android:name=".InfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.IllumiSmart.NoActionBar" />
         <activity
             android:name=".QuestionFinishActivity"
             android:theme="@style/Theme.IllumiSmart.Question" />

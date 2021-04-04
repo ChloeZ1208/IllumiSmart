@@ -165,4 +165,11 @@
     <string name="info_flicker_txt">Information about what light flicker is, how it is caused, why it is a problem and how to deal with it.</string>
     <string name="info_glare_head">What is Glare?</string>
     <string name="info_glare_txt">Information about what glare is, how it is caused, why it is a problem and how to deal with it.</string>
+    <string name="flicker_suggest">Some types of ballasts can reduce flicker considerably. Energy-efficient electronic ballasts take the 60 Hz supplied power and convert it to a much higher frequency (20,000 - 60,000 Hz). The resulting flicker frequency (twice the supplied power frequency, 40 -120 kHz) is so high that the human eye cannot detect any fluctuation in the light intensity – essentially flicker-free. An added benefit is that electronic ballasts produce less hum than that emitted by other kinds of ballasts.\n\n
+        To Correct Flicker\n
+        1. Replace bulbs on a scheduled basis. Old bulbs tend to flicker more and they are not as bright.\n
+        2. Ensure that all parts of the light fixture, especially the ballast, are functioning properly.\n
+        3. When replacements are needed, upgrade to fluorescent lighting that uses electronic ballasts.\n
+        4. Discuss issues with your lighting manufacturer or supplier. Lighting technology can vary and options may be available.
+    </string>
 </resources>
