@@ -81,7 +81,13 @@ public class GlareRecordActivity extends AppCompatActivity {
                     public void onChanged(GlareItem item) {
                         if (item != null) {
                             glareMaxPixelVal.setText(item.getMaxPixelVal());
-                            glareEvent.setText(item.getGlareEvent());
+                            String glareEventString = item.getGlareEvent();
+                            if (glareEventString.equals("true")) {
+                                glareEvent.setText("Detected");
+                            } else {
+                                glareEvent.setText("Not Detected");
+                            }
+
                             glareTimestamp.setText(utils.getParsedTimestamp(timeStamp));
                             Bitmap bitmap = BitmapFactory.decodeFile(item.getImgPath());
                             glareImage.setImageBitmap(bitmap);
