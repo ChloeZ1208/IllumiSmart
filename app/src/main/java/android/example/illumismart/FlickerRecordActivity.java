@@ -23,7 +23,7 @@ public class FlickerRecordActivity extends AppCompatActivity {
 
     private String timeStamp;
 
-    private TextView flickerFluctuationRate;
+    private TextView flickerCount;
     private TextView flickerRelativeChange;
     private TextView flickerAvgLux;
     private TextView flickerTimestamp;
@@ -37,7 +37,7 @@ public class FlickerRecordActivity extends AppCompatActivity {
         root.setBackgroundColor(Color.parseColor("#E5E5E5"));
         utils = new Utils();
 
-        flickerFluctuationRate = findViewById(R.id.flicker_record_fluctuation);
+        flickerCount = findViewById(R.id.flicker_record_count);
         flickerRelativeChange = findViewById(R.id.flicker_record_relative_change);
         flickerAvgLux = findViewById(R.id.flicker_record_avg);
         flickerTimestamp = findViewById(R.id.flicker_record_time);
@@ -78,7 +78,7 @@ public class FlickerRecordActivity extends AppCompatActivity {
             @Override
             public void onChanged(FlickerItem item) {
                 if (item != null) {
-                    flickerFluctuationRate.setText(item.getFluctuationRate());
+                    flickerCount.setText(item.getFlickerCounts());
                     flickerRelativeChange.setText(item.getRelativeChange());
                     flickerAvgLux.setText(item.getAvgLux());
                     flickerTimestamp.setText(utils.getParsedTimestamp(timeStamp));

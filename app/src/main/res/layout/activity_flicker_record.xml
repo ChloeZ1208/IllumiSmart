@@ -116,26 +116,26 @@
         app:strokeWidth="0.5dp">
 
         <TextView
-            android:id="@+id/flicker_record_fluctuation_header"
+            android:id="@+id/flicker_record_count_header"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="Average Fluctuation Rate"
+            android:text="Detected Flicker Counts"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/flicker_record_fluctuation"
+            android:id="@+id/flicker_record_count"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="6 Hz"
+            android:text="0 Times"
             android:textColor="@color/black"
             android:textSize="18sp" />
 

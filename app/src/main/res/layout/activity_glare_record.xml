@@ -107,6 +107,7 @@
         android:id="@+id/glare_record_card2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:visibility="gone"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,7 +120,7 @@
         <TextView
             android:id="@+id/glare_record_pixel_header"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="38dp"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="20dp"
             android:fontFamily="sans-serif"

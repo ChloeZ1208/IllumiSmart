@@ -8,8 +8,8 @@
     <string name="home_flicker">A quick tool to check whether there is flicker hazard.</string>
     <string name="detect_light_flicker">Detect Light Flicker</string>
     <string name="detect_glare">Detect Glare</string>z
-    <string name="glare_event_true">Glare event: True</string>
-    <string name="glare_event_false">Glare event: False</string>
+    <string name="glare_event_true">Glare Detected</string>
+    <string name="glare_event_false">No Glare Detected</string>
     <string name="self_assessment_extra_name">self assessment extra name</string>
     <string name="a_quick_tool_to_check_whether_there_is_glare_hazard">A quick tool to check whether there is glare hazard.</string>
     <string name="lightlevel_guidance">Light level is an important factor in the workplace. To measure the illuminance using this function:\n\n

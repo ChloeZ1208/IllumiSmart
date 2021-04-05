@@ -303,9 +303,9 @@ public class FlickerActivity extends AppCompatActivity {
                     flickerViewDetails.setVisibility(View.VISIBLE);
                 }
 
-                lightLevelTxt.setText("Fluctuation Rate");
-                flickerTextFreq.setText(String.valueOf(fluctuationRate));
-                unitLuxHz.setText("Hz");
+                lightLevelTxt.setText("Flicker Detected");
+                flickerTextFreq.setText(String.valueOf(flickerEventCount));
+                unitLuxHz.setText("");
                 relativeChangeValue.setText(df.format(relativeChange));
                 relativeChangeValue.append("%");
 
@@ -374,7 +374,7 @@ public class FlickerActivity extends AppCompatActivity {
         String timeStamp = utils.getSpecifiedTimestamp();
         flickerEntityInstance = new FlickerItem(timeStamp,
                 df.format(fluctuationRate)+" Hz",
-                String.valueOf(flickerEventCount),
+                String.valueOf(flickerEventCount)+ " Times",
                 df.format(relativeChange) + "%",
                 df.format(maxLux)+" Hz",
                 df.format(minLux)+" Hz",

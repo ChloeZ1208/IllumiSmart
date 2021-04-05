@@ -44,7 +44,7 @@ public class GlareActivity extends AppCompatActivity implements
     private Mat glareFrame;
     private float glareMaxPixelVal;
     private boolean glareEvent;
-    private TextView glareTextViewResult;
+    private Button glareTextViewResult;
     private Button glareButtonSave;
     private Button glareButtonBack;
     private Utils utils;
@@ -88,8 +88,7 @@ public class GlareActivity extends AppCompatActivity implements
                         AndroidViewModelFactory.
                         getInstance(this.getApplication())).get(dataItemViewModel.class);
 
-        glareTextViewResult = findViewById(R.id.glare_text_result);
-        glareTextViewResult.setTextColor(Color.RED);
+        glareTextViewResult = findViewById(R.id.glare_button_result);
         glareCVCamera = (CameraBridgeViewBase) findViewById(R.id.glare_cv_camera);
         glareCVCamera.setCvCameraViewListener(this);
         glareButtonSave = findViewById(R.id.glare_button_save);
@@ -134,7 +133,7 @@ public class GlareActivity extends AppCompatActivity implements
                     glareItemViewModel.insert(glareEntityInstance);
                     dataItemViewModel.insert(dataItemEntityInstance);
                     Toast.makeText(GlareActivity.this,
-                            "Glare image store path: "+ filePath, Toast.LENGTH_SHORT).show();
+                            "Glare detection result saved!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -227,9 +226,11 @@ public class GlareActivity extends AppCompatActivity implements
             public void run() {
                 if(glareDetected) {
                     glareTextViewResult.setText(R.string.glare_event_true);
+                    glareTextViewResult.setTextColor(Color.parseColor("#CA9AB1"));
                     glareEvent = true;
                 } else {
                     glareTextViewResult.setText(R.string.glare_event_false);
+                    glareTextViewResult.setTextColor(Color.parseColor("#EA8B85"));
                     glareEvent = false;
                 }
             }
