@@ -327,7 +327,6 @@
 
     </LinearLayout>
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_info"
         android:layout_width="match_parent"

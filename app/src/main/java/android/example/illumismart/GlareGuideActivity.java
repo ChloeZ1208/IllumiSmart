@@ -2,9 +2,11 @@ package android.example.illumismart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class GlareGuideActivity extends AppCompatActivity {
     private Button backGlare;
@@ -19,6 +21,14 @@ public class GlareGuideActivity extends AppCompatActivity {
             public void onClick(View v) {
                 onBackPressed();
             }
+        });
+
+        TextView glareReadMore = findViewById(R.id.glare_guide_read_more);
+        glareReadMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GlareGuideActivity.this, ReadMoreGlareActivity.class));
+             }
         });
     }
 }
