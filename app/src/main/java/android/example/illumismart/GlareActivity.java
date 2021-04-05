@@ -226,11 +226,11 @@ public class GlareActivity extends AppCompatActivity implements
             public void run() {
                 if(glareDetected) {
                     glareTextViewResult.setText(R.string.glare_event_true);
-                    glareTextViewResult.setTextColor(Color.parseColor("#CA9AB1"));
+                    glareTextViewResult.setTextColor(Color.parseColor("#EA8B85"));
                     glareEvent = true;
                 } else {
                     glareTextViewResult.setText(R.string.glare_event_false);
-                    glareTextViewResult.setTextColor(Color.parseColor("#EA8B85"));
+                    glareTextViewResult.setTextColor(Color.parseColor("#CA9AB1"));
                     glareEvent = false;
                 }
             }

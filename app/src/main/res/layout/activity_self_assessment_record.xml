@@ -106,13 +106,14 @@
         android:id="@+id/self_assessment_record_issue_1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="60dp"
         android:visibility="invisible"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarSelfAssessmentRecord"
-        app:layout_constraintVertical_bias="0.21"
+        app:layout_constraintTop_toBottomOf="@+id/self_assessment_record_card1"
+        app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/stroke"
         app:strokeWidth="0.5dp">
 

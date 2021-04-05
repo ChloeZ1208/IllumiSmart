@@ -26,7 +26,8 @@ import com.google.android.material.appbar.MaterialToolbar;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class LightLevelActivity extends AppCompatActivity {
+public class
+LightLevelActivity extends AppCompatActivity {
     private static final String LOG_TAG = LightLevelActivity.class.getSimpleName();
     private static final String ITEM_NAME = "Illuminance";
     private MaterialToolbar topAppBar;

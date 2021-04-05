@@ -96,12 +96,12 @@
         android:text="Glare Data"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/glare_record_card2"
+        app:layout_constraintBottom_toTopOf="@+id/glare_record_card3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/glare_record_card1"
-        app:layout_constraintVertical_bias="0.98" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/glare_record_card2"
@@ -147,11 +147,12 @@
         android:id="@+id/glare_record_card3"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="60dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/glare_record_card2"
+        app:layout_constraintTop_toBottomOf="@+id/glare_record_card1"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/stroke"
         app:strokeWidth="0.5dp">
