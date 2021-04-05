@@ -277,7 +277,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:onClick="flickerViewDetails"
-        android:text="View Suggestions"
+        android:text="@string/flicker_view_suggest"
         android:textSize="17sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,8 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IllumiSmart">
-        <activity android:name=".FlickerSuggestActivity"
-            android:theme="@style/Theme.IllumiSmart.Flicker"/>
+        <activity android:name=".LightCorrectActivity"
+            android:theme="@style/Theme.IllumiSmart.LightLevel"/>
+        <activity
+            android:name=".FlickerSuggestActivity"
+            android:theme="@style/Theme.IllumiSmart.Flicker" />
         <activity
             android:name=".InfoActivity"
             android:screenOrientation="portrait"

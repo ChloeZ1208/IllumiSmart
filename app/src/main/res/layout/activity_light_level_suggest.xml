@@ -98,4 +98,16 @@
         app:layout_constraintTop_toBottomOf="@+id/lux_suggest_below"
         app:layout_constraintVertical_bias="0.08" />
 
+    <TextView
+        android:id="@+id/lux_correct_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="@string/light_level_below_suggest_correct"
+        android:textColor="@color/light_level"
+        app:layout_constraintBottom_toBottomOf="@+id/lux_suggest_below"
+        app:layout_constraintEnd_toEndOf="@+id/lux_suggest_below"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lux_suggest_below" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

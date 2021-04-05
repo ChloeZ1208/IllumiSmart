@@ -35,7 +35,8 @@
     <string name="light_level_guidance_among">The average lighting level follows the guidance.</string>
     <string name="light_level_view_details"><u>View Details</u></string>
     <string name="profile_below40_finework">According to your age and type of task being done, the recommended illuminance is:</string>
-    <string name="light_level_below_suggest">If the measured average light level is under the guidance, view <u>Correction of Insufficient Light</u></string>
+    <string name="light_level_below_suggest">If the measured average light level is under the guidance, view</string>
+    <string name="light_level_below_suggest_correct"><u>Correction of Insufficient Light</u></string>
     <string name="light_level_above_suggest">If the measured average light level is above the guidance, it is suggested to conduct a glare test next.</string>
     <string name="occupation_question">Which of the following answers best describes your work type?</string>
     <string name="occupation_general_txt">Examples: Storeroom…</string>
@@ -172,4 +173,16 @@
         3. When replacements are needed, upgrade to fluorescent lighting that uses electronic ballasts.\n
         4. Discuss issues with your lighting manufacturer or supplier. Lighting technology can vary and options may be available.
     </string>
+    <string name="light_correct_txt">
+        <li>Replace bulbs on a regular schedule. Old bulbs give less light than new ones, so replace them before they burn out. Follow manufacturers\' instructions.</li> \n
+        <li>Clean light fixtures regularly. Dirt on light fixtures reduces the amount of light given off. Light fixtures with open tops allow air currents to move dust up through the fixtures so dust and dirt do not accumulate on them.</li>\n
+        <li>Add more light fixtures in appropriate places.</li> \n
+        <li>Paint walls and ceilings light colours so light can be reflected.</li> \n
+        <li>Use more reflected light and local lighting to eliminate shadows. For example, a covered light mounted under a transparent guard on a grinding wheel provides the added light needed to clearly see the task.</li> \n
+        <li>Do not position the work station with the light fixture directly behind worker.</li>
+    </string>
+    <string name="flicker_view_suggest"><u>View Suggestions</u></string>
+    <string name="read_more_light_level"><u>Read More About the Light Level</u></string>
+    <string name="read_more_flicker"><u>Read More About the Flicker</u></string>
+    <string name="read_more_glare"><u>Read More About the Glare</u></string>
 </resources>

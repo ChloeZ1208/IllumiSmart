@@ -2,40 +2,29 @@ package android.example.illumismart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-public class FlickerSuggestActivity extends AppCompatActivity {
+public class LightCorrectActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flicker_suggest);
-        View v = findViewById(R.id.flicker_suggest_screen);
+        setContentView(R.layout.activity_light_correct);
+        View v = findViewById(R.id.light_level_correct_screen);
         View root = v.getRootView();
         root.setBackgroundColor(Color.parseColor("#FAFAFA"));
 
-        MaterialToolbar topAppBar = findViewById(R.id.flicker_sugg_top_app_bar);
+        MaterialToolbar topAppBar = findViewById(R.id.light_correct_top_app_bar);
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
-        });
-
-        // Set user guidance
-        topAppBar.setOnMenuItemClickListener(menuItem -> {
-            if(menuItem.getItemId() == R.id.nav_guide) {
-                startActivity(new Intent(FlickerSuggestActivity.this,
-                        FlickerGuideActivity.class));
-                return true;
-            }
-            return false;
         });
 
     }
