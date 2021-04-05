@@ -24,6 +24,7 @@ public class LightLevelSuggestActivity extends AppCompatActivity {
         MaterialToolbar topAppBar = findViewById(R.id.lux_sugg_top_app_bar);
         TextView luxSuggestRange = findViewById(R.id.lux_suggest_range);
         TextView luxCorrectLight = findViewById(R.id.lux_correct_light);
+        TextView luxReadMore = findViewById(R.id.light_level_suggest_read_more);
 
         // Set navigation back
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -53,6 +54,13 @@ public class LightLevelSuggestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LightLevelSuggestActivity.this, LightCorrectActivity.class));
+            }
+        });
+
+        luxReadMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LightLevelSuggestActivity.this, ReadMoreLightActivity.class));
             }
         });
     }

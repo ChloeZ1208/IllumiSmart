@@ -1,5 +1,11 @@
 package android.example.illumismart;
 
+import android.content.Context;
+import android.net.Uri;
+
+import androidx.browser.customtabs.CustomTabColorSchemeParams;
+import androidx.browser.customtabs.CustomTabsIntent;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -120,5 +126,15 @@ public class Utils {
             return R.string.question10suggest_b;
         }
         return -1;
+    }
+
+    public void openURL(String url, int color, Context ctx) {
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        CustomTabColorSchemeParams params = new CustomTabColorSchemeParams.Builder()
+                .setToolbarColor(color)
+                .build();
+        builder.setDefaultColorSchemeParams(params);
+        CustomTabsIntent customTabsIntent = builder.build();
+        customTabsIntent.launchUrl(ctx, Uri.parse(url));
     }
 }

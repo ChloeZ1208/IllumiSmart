@@ -185,4 +185,48 @@
     <string name="read_more_light_level"><u>Read More About the Light Level</u></string>
     <string name="read_more_flicker"><u>Read More About the Flicker</u></string>
     <string name="read_more_glare"><u>Read More About the Glare</u></string>
+    <string name="read_more_light_txt1">
+        The amount of light we need varies and depends on\n
+        <li>Type of task being done (such as demands for speed and accuracy).</li>\n
+        <li>Type of surfaces (does it reflect or absorb light).</li>\n
+        <li>General work area.</li>\n
+        <li>Individual\'s vision.</li>\n\n
+        The amount of light falling on a surface is measured in units called lux. Depending on the factors noted above, adequate general lighting is usually between 500 and 1000 lux* when measured 76 cm (30 inches) above the floor.\n
+        * From: IESNA Lighting Handbook. 9th ed. Illuminating Engineering Society of North America, 2000. p. 10-13.\n\n
+        To reach proper light levels and uniform light distribution in the visual environment, many light fixtures are designed to reflect light off walls, ceilings, and objects. The amount of light reflected off a surface can be measured. Suggestions for the percent of light reflected off surfaces in a typical office include:\n
+        <li>Window blinds (40-50%).</li>\n
+        <li>Walls (50% maximum).</li>\n
+        <li>Business machines (50% maximum).</li>\n
+        <li>Ceiling (70-80%).</li>\n
+        <li>Floor (20-40%).</li>\n
+        <li>Furniture (25-45%).</li>\n\n
+        The percent value refers to the amount of light that a surface reflects relative to the amount that falls on the surface.\n
+        In addition, light fixtures that are too widely spaced or wrongly positioned can create shadows. Objects between the light fixture and work being done can block the light and cast shadows. Likewise, workers sitting with their backs to windows, with light fixtures directly overhead or to the rear, cast shadows on their own work surfaces.
+    </string>
+    <string name="read_more_light_txt2">
+        <li>Poor lighting can be a safety hazard – misjudgment of the position, shape, or speed of an object can lead to incidents and injury.</li>\n
+        <li>Poor lighting can affect the quality of work, specifically in situations where precision is required, and overall productivity.</li>\n
+        <li>Poor lighting can be a health hazard – too much or too little light strains eyes and may cause eye discomfort (burning, etc.) and headaches.</li>
+    </string>
+    <string name="read_more_glare_txt1">
+        Glare is a common lighting problem. Glare is what happens when a bright light source or reflection interferes with how you are \'seeing\' an object. In most cases, your eyes will adapt to the brightest level of light. When this adaptation happens, it becomes harder to see the details in the duller or darker areas of the work space (even though they are actually sufficiently lit!). Glare can cause annoyance and discomfort, and can actually decrease a person\'s ability to see.
+    </string>
+    <string name="read_more_glare_txt2">
+        <li>Light reflected from polished, shiny or glossy surfaces.</li>\n
+        <li>Glass on picture frames, or windows at night.</li>\n
+        <li>Monitors / screens.</li>
+    </string>
+    <string name="read_more_glare_txt3">
+        <li>Very bright light from poorly positioned light fixtures.</li>\n
+        <li>Sunlight.</li>
+    </string>
+    <string name="read_more_glare_txt4">
+        <li>Using several small low-intensity light fixtures rather than one large high-intensity light fixture.</li>\n
+        <li>Using light fixtures that diffuse or concentrate light well. Indirect light fixtures or direct light fixtures with parabolic louvres are two possibilities.</li>\n
+        <li>Covering bare bulbs with louvers, lenses or other devices to control light.</li>\n
+        <li>Increasing the brightness of the area around the glare source.</li>\n
+        <li>Positioning light fixtures to reduce reflected light that is directed toward the eyes.</li>\n
+        <li>Using low gloss paper or applying flat or semi-gloss paint and matte finishes on \'offending\' surfaces. Removing highly polished and shiny objects.</li>\n
+        <li>Keeping general lighting levels at recommended levels.</li>
+    </string>
 </resources>

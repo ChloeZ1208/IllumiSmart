@@ -2,6 +2,7 @@ package android.example.illumismart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,8 +27,8 @@ public class GlareGuideActivity extends AppCompatActivity {
         glareReadMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: read more about the glare
-            }
+                startActivity(new Intent(GlareGuideActivity.this, ReadMoreGlareActivity.class));
+             }
         });
     }
 }

@@ -25,7 +25,8 @@ public class FlickerGuideActivity extends AppCompatActivity {
         flickerReadMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: read more about the flicker
+                Utils utils = new Utils();
+                utils.openURL("https://www.ccohs.ca/oshanswers/ergonomics/lighting_flicker.html", getResources().getColor(R.color.flicker, null), FlickerGuideActivity.this);
             }
         });
     }

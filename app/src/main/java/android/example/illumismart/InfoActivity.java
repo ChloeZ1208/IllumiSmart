@@ -16,6 +16,7 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
+
 public class InfoActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -52,26 +53,16 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Utils utils = new Utils();
         int id = v.getId();
         if (id == R.id.info_card1) {
-            openURL("https://www.ccohs.ca/oshanswers/ergonomics/lighting_general.html");
+            utils.openURL("https://www.ccohs.ca/oshanswers/ergonomics/lighting_general.html", getResources().getColor(R.color.app_green, null), InfoActivity.this);
         } else if (id == R.id.info_card2) {
-            openURL("https://www.ccohs.ca/oshanswers/ergonomics/lighting_survey.html");
+            utils.openURL("https://www.ccohs.ca/oshanswers/ergonomics/lighting_survey.html", getResources().getColor(R.color.app_green, null), InfoActivity.this);
         } else if (id == R.id.info_card3) {
-            openURL("https://www.ccohs.ca/oshanswers/ergonomics/lighting_flicker.html");
+            utils.openURL("https://www.ccohs.ca/oshanswers/ergonomics/lighting_flicker.html", getResources().getColor(R.color.flicker, null), InfoActivity.this);
         } else if (id == R.id.info_card4) {
+            startActivity(new Intent(InfoActivity.this, ReadMoreGlareActivity.class));
         }
-    }
-
-    public void openURL(String url) {
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        //int coolorInt = Color.parseColor("#7AB5A5"); //green
-        CustomTabColorSchemeParams params = new CustomTabColorSchemeParams.Builder()
-                .setNavigationBarColor(getResources().getColor(R.color.white, null))
-                .setToolbarColor(getResources().getColor(R.color.app_green, null))
-                .build();
-        builder.setDefaultColorSchemeParams(params);
-        CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(this, Uri.parse(url));
     }
 }

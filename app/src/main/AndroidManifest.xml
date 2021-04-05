@@ -14,8 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IllumiSmart">
-        <activity android:name=".LightCorrectActivity"
-            android:theme="@style/Theme.IllumiSmart.LightLevel"/>
+        <activity android:name=".ReadMoreGlareActivity"
+            android:theme="@style/Theme.IllumiSmart.Glare"/>
+        <activity
+            android:name=".ReadMoreLightActivity"
+            android:theme="@style/Theme.IllumiSmart.LightLevel" />
+        <activity
+            android:name=".LightCorrectActivity"
+            android:theme="@style/Theme.IllumiSmart.LightLevel" />
         <activity
             android:name=".FlickerSuggestActivity"
             android:theme="@style/Theme.IllumiSmart.Flicker" />

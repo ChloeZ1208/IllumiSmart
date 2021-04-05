@@ -30,7 +30,6 @@
             app:titleTextColor="@color/white"
             app:navigationIcon="@drawable/back">
 
-
         </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -39,9 +38,9 @@
         android:id="@+id/light_correct_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         android:lineSpacingExtra="8sp"
         android:text="@string/light_correct_txt"
         android:textColor="@color/black"
