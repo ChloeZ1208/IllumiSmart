@@ -1,6 +1,7 @@
 package android.example.illumismart;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.example.illumismart.entity.GlareItem;
 import android.example.illumismart.entity.dataItem;
@@ -73,6 +74,10 @@ public class GlareActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // check if the user is the first time enter this page
+        if (isFirstTime()) {
+            startActivity(new Intent(GlareActivity.this, GlareGuideActivity.class));
+        }
         setContentView(R.layout.activity_glare);
         utils = new Utils();
         df = new DecimalFormat("0.00");
@@ -151,6 +156,18 @@ public class GlareActivity extends AppCompatActivity implements
                 startActivity(new Intent(GlareActivity.this, GlareGuideActivity.class));
             }
         });
+    }
+
+    private boolean isFirstTime() {
+        SharedPreferences preferences = getSharedPreferences("Glare",MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.apply();
+        }
+        return !ranBefore;
     }
 
     @Override

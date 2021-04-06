@@ -222,6 +222,7 @@ public class FlickerActivity extends AppCompatActivity {
                 flickerLuxAvg.setVisibility(View.INVISIBLE);
                 flickerLuxMin.setVisibility(View.INVISIBLE);
                 flickerLuxMax.setVisibility(View.INVISIBLE);
+                flickerViewDetails.setVisibility(View.INVISIBLE);
             }
         });
 

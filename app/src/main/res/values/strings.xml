@@ -42,8 +42,8 @@
     <string name="occupation_general_txt">Examples: Storeroom…</string>
     <string name="occupation_moderate_txt">Examples: Packing; despatch…</string>
     <string name="occupation_precise_txt">Examples: Simple assembly; locksmith’s work; winding thick wire onto spools; work on carpenter’s bench; milling…</string>
-    <string name="occupation_fine_txt">Examples: Reading; writing; book-keeping; laboratory technician; assembly of fine equipment; woodworking by machine; fine work on toolmaking gig…</string>
-    <string name="occupation_veryfine_txt">Examples: Technical drawing; colour proofing; adjusting and testing electrical equipement; assembling delicate electronics; watchmaking; invisible mending</string>
+    <string name="occupation_fine_txt">Examples: Reading; writing; data entry; book-keeping; laboratory technician; assembly of fine equipment; woodworking by machine; fine work on toolmaking gig...</string>
+    <string name="occupation_veryfine_txt">Examples: Technical drawing; colour proofing; adjusting and testing electrical equipement; assembling delicate electronics; watchmaking; invisible mending...</string>
     <string name="age_question">What is your age?</string>
     <string name="question1_work">Do you work in the office or industry setting?</string>
     <string name="question_select_header">Choose one of the following</string>
@@ -229,4 +229,5 @@
         <li>Using low gloss paper or applying flat or semi-gloss paint and matte finishes on \'offending\' surfaces. Removing highly polished and shiny objects.</li>\n
         <li>Keeping general lighting levels at recommended levels.</li>
     </string>
+    <string name="occupation_q_hint">The app will not collect your personal information. This is only used to provide better recommendations about lighting.</string>
 </resources>
