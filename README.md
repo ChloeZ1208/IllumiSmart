@@ -7,4 +7,4 @@ started to work from home. There is an increasing need for ergonomic tools that 
 improve workplace settings. Therefore, the objective of IllumiSmart is to measure and assess
 the user's workplace lighting conditions and give advice regarding issues identified.
 
-The detailed description of the app can be found in Report.pdf
+The detailed description of the app can be found inside 1778 Final Report.pdf
