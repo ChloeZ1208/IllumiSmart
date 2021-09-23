@@ -1,5 +1,5 @@
 # ECE 1778 Github Project Repository - IllumiSmart
-# Introduction
+## Introduction
 Most people receive the majority of information through the sense of sight. Therefore,
 lighting is an extremely important factor in the workplace, and poor lighting damages
 workers’ health, reduces productivity and leads to safety issues. Physiological requirements
